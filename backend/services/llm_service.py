@@ -3,6 +3,8 @@ import json
 import re
 from backend.config import Config
 
+# Global session for connection pooling to reduce TCP handshake latency
+_http_session = requests.Session()
 
 class GradingError(Exception):
     """Custom exception for grading failures that should not be treated as a score of 0."""
@@ -69,11 +71,11 @@ Now grade the student's answer:"""
     }
 
     try:
-        response = requests.post(
+        response = _http_session.post(
             Config.OPENROUTER_BASE_URL,
             headers=headers,
             json=payload,
-            timeout=30
+            timeout=25  # Stay under 30s gateway timeout
         )
         response.raise_for_status()
         data = response.json()
@@ -218,11 +220,11 @@ Keep your tone encouraging and your language simple. Use Markdown for formatting
     }
 
     try:
-        response = requests.post(
+        response = _http_session.post(
             Config.OPENROUTER_BASE_URL,
             headers=headers,
             json=payload,
-            timeout=45
+            timeout=25  # Stay under 30s gateway timeout
         )
         response.raise_for_status()
         data = response.json()
