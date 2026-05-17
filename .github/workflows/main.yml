@@ -3,11 +3,11 @@ name: Auto Release
 on:
   push:
     tags:
-      - 'v*'
+      - 'v*' # Triggers automatically when you push a tag like v1.0.0
   workflow_dispatch:
     inputs:
       tag_name:
-        description: 'Version Tag (e.g., v1.1.0). Must match the tag on the site.'
+        description: 'Target Tag (e.g., v1.0.0). Use this to fill/update an existing release.'
         required: true
         default: 'v1.0.0'
 
@@ -21,12 +21,11 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
         with:
-          fetch-depth: 0
+          fetch-depth: 0 # Fetches all history for the changelog
 
-      - name: Set Release Version
+      - name: Determine Version
         id: vars
         run: |
-          # If triggered manually, use the input. If triggered by a tag, use the tag name.
           if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
             echo "tag=${{ github.event.inputs.tag_name }}" >> $GITHUB_OUTPUT
           else
@@ -35,28 +34,42 @@ jobs:
 
       - name: Generate Release Notes
         run: |
-          # Find the previous tag to get the commit range
+          # Find the previous tag. Fallback to the first commit if this is the first release.
           PREV_TAG=$(git describe --tags --abbrev=0 ${{ steps.vars.outputs.tag }}^ 2>/dev/null || git rev-list --max-parents=0 HEAD | head -n 1)
           CURRENT_TARGET=${{ steps.vars.outputs.tag }}
           
-          echo "# What's New in $CURRENT_TARGET" > release_notes.md
+          echo "# 📦 Release $CURRENT_TARGET" > release_notes.md
+          echo "Automated release generated from commit history." >> release_notes.md
           echo "" >> release_notes.md
 
-          echo "## 🚀 Features" >> release_notes.md
-          git log ${PREV_TAG}..HEAD --pretty=format:"* %s ([%h](https://github.com/${{ github.repository }}/commit/%H))" | grep -i -E "^\* (feat|feature|add|added|new)" >> release_notes.md || echo "* No new features identified." >> release_notes.md
+          # 1. Features
+          echo "### 🚀 Features" >> release_notes.md
+          git log ${PREV_TAG}..HEAD --pretty=format:"* %s ([%h](https://github.com/${{ github.repository }}/commit/%H))" | grep -i -E "^\* (feat|feature|add|added|new):?" >> release_notes.md || echo "* No new features in this version." >> release_notes.md
           
           echo "" >> release_notes.md
-          echo "## 🐛 Bug Fixes" >> release_notes.md
-          git log ${PREV_TAG}..HEAD --pretty=format:"* %s ([%h](https://github.com/${{ github.repository }}/commit/%H))" | grep -i -E "^\* (fix|bug|patch|fixed|resolved)" >> release_notes.md || echo "* No bug fixes identified." >> release_notes.md
+
+          # 2. Bug Fixes
+          echo "### 🐛 Bug Fixes" >> release_notes.md
+          git log ${PREV_TAG}..HEAD --pretty=format:"* %s ([%h](https://github.com/${{ github.repository }}/commit/%H))" | grep -i -E "^\* (fix|bug|patch|fixed|resolved):?" >> release_notes.md || echo "* No bug fixes identified." >> release_notes.md
           
           echo "" >> release_notes.md
-          echo "## 📝 Other Changes" >> release_notes.md
-          git log ${PREV_TAG}..HEAD --pretty=format:"* %s ([%h](https://github.com/${{ github.repository }}/commit/%H))" | grep -v -i -E "^\* (feat|feature|add|added|new|fix|bug|patch|fixed|resolved)" >> release_notes.md || echo "* Maintenance and minor updates." >> release_notes.md
+
+          # 3. Other/Maintenance
+          echo "### 📝 Other Changes" >> release_notes.md
+          git log ${PREV_TAG}..HEAD --pretty=format:"* %s ([%h](https://github.com/${{ github.repository }}/commit/%H))" | grep -v -i -E "^\* (feat|feature|add|added|new|fix|bug|patch|fixed|resolved):?" >> release_notes.md || echo "* Maintenance and minor updates." >> release_notes.md
 
       - name: Create ZIP Archive
         run: |
+          # Package the repo, excluding development and hidden files
           zip -r waec-grinder-${{ steps.vars.outputs.tag }}.zip . \
-            -x "*.git*" -x "*.github*" -x "*.jules*" -x "*tests/*" -x "*.env" -x "*__pycache__*" -x "release_notes.md"
+            -x "*.git*" \
+            -x "*.github*" \
+            -x "*.jules*" \
+            -x "*tests/*" \
+            -x "*.env" \
+            -x "*__pycache__*" \
+            -x "*.pytest_cache*" \
+            -x "release_notes.md"
 
       - name: Publish GitHub Release
         uses: softprops/action-gh-release@v2
