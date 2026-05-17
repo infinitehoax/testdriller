@@ -10,12 +10,12 @@ sid_to_player = {}
 def handle_create_room(data):
     host_name = data.get('name', 'Player 1')
     mode = data.get('mode', 'both')
-    subject = data.get('subject')
+    subjects = data.get('subjects') # Changed from 'subject' to 'subjects'
     player_uuid = data.get('player_uuid')
     if not player_uuid:
         return emit('error', {'message': 'Missing player_uuid'})
 
-    room_id = room_service.create_room(player_uuid, request.sid, host_name, mode, subject)
+    room_id = room_service.create_room(player_uuid, request.sid, host_name, mode, subjects)
     # Register the sid:
     sid_to_player[request.sid] = {'room_id': room_id, 'player_uuid': player_uuid}
     join_room(room_id)
@@ -46,7 +46,18 @@ def handle_start_game(data):
     player_uuid = data.get('player_uuid')
     total_questions = data.get('total_questions')
     time_limit = data.get('time_limit', 0)
-    success, result = room_service.start_game(room_id, player_uuid, total_questions, time_limit)
+    # New randomization flags:
+    randomize_questions = data.get('randomize_questions', False)
+    randomize_options = data.get('randomize_options', False)
+
+    success, result = room_service.start_game(
+        room_id,
+        player_uuid,
+        total_questions,
+        time_limit,
+        randomize_questions,
+        randomize_options
+    )
 
     if success:
         emit('game_started', {'room_state': result}, to=room_id)

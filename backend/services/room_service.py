@@ -9,12 +9,15 @@ from backend.services.data_service import load_questions
 #         "players": {sid: {"name": name, "progress": 0, "total": 0, "score": 0}},
 #         "questions": [],
 #         "status": "waiting" | "playing" | "finished",
-#         "mode": "obj" | "theory" | "both"
+#         "mode": "obj" | "theory" | "both",
+#         "subjects": [subject1, subject2],
+#         "randomize_questions": bool,
+#         "randomize_options": bool
 #     }
 # }
 rooms = {}
 
-def create_room(player_uuid, sid, host_name, mode, subject=None):
+def create_room(player_uuid, sid, host_name, mode, subjects=None):
     room_id = str(uuid.uuid4())[:6].upper()
     while room_id in rooms:
         room_id = str(uuid.uuid4())[:6].upper()
@@ -34,8 +37,10 @@ def create_room(player_uuid, sid, host_name, mode, subject=None):
         "questions": [],
         "status": "waiting",
         "mode": mode,
-        "subject": subject,
-        "messages": []
+        "subjects": subjects or [],
+        "messages": [],
+        "randomize_questions": False,
+        "randomize_options": False
     }
     return room_id
 
@@ -86,7 +91,7 @@ def leave_room(room_id, player_uuid):
 
 import time
 
-def start_game(room_id, host_id, total_questions=None, time_limit=0):
+def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_questions=False, randomize_options=False):
     if room_id not in rooms:
         return False, "Room not found"
 
@@ -98,40 +103,51 @@ def start_game(room_id, host_id, total_questions=None, time_limit=0):
     except:
         time_limit = 0
 
-    # Load questions and prepare a batch for everyone
+    # Load questions
     result = load_questions()
     if not result["success"]:
         return False, "Failed to load questions"
 
     data_raw = result["data"]
     mode = rooms[room_id]["mode"]
-    subject = rooms[room_id].get("subject")
+    subjects = rooms[room_id].get("subjects", [])
 
-    # Filter data by subject if specified
-    if subject and isinstance(data_raw, list):
-        data = next((s for s in data_raw if s.get("subject") == subject), None)
-        if not data:
-            return False, f"Subject '{subject}' not found"
-    else:
-        # Fallback to the first subject if none specified or data is not a list
-        data = data_raw[0] if isinstance(data_raw, list) and len(data_raw) > 0 else data_raw
+    # Filter data by subjects
+    selected_data = []
+    if subjects and isinstance(data_raw, list):
+        selected_data = [s for s in data_raw if s.get("subject") in subjects]
 
-    questions = []
-    all_obj = [{**q, "_type": "obj"} for q in data.get("obj", [])]
-    all_theory = [{**q, "_type": "theory"} for q in data.get("theory", [])]
+    if not selected_data:
+        # Fallback to the first subject if none found or specified
+        selected_data = [data_raw[0]] if isinstance(data_raw, list) and len(data_raw) > 0 else [data_raw]
+
+    all_obj = []
+    all_theory = []
+    for data in selected_data:
+        sub_name = data.get("subject", "General")
+        all_obj.extend([{**q, "_type": "obj", "_subject": sub_name} for q in data.get("obj", [])])
+        all_theory.extend([{**q, "_type": "theory", "_subject": sub_name} for q in data.get("theory", [])])
 
     # Determine how many questions to take
-    if total_questions == "all":
-        count = len(all_obj) + len(all_theory)
-    elif isinstance(total_questions, int) and total_questions > 0:
-        count = total_questions
-    else:
-        count = 10 # Default
+    available_count = (len(all_obj) if mode == "obj" else
+                       len(all_theory) if mode == "theory" else
+                       (len(all_obj) + len(all_theory)))
 
+    if total_questions == "all":
+        count = available_count
+    else:
+        try:
+            count = int(total_questions)
+        except:
+            count = 10
+
+    count = min(count, available_count)
+
+    questions = []
     if mode == "obj":
-        questions = random.sample(all_obj, min(count, len(all_obj)))
+        questions = random.sample(all_obj, count)
     elif mode == "theory":
-        questions = random.sample(all_theory, min(count, len(all_theory)))
+        questions = random.sample(all_theory, count)
     else:
         # For mixed mode, try to maintain 70/30 split if possible
         obj_target = int(count * 0.7)
@@ -140,7 +156,7 @@ def start_game(room_id, host_id, total_questions=None, time_limit=0):
         # Adjust if not enough questions in one category
         if len(all_obj) < obj_target:
             obj_target = len(all_obj)
-            theory_target = count - obj_target
+            theory_target = min(len(all_theory), count - obj_target)
         if len(all_theory) < theory_target:
             theory_target = len(all_theory)
             obj_target = min(len(all_obj), count - theory_target)
@@ -148,11 +164,17 @@ def start_game(room_id, host_id, total_questions=None, time_limit=0):
         q_obj = random.sample(all_obj, obj_target)
         q_theory = random.sample(all_theory, theory_target)
         questions = q_obj + q_theory
+        # We'll shuffle below if randomize_questions is true
+
+    if randomize_questions:
         random.shuffle(questions)
 
     rooms[room_id]["questions"] = questions
     rooms[room_id]["status"] = "playing"
     rooms[room_id]["time_limit"] = time_limit
+    rooms[room_id]["randomize_questions"] = randomize_questions
+    rooms[room_id]["randomize_options"] = randomize_options
+
     if time_limit > 0:
         rooms[room_id]["end_time"] = (time.time() * 1000) + (time_limit * 60 * 1000)
 

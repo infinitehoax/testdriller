@@ -1,124 +1,134 @@
-// ============================================
-// WAEC GRINDER — Multiplayer Lobby Logic
-// ============================================
+/**
+ * WAEC GRINDER — Multiplayer Lobby Logic
+ */
 
-import SocketClient from './socket_client.js';
 import API from './api.js';
 import Storage from './storage.js';
+import socket from './socket_client.js';
+import { showToast } from './ui.js';
 
-const lobby = {
-    currentRoomId: null,
-    currentRoomState: null,
+const Lobby = {
+    selectedMode: 'both',
+    allQuestions: [],
+    roomId: null,
+    isHost: false,
+    randomize_questions: false,
+    randomize_options: false,
 
     async init() {
-        SocketClient.init();
-        this.populateSubjects();
-
-        SocketClient.on('roomCreated', (data) => {
-            this.showWaitingRoom(data.room_id, data.room_state, true);
-        });
-
-        SocketClient.on('roomJoined', (data) => {
-            sessionStorage.setItem('wg_multiplayer_name', document.getElementById('join-name').value.trim());
-            if (data.room_state.status === 'playing') {
-                sessionStorage.setItem('wg_multiplayer_room', JSON.stringify(data.room_state));
-                sessionStorage.setItem('wg_multiplayer_room_id', data.room_id);
-                window.location.href = '/multiplayer/study';
-                return;
-            }
-            this.showWaitingRoom(data.room_id, data.room_state, false);
-        });
-
-        SocketClient.on('playerJoined', (data) => {
-            this.currentRoomState = data.room_state;
-            this.updatePlayerList(data.room_state);
-        });
-
-        SocketClient.on('playerLeft', (data) => {
-            this.currentRoomState = data.room_state;
-            this.updatePlayerList(data.room_state);
-
-            // Check if I am the new host
-            const isHost = (data.room_state.host_id === SocketClient.player_uuid);
-            if (isHost && document.getElementById('host-controls').classList.contains('hidden')) {
-                this.showWaitingRoom(this.currentRoomId, this.currentRoomState, true);
-            }
-        });
-
-        SocketClient.on('newMessage', (data) => {
-            this.appendMessage(data);
-        });
-
-        SocketClient.on('gameStarted', (data) => {
-            sessionStorage.setItem('wg_multiplayer_room', JSON.stringify(data.room_state));
-            sessionStorage.setItem('wg_multiplayer_room_id', this.currentRoomId);
-            window.location.href = '/multiplayer/study';
-        });
-    },
-
-    async populateSubjects() {
-        const selector = document.getElementById('create-subject');
-        if (!selector) return;
+        socket.connect();
+        this.setupSocketHandlers();
 
         try {
-            const allQuestions = await API.getQuestions();
-            selector.innerHTML = '';
-            allQuestions.forEach(s => {
-                const opt = document.createElement('option');
-                opt.value = s.subject;
-                opt.textContent = s.subject;
-                selector.appendChild(opt);
-            });
-
-            // Try to restore last selected subject
-            const lastSubject = Storage.getSubject();
-            if (lastSubject && allQuestions.some(s => s.subject === lastSubject)) {
-                selector.value = lastSubject;
-            }
+            this.allQuestions = await API.getQuestions();
+            this.renderSubjects();
         } catch (e) {
-            console.error('Failed to load subjects:', e);
-            selector.innerHTML = '<option disabled>Error loading subjects</option>';
+            console.error(e);
         }
+
+        // Chat listeners
+        const chatInput = document.getElementById('lobby-chat-input');
+        const sendBtn = document.getElementById('lobby-chat-send');
+        if (sendBtn) {
+            sendBtn.onclick = () => this.sendChatMessage();
+        }
+        if (chatInput) {
+            chatInput.onkeypress = (e) => { if (e.key === 'Enter') this.sendChatMessage(); };
+        }
+
+        const exitBtn = document.getElementById('exit-waiting');
+        if (exitBtn) exitBtn.onclick = () => this.leaveRoom();
+    },
+
+    renderSubjects() {
+        const list = document.getElementById('subject-list');
+        if (!list) return;
+
+        list.innerHTML = this.allQuestions.map((s, idx) => `
+            <label style="display:flex; align-items:center; gap:8px; padding:4px; cursor:pointer;">
+                <input type="checkbox" class="subject-checkbox" value="${s.subject}" ${idx === 0 ? 'checked' : ''}>
+                <span style="font-size:0.85rem;">${s.subject}</span>
+            </label>
+        `).join('');
+    },
+
+    setupSocketHandlers() {
+        socket.onRoomCreated = (data) => {
+            this.roomId = data.room_id;
+            this.isHost = true;
+            this.showWaitingRoom(data.room_state);
+        };
+
+        socket.onRoomJoined = (data) => {
+            this.roomId = data.room_id;
+            this.isHost = false;
+            this.showWaitingRoom(data.room_state);
+        };
+
+        socket.onPlayerJoined = (data) => {
+            this.updatePlayerList(data.room_state);
+            showToast(`${data.player_name} joined the room`, 'info');
+        };
+
+        socket.onPlayerLeft = (data) => {
+            this.updatePlayerList(data.room_state);
+            // If I become host
+            if (data.room_state.host_id === Storage.getPlayerUuid() && !this.isHost) {
+                this.isHost = true;
+                this.showWaitingRoom(data.room_state);
+                showToast("You are now the room host", "accent");
+            }
+        };
+
+        socket.onGameStarted = (data) => {
+            // Save state to storage for the study page to pick up
+            Storage._set('multiplayer_room_id', this.roomId);
+            Storage._set('multiplayer_is_host', this.isHost);
+            Storage._set('multiplayer_questions', data.room_state.questions);
+            Storage._set('multiplayer_time_limit', data.room_state.time_limit);
+
+            // Sync randomization flags to storage
+            Storage.setRandomized(data.room_state.randomize_questions || false);
+            Storage.setRandomizedOptions(data.room_state.randomize_options || false);
+
+            window.location.href = '/multiplayer/study';
+        };
+
+        socket.onMessage = (msg) => {
+            this.appendChatMessage(msg);
+        };
+
+        socket.onError = (msg) => {
+            showToast(msg, 'error');
+        };
     },
 
     createRoom() {
         const name = document.getElementById('create-name').value.trim();
-        const mode = document.getElementById('create-mode').value;
-        const subject = document.getElementById('create-subject').value;
-        if (!name) return alert('Please enter your name');
-        if (!subject) return alert('Please select a subject');
-        sessionStorage.setItem('wg_multiplayer_name', name);
-        SocketClient.createRoom(name, mode, subject);
+        if (!name) return showToast('Please enter your name', 'error');
+
+        const subjects = Array.from(document.querySelectorAll('.subject-checkbox:checked')).map(cb => cb.value);
+        if (subjects.length === 0) return showToast('Select at least one subject', 'error');
+
+        socket.createRoom(name, this.selectedMode, subjects);
     },
 
     joinRoom() {
         const name = document.getElementById('join-name').value.trim();
         const roomId = document.getElementById('join-room-id').value.trim().toUpperCase();
-        if (!name || !roomId) return alert('Please enter name and Room ID');
-        SocketClient.joinRoom(roomId, name);
+
+        if (!name) return showToast('Please enter your name', 'error');
+        if (!roomId) return showToast('Please enter Room ID', 'error');
+
+        socket.joinRoom(roomId, name);
     },
 
-    startGame() {
-        if (!this.currentRoomState || !this.currentRoomState.players) {
-            return alert('Room state not loaded yet. Please wait.');
-        }
-        if (Object.keys(this.currentRoomState.players).length < 2) {
-            return alert('Need at least 2 players to start');
-        }
-        const totalQuestions = document.getElementById('total-questions').value;
-        const val = totalQuestions === 'all' ? 'all' : parseInt(totalQuestions);
-        const timeLimit = parseInt(document.getElementById('time-limit').value);
-        SocketClient.startGame(this.currentRoomId, val, timeLimit);
-    },
-
-    showWaitingRoom(roomId, roomState, isHost) {
-        this.currentRoomId = roomId;
-        this.currentRoomState = roomState;
+    showWaitingRoom(state) {
         document.getElementById('lobby-setup').classList.add('hidden');
         document.getElementById('waiting-room').classList.remove('hidden');
-        document.getElementById('display-room-id').textContent = `ROOM ID: ${roomId}`;
+        document.getElementById('display-room-id').textContent = this.roomId;
 
-        if (isHost) {
+        if (this.isHost) {
             document.getElementById('host-controls').classList.remove('hidden');
             document.getElementById('guest-waiting').classList.add('hidden');
         } else {
@@ -126,78 +136,90 @@ const lobby = {
             document.getElementById('guest-waiting').classList.remove('hidden');
         }
 
-        const exitBtn = document.getElementById('exit-waiting');
-        if (exitBtn) {
-            exitBtn.onclick = () => {
-                SocketClient.leaveRoom(this.currentRoomId);
-                window.location.reload();
-            };
-        }
+        this.updatePlayerList(state);
 
-        this.updatePlayerList(roomState);
-        this.initChat();
+        // Load messages
+        const chatBox = document.getElementById('lobby-chat-messages');
+        chatBox.innerHTML = '';
+        if (state.messages) {
+            state.messages.forEach(m => this.appendChatMessage(m));
+        }
     },
 
-    updatePlayerList(roomState) {
-        if (!roomState) return;
+    updatePlayerList(state) {
         const list = document.getElementById('player-list');
-        list.innerHTML = '';
+        if (!list) return;
 
-        Object.entries(roomState.players).forEach(([sid, player]) => {
-            const isHost = sid === roomState.host_id;
-            const isYou = sid === SocketClient.player_uuid;
-
-            const div = document.createElement('div');
-            div.className = `player-tag ${isHost ? 'is-host' : ''} ${isYou ? 'is-you' : ''}`;
-            div.textContent = player.name + (isYou ? ' (You)' : '');
-            list.appendChild(div);
-        });
+        list.innerHTML = Object.entries(state.players).map(([uuid, p]) => {
+            const isYou = uuid === Storage.getPlayerUuid();
+            const isHost = uuid === state.host_id;
+            return `
+                <div class="player-tag ${isYou ? 'is-you' : ''} ${isHost ? 'is-host' : ''}">
+                    <span>${isYou ? p.name + ' (You)' : p.name}</span>
+                </div>
+            `;
+        }).join('');
     },
 
-    initChat() {
-        const chatInput = document.getElementById('lobby-chat-input');
-        const sendBtn = document.getElementById('lobby-chat-send');
-        if (!chatInput || !sendBtn) return;
-
-        const sendMessage = () => {
-            const text = chatInput.value.trim();
-            if (!text) return;
-            const myName = sessionStorage.getItem('wg_multiplayer_name');
-            SocketClient.sendMessage(this.currentRoomId, myName, text);
-            chatInput.value = '';
-        };
-
-        sendBtn.onclick = sendMessage;
-        chatInput.onkeypress = (e) => {
-            if (e.key === 'Enter') sendMessage();
-        };
-
-        // Load existing messages if any
-        const container = document.getElementById('lobby-chat-messages');
-        if (container && this.currentRoomState) {
-            container.innerHTML = '';
-            if (this.currentRoomState.messages) {
-                this.currentRoomState.messages.forEach(msg => this.appendMessage(msg));
-            }
+    toggleSetting(key) {
+        if (!this.isHost) return;
+        this[key] = !this[key];
+        const badgeId = key === 'randomize_questions' ? 'random-q-badge' : 'random-o-badge';
+        const badge = document.getElementById(badgeId);
+        if (this[key]) {
+            badge.textContent = 'ON';
+            badge.className = 'badge badge--accent';
+        } else {
+            badge.textContent = 'OFF';
+            badge.className = 'badge badge--neutral';
         }
     },
 
-    appendMessage(msg) {
-        const container = document.getElementById('lobby-chat-messages');
-        if (!container) return;
+    startGame() {
+        if (!this.isHost) return;
+        const total = document.getElementById('total-questions').value;
+        const timeLimit = document.getElementById('time-limit').value;
+
+        socket.startGame(
+            this.roomId,
+            total,
+            timeLimit,
+            this.randomize_questions,
+            this.randomize_options
+        );
+    },
+
+    copyRoomId() {
+        navigator.clipboard.writeText(this.roomId);
+        showToast('Room ID copied to clipboard', 'success');
+    },
+
+    sendChatMessage() {
+        const input = document.getElementById('lobby-chat-input');
+        const text = input.value.trim();
+        if (!text) return;
+
+        const name = this.isHost
+            ? document.getElementById('create-name').value.trim()
+            : document.getElementById('join-name').value.trim();
+
+        socket.sendMessage(this.roomId, name, text);
+        input.value = '';
+    },
+
+    appendChatMessage(msg) {
+        const chatBox = document.getElementById('lobby-chat-messages');
         const div = document.createElement('div');
         div.className = 'chat-msg';
+        div.innerHTML = `<strong>${msg.name}:</strong> ${msg.text}`;
+        chatBox.appendChild(div);
+        chatBox.scrollTop = chatBox.scrollHeight;
+    },
 
-        const strong = document.createElement('strong');
-        strong.textContent = msg.name + ': ';
-        const span = document.createElement('span');
-        span.textContent = msg.text;
-
-        div.appendChild(strong);
-        div.appendChild(span);
-        container.appendChild(div);
-        container.scrollTop = container.scrollHeight;
+    leaveRoom() {
+        socket.leaveRoom(this.roomId);
+        window.location.reload();
     }
 };
 
-export default lobby;
+export default Lobby;
