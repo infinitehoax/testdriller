@@ -1,95 +1,108 @@
-// ============================================
-// WAEC GRINDER — Socket Client Wrapper
-// ============================================
+/**
+ * WAEC GRINDER — Socket Client
+ * Encapsulates all Socket.IO communication
+ */
 
-const SocketClient = {
-    socket: null,
-    callbacks: {},
-    player_uuid: null,
+import Storage from './storage.js';
 
-    init() {
-        if (!this.player_uuid) {
-            this.player_uuid = sessionStorage.getItem('wg_player_uuid');
-            if (!this.player_uuid) {
-                this.player_uuid = Math.random().toString(36).substring(2, 15);
-                sessionStorage.setItem('wg_player_uuid', this.player_uuid);
-            }
-        }
+class SocketClient {
+    constructor() {
+        this.socket = null;
+        this.roomState = null;
+        this.onRoomCreated = null;
+        this.onRoomJoined = null;
+        this.onPlayerJoined = null;
+        this.onPlayerLeft = null;
+        this.onGameStarted = null;
+        this.onProgressUpdated = null;
+        this.onGameFinished = null;
+        this.onMessage = null;
+        this.onError = null;
+    }
 
+    connect() {
         if (this.socket) return;
-        this.socket = io({
-            transports: ['websocket', 'polling']
-        });
-
-        this.socket.on('connect', () => {
-            console.log('Connected to server');
-            if (this.callbacks.onConnect) this.callbacks.onConnect();
-        });
+        this.socket = io();
 
         this.socket.on('room_created', (data) => {
-            if (this.callbacks.onRoomCreated) this.callbacks.onRoomCreated(data);
+            this.roomState = data.room_state;
+            if (this.onRoomCreated) this.onRoomCreated(data);
         });
 
         this.socket.on('room_joined', (data) => {
-            if (this.callbacks.onRoomJoined) this.callbacks.onRoomJoined(data);
+            this.roomState = data.room_state;
+            if (this.onRoomJoined) this.onRoomJoined(data);
         });
 
         this.socket.on('player_joined', (data) => {
-            if (this.callbacks.onPlayerJoined) this.callbacks.onPlayerJoined(data);
-        });
-
-        this.socket.on('game_started', (data) => {
-            if (this.callbacks.onGameStarted) this.callbacks.onGameStarted(data);
-        });
-
-        this.socket.on('progress_updated', (data) => {
-            if (this.callbacks.onProgressUpdated) this.callbacks.onProgressUpdated(data);
+            this.roomState = data.room_state;
+            if (this.onPlayerJoined) this.onPlayerJoined(data);
         });
 
         this.socket.on('player_left', (data) => {
-            if (this.callbacks.onPlayerLeft) this.callbacks.onPlayerLeft(data);
+            this.roomState = data.room_state;
+            if (this.onPlayerLeft) this.onPlayerLeft(data);
         });
 
-        this.socket.on('new_message', (data) => {
-            if (this.callbacks.onNewMessage) this.callbacks.onNewMessage(data);
+        this.socket.on('game_started', (data) => {
+            this.roomState = data.room_state;
+            if (this.onGameStarted) this.onGameStarted(data);
+        });
+
+        this.socket.on('progress_updated', (data) => {
+            this.roomState = data.room_state;
+            if (this.onProgressUpdated) this.onProgressUpdated(data);
         });
 
         this.socket.on('game_finished', (data) => {
-            if (this.callbacks.onGameFinished) this.callbacks.onGameFinished(data);
+            this.roomState = data.room_state;
+            if (this.onGameFinished) this.onGameFinished(data);
+        });
+
+        this.socket.on('new_message', (data) => {
+            if (this.onMessage) this.onMessage(data);
         });
 
         this.socket.on('error', (data) => {
-            alert(data.message);
+            if (this.onError) this.onError(data.message);
         });
-    },
+    }
 
-    createRoom(name, mode, subject) {
-        this.socket.emit('create_room', { name, mode, subject, player_uuid: this.player_uuid });
-    },
+    createRoom(name, mode, subjects) {
+        const player_uuid = Storage.getPlayerUuid();
+        this.socket.emit('create_room', { name, mode, subjects, player_uuid });
+    }
 
     joinRoom(roomId, name) {
-        this.socket.emit('join_room', { room_id: roomId, name, player_uuid: this.player_uuid });
-    },
+        const player_uuid = Storage.getPlayerUuid();
+        this.socket.emit('join_room', { room_id: roomId, name, player_uuid });
+    }
 
-    startGame(roomId, totalQuestions, timeLimit) {
-        this.socket.emit('start_game', { room_id: roomId, player_uuid: this.player_uuid, total_questions: totalQuestions, time_limit: timeLimit });
-    },
+    startGame(roomId, total_questions, time_limit, randomize_questions = false, randomize_options = false) {
+        const player_uuid = Storage.getPlayerUuid();
+        this.socket.emit('start_game', {
+            room_id: roomId,
+            player_uuid,
+            total_questions,
+            time_limit,
+            randomize_questions,
+            randomize_options
+        });
+    }
 
-    updateProgress(roomId, progress, score, finished) {
-        this.socket.emit('update_progress', { room_id: roomId, progress, score, finished, player_uuid: this.player_uuid });
-    },
+    updateProgress(roomId, progress, score, finished = false) {
+        const player_uuid = Storage.getPlayerUuid();
+        this.socket.emit('update_progress', { room_id: roomId, player_uuid, progress, score, finished });
+    }
 
     sendMessage(roomId, name, text) {
         this.socket.emit('send_message', { room_id: roomId, name, text });
-    },
+    }
 
     leaveRoom(roomId) {
-        this.socket.emit('leave_room', { room_id: roomId, player_uuid: this.player_uuid });
-    },
-
-    on(event, callback) {
-        this.callbacks[`on${event.charAt(0).toUpperCase() + event.slice(1)}`] = callback;
+        const player_uuid = Storage.getPlayerUuid();
+        this.socket.emit('leave_room', { room_id: roomId, player_uuid });
     }
-};
+}
 
-export default SocketClient;
+export default new SocketClient();
