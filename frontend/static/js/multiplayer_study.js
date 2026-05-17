@@ -152,6 +152,14 @@ const multiplayer_study = {
             }
         };
 
+        // Add a cleanup method to prevent memory leaks
+        this.cleanup = () => {
+            if (this._timerInterval) {
+                clearInterval(this._timerInterval);
+                this._timerInterval = null;
+            }
+        };
+
         UI.batch = questions;
         // UI.currentIdx is already set from myData if available
         UI.renderCurrent();
@@ -306,6 +314,7 @@ const multiplayer_study = {
 
     showFinalScoreboard() {
         console.log('Showing final scoreboard');
+        this.cleanup();
         const wrapper = document.getElementById('question-wrapper');
         if (!wrapper) return;
 

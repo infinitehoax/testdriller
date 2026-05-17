@@ -12,7 +12,7 @@ from backend.services.llm_service import grade_sub_question, GradingError
 class TestLLMGrading(unittest.TestCase):
 
     @patch('backend.services.llm_service.Config')
-    @patch('backend.services.llm_service.requests.post')
+    @patch('backend.services.llm_service._http_session.post')
     def test_grade_sub_question_success(self, mock_post, mock_config):
         # Setup mock config
         mock_config.OPENROUTER_API_KEY = "test_key"
@@ -39,7 +39,7 @@ class TestLLMGrading(unittest.TestCase):
         self.assertEqual(result['feedback'], "Excellent answer.")
 
     @patch('backend.services.llm_service.Config')
-    @patch('backend.services.llm_service.requests.post')
+    @patch('backend.services.llm_service._http_session.post')
     def test_grade_sub_question_empty_response(self, mock_post, mock_config):
         # Setup mock config
         mock_config.OPENROUTER_API_KEY = "test_key"
@@ -62,7 +62,7 @@ class TestLLMGrading(unittest.TestCase):
             grade_sub_question("What is 1+1?", "2", "1+1 is 2", 5)
 
     @patch('backend.services.llm_service.Config')
-    @patch('backend.services.llm_service.requests.post')
+    @patch('backend.services.llm_service._http_session.post')
     def test_grade_sub_question_markdown_fences(self, mock_post, mock_config):
         # Setup mock config
         mock_config.OPENROUTER_API_KEY = "test_key"
@@ -87,7 +87,7 @@ class TestLLMGrading(unittest.TestCase):
         self.assertEqual(result['feedback'], "Good job.")
 
     @patch('backend.services.llm_service.Config')
-    @patch('backend.services.llm_service.requests.post')
+    @patch('backend.services.llm_service._http_session.post')
     def test_grade_sub_question_invalid_json(self, mock_post, mock_config):
         # Setup mock config
         mock_config.OPENROUTER_API_KEY = "test_key"
@@ -110,7 +110,7 @@ class TestLLMGrading(unittest.TestCase):
             grade_sub_question("What is 1+1?", "2", "1+1 is 2", 5)
 
     @patch('backend.services.llm_service.Config')
-    @patch('backend.services.llm_service.requests.post')
+    @patch('backend.services.llm_service._http_session.post')
     def test_grade_sub_question_with_preamble(self, mock_post, mock_config):
         # Setup mock config
         mock_config.OPENROUTER_API_KEY = "test_key"
