@@ -88,7 +88,7 @@ Now grade the student's answer:"""
         raw_text = raw_content.strip()
 
         # More robust JSON extraction using regex
-        json_match = re.search(r'\{.*\}', raw_text, re.DOTALL)
+        json_match = re.search(r'\{.*?\}', raw_text, re.DOTALL)
         if json_match:
             raw_text = json_match.group(0)
         else:
