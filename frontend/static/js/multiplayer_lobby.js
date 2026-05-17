@@ -85,6 +85,7 @@ const Lobby = {
             sessionStorage.setItem('wg_multiplayer_room_id', this.roomId);
 
             // Sync randomization flags to storage
+            Storage.setRandomizedQuestions(data.room_state.randomize_questions || false);
             Storage.setRandomizedOptions(data.room_state.randomize_options || false);
 
             window.location.href = '/multiplayer/study';
