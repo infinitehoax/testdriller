@@ -1,21 +1,24 @@
 ## Pull Request Description
 
-Please follow the naming convention for your PR title based on the category of change:
+### 📚 Release Naming Convention
+To ensure our auto-generated release notes are organized correctly, please ensure your PR title follows these prefixes:
 
-### 🚀 For Features:
-- `feat: [description]` (e.g., `feat: added AI caching for faster theory grading`)
-- `add: [description]` (e.g., `add: new math rendering support`)
-- `New: [description]` (e.g., `New: multiplayer mode lobby`)
+#### 🚀 For Features:
+* `feat:` (e.g., `feat: added AI caching for faster theory grading`)
+* `add:` (e.g., `add: new math rendering support`)
+* `New:` (e.g., `New: multiplayer mode lobby`)
 
-### 🐛 For Bugs:
-- `fix: [description]` (e.g., `fix: resolved issue where failed queue duplicated questions`)
-- `bug: [description]` (e.g., `bug: corrected syntax error in JSON loader`)
-- `patch: [description]` (e.g., `patch: fixed timer not resetting`)
+#### 🐛 For Bugs:
+* `fix:` (e.g., `fix: resolved issue where failed queue duplicated questions`)
+* `bug:` (e.g., `bug: corrected syntax error in JSON loader`)
+* `patch:` (e.g., `patch: fixed timer not resetting`)
 
-### 🔧 For Other/Maintenance:
-- `docs: [description]` (e.g., `docs: updated README with new API instructions`)
-- `chore: [description]` (e.g., `chore: refactored CSS styling`)
-- `test: [description]` (e.g., `test: added playwright UI tests`)
+#### 📝 For Other/Maintenance:
+* `docs:` (e.g., `docs: updated README with new API instructions`)
+* `chore:` (e.g., `chore: refactored CSS styling`)
+* `test:` (e.g., `test: added playwright UI tests`)
+
+*These prefixes allow the Auto-Release bot to categorize your work automatically!*
 
 ---
 
