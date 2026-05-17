@@ -96,7 +96,7 @@ Now grade the student's answer and output the scoring JSON:"""
             {"role": "system", "content": system_prompt},
             {"role": "user", "content": user_prompt}
         ],
-        "max_tokens": 250,  # Increased slightly to allow for some preamble if AI ignores instructions
+        "max_tokens": 2000,  # Increased to allow for preamble and more detailed feedback if necessary
         "temperature": 0.1
     }
 
