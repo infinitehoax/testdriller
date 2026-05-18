@@ -141,7 +141,7 @@ const Engine = {
   markObjResult(q, passed) {
     q._passed = passed;
     // Review mode is low-stakes: no stats or queue changes
-    if (q._is_review || Storage.getMode() === 'review') return;
+    if (q._is_review || Storage.getMode() === 'review' || q._is_multiplayer) return;
 
     Storage.updateTopicStats(q.topic, passed, q._subject);
     if (passed) {
@@ -181,7 +181,7 @@ const Engine = {
     const passed = pct >= APP_CONFIG.PASS_THRESHOLD;
     q._passed = passed;
 
-    if (q._is_review || Storage.getMode() === 'review') return passed;
+    if (q._is_review || Storage.getMode() === 'review' || q._is_multiplayer) return passed;
 
     Storage.updateTopicStats(q.topic, passed, q._subject);
     if (passed) {

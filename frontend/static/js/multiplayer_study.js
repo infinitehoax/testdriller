@@ -3,7 +3,7 @@
 // ============================================
 
 import SocketClient from './socket_client.js';
-import { UI, updateNavStats } from './ui.js';
+import { UI, updateNavStats, showToast } from './ui.js';
 import Storage from './storage.js';
 
 const multiplayer_study = {
@@ -39,6 +39,13 @@ const multiplayer_study = {
         };
 
         SocketClient.onConnect = join;
+
+        SocketClient.onError = (msg) => {
+            showToast(msg, 'error');
+            if (msg === "Room not found") {
+                setTimeout(() => window.location.href = '/multiplayer', 2000);
+            }
+        };
 
         SocketClient.onRoomJoined = (data) => {
             this.roomState = data.room_state;
@@ -93,7 +100,7 @@ const multiplayer_study = {
             Storage.setRandomizedOptions(data.room_state.randomize_options || false);
 
             // Re-init UI with new questions
-            UI.batch = this.roomState.questions;
+            UI.batch = this.roomState.questions.map(q => ({ ...q, _is_multiplayer: true }));
             UI.currentIdx = 0;
             this.myScore = 0;
             this.isFinished = false;
@@ -114,7 +121,7 @@ const multiplayer_study = {
         SocketClient.connect();
 
         // Initialize UI with room questions
-        const questions = this.roomState.questions;
+        const questions = this.roomState.questions.map(q => ({ ...q, _is_multiplayer: true }));
 
         const myData = this.roomState.players[myUuid];
         if (myData) {
@@ -171,7 +178,7 @@ const multiplayer_study = {
                     <p style="margin-bottom:28px">Wait for others to complete the challenge.</p>
                     <div class="stats-grid" style="max-width:500px;margin:0 auto 32px">
                         <div class="stat-card stat--accent">
-                            <div class="stat-card__value" id="final-score-val">${this.myScore} / ${questions.length}</div>
+                            <div class="stat-card__value" id="final-score-val">${this.myScore} / ${UI.batch.length}</div>
                             <div class="stat-card__label">Final Score</div>
                         </div>
                     </div>
