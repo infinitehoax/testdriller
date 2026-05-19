@@ -23,7 +23,8 @@ const Lobby = {
         this.setupSocketHandlers();
 
         try {
-            this.allQuestions = await API.getQuestions();
+            const res = await API.getQuestions();
+            this.allQuestions = Array.isArray(res) ? res : (res?.data || []);
             this.renderSubjects();
         } catch (e) {
             console.error(e);
@@ -128,6 +129,11 @@ const Lobby = {
     renderSubjects() {
         const list = document.getElementById('subject-list');
         if (!list) return;
+
+        if (!Array.isArray(this.allQuestions)) {
+            list.innerHTML = '<div style="padding: 10px; color: var(--text-muted);">No subjects found.</div>';
+            return;
+        }
 
         list.innerHTML = this.allQuestions.map((s, idx) => `
             <label style="display:flex; align-items:center; gap:10px; padding:8px 12px; cursor:pointer; transition:background 0.2s; border-radius:var(--radius-sm);">
