@@ -99,6 +99,11 @@
         order: -1;
     }
 }
+
+/* Disable skipping in multiplayer to maintain server sync */
+.multiplayer-layout .action-bar__left .btn--ghost {
+    display: none !important;
+}
 </style>
 {% endblock %}
 

@@ -147,7 +147,14 @@ const Lobby = {
         socket.onRoomJoined = (data) => {
             this.roomId = data.room_id;
             this.isHost = false;
-            this.showWaitingRoom(data.room_state);
+
+            if (data.room_state.status === 'playing') {
+                sessionStorage.setItem('wg_multiplayer_room', JSON.stringify(data.room_state));
+                sessionStorage.setItem('wg_multiplayer_room_id', this.roomId);
+                window.location.href = '/multiplayer/study';
+            } else {
+                this.showWaitingRoom(data.room_state);
+            }
         };
 
         socket.onPlayerJoined = (data) => {
