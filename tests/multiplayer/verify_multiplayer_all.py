@@ -44,7 +44,8 @@ async def run():
             for _ in range(50):
                 room_text = await page1.inner_text('#display-room-id')
                 if 'ROOM ID: ' in room_text and '------' not in room_text:
-                    room_id = room_text.split(': ')[1].strip()
+                    # Split by space to handle the emoji 📋 in the innerText
+                    room_id = room_text.split(': ')[1].split(' ')[0].strip()
                     break
                 await asyncio.sleep(0.1)
             else:
