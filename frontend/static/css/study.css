@@ -844,6 +844,11 @@
   .action-bar .btn { justify-content: center; }
   .stats-grid { grid-template-columns: repeat(2, 1fr); }
   .question-text { font-size: 1rem; }
+  .report-stats-grid { grid-template-columns: 1fr; gap: 12px; }
+  .topic-bar-wrapper { width: 100%; max-width: none; }
+  .topic-row { flex-direction: column; align-items: flex-start; gap: 8px; }
+  .report-actions { flex-direction: column; }
+  .report-actions .btn { width: 100%; }
 }
 
 /* ---- Markdown Content Styles ---- */
