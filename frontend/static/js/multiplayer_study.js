@@ -34,7 +34,6 @@ const multiplayer_study = {
 
         const join = () => {
             const myName = sessionStorage.getItem('wg_multiplayer_name');
-            console.log('Joining room:', this.roomId, 'as', myName);
             SocketClient.joinRoom(this.roomId, myName);
         };
 
@@ -92,6 +91,8 @@ const multiplayer_study = {
         };
 
         SocketClient.onGameStarted = (data) => {
+            if (!data?.room_state?.questions) return;
+
             this.roomState = data.room_state;
             sessionStorage.setItem('wg_multiplayer_room', JSON.stringify(this.roomState));
 
@@ -100,13 +101,11 @@ const multiplayer_study = {
             Storage.setRandomizedOptions(data.room_state.randomize_options || false);
 
             // Re-init UI with new questions
-            UI.batch = this.roomState.questions.map(q => ({ ...q, _is_multiplayer: true }));
-            UI.currentIdx = 0;
+            const questions = this.roomState.questions.map(q => ({ ...q, _is_multiplayer: true }));
             this.myScore = 0;
             this.isFinished = false;
             Storage.saveIdx(0);
-            UI.renderCurrent();
-            UI.updateProgress();
+            UI.init(questions);
             this.renderSidebar();
 
             // Handle timer if any
@@ -121,13 +120,14 @@ const multiplayer_study = {
         SocketClient.connect();
 
         // Initialize UI with room questions
-        const questions = this.roomState.questions.map(q => ({ ...q, _is_multiplayer: true }));
+        const questions = (this.roomState?.questions || []).map(q => ({ ...q, _is_multiplayer: true }));
 
-        const myData = this.roomState.players[myUuid];
+        const myData = this.roomState.players ? this.roomState.players[myUuid] : null;
         if (myData) {
             this.myScore = myData.score || 0;
-            UI.currentIdx = myData.progress || 0;
             this.isFinished = myData.finished || false;
+            const savedIdx = myData.progress || 0;
+            Storage.saveIdx(savedIdx);
             // Also update storage's currentIdx so UI doesn't overwrite it on reload
             Storage.saveIdx(UI.currentIdx);
         }
@@ -136,7 +136,6 @@ const multiplayer_study = {
         const originalNextQuestion = UI.nextQuestion;
         UI.nextQuestion = () => {
             originalNextQuestion.call(UI);
-            console.log('Next question. Current index:', UI.currentIdx);
             this.emitProgress();
         };
 
@@ -162,7 +161,6 @@ const multiplayer_study = {
 
         // Custom showBatchComplete for multiplayer
         UI.showBatchComplete = () => {
-            console.log('UI.showBatchComplete triggered');
             this.emitProgress(true);
             this.isFinished = true;
 
@@ -199,10 +197,7 @@ const multiplayer_study = {
             }
         };
 
-        UI.batch = questions;
-        // UI.currentIdx is already set from myData if available
-        UI.renderCurrent();
-        UI.updateProgress();
+        UI.init(questions);
         this.renderSidebar();
 
         const batchTitle = document.getElementById('batch-title');
@@ -245,7 +240,6 @@ const multiplayer_study = {
 
         const currentProgress = finished ? total : progress;
         const score = this.myScore;
-        console.log('Emitting progress:', currentProgress, 'Score:', score, 'Finished:', finished);
         SocketClient.updateProgress(this.roomId, currentProgress, score, finished);
     },
 
@@ -380,7 +374,6 @@ const multiplayer_study = {
     },
 
     showFinalScoreboard() {
-        console.log('Showing final scoreboard');
         this.cleanup();
         const wrapper = document.getElementById('question-wrapper');
         if (!wrapper) return;

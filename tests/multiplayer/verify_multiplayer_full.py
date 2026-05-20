@@ -7,15 +7,20 @@ async def run():
 
         # Player 1 (Host)
         page1 = await browser.new_page()
+        page1.on("console", lambda msg: print(f"PAGE 1: {msg.text}"))
         await page1.goto('http://localhost:5000/multiplayer')
+        await page1.wait_for_selector('.subject-checkbox') # Wait for subjects to load
         await page1.fill('#create-name', 'Alice')
         await page1.click('.mode-card[data-mode="obj"]')
         await page1.click('button:has-text("Create Room")')
         await page1.wait_for_selector('#display-room-id')
-        room_id = (await page1.inner_text('#display-room-id')).split(': ')[1]
+        room_id_text = await page1.inner_text('#display-room-id')
+        room_id = room_id_text.replace('ROOM ID: ', '').replace('📋', '').strip()
+        print(f"Extracted Room ID: '{room_id}'")
 
         # Player 2 (Guest)
         page2 = await browser.new_page()
+        page2.on("console", lambda msg: print(f"PAGE 2: {msg.text}"))
         await page2.goto('http://localhost:5000/multiplayer')
         await page2.fill('#join-name', 'Bob')
         await page2.fill('#join-room-id', room_id)
@@ -29,6 +34,9 @@ async def run():
             page2.wait_for_url('**/multiplayer/study', timeout=15000)
         )
         print("Game started")
+
+        page1.on("console", lambda msg: print(f"PAGE 1: {msg.text}"))
+        page2.on("console", lambda msg: print(f"PAGE 2: {msg.text}"))
 
         # Finish for Alice
         for i in range(10):
