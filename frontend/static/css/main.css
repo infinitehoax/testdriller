@@ -259,6 +259,7 @@ code, pre, .mono {
   align-items: center;
   justify-content: space-between;
   gap: 16px;
+  flex-wrap: wrap;
 }
 
 .nav__logo {
@@ -407,14 +408,72 @@ code, pre, .mono {
 
 /* ---- Responsive ---- */
 @media (max-width: 640px) {
+  .nav {
+    padding: 10px 0;
+  }
+  .nav__inner {
+    justify-content: center;
+    gap: 8px;
+  }
   .nav__stats {
-    display: flex;
+    width: 100%;
+    justify-content: center;
     gap: 12px;
+    margin-top: 8px;
   }
   .nav__stats div.nav__stat {
     display: none;
   }
-  .container, .container--wide { padding: 0 16px; }
-  .card { padding: 20px; }
+  .container, .container--wide { padding: 0 12px; }
+  .card { padding: 16px; }
   .btn--lg { padding: 14px 24px; font-size: 0.95rem; }
+
+  /* Dashboard Adjustments */
+  .hero-section {
+    margin-bottom: 28px !important;
+  }
+  .hero-section h1 {
+    font-size: 2.2rem !important;
+  }
+  .hero-section p {
+    font-size: 1rem !important;
+  }
+  .how-it-works-grid {
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+    gap: 16px !important;
+  }
+  .how-it-works-grid > div {
+    text-align: center;
+  }
+  .how-it-works-grid div div:first-child {
+    font-size: 1.2rem !important;
+  }
+
+  /* Achievement Page Adjustments */
+  .achievements-header h1 {
+    font-size: 1.8rem !important;
+    word-wrap: break-word;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .achievement-card {
+    flex-direction: column !important;
+    text-align: center !important;
+    align-items: center !important;
+    padding: 24px 16px !important;
+  }
+  .achievement-card__icon {
+    width: 80px !important;
+    height: 80px !important;
+    font-size: 2.5rem !important;
+  }
+
+  /* Multiplayer Lobby Adjustments */
+  #lobby-setup {
+    grid-template-columns: 1fr !important;
+  }
+  .host-settings-grid {
+    grid-template-columns: 1fr !important;
+  }
 }

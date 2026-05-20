@@ -5,7 +5,7 @@
 <div class="container" style="padding-top: 60px; padding-bottom: 80px;">
 
   <!-- Hero -->
-  <div style="margin-bottom: 56px; max-width: 640px;">
+  <div class="hero-section" style="margin-bottom: 56px; max-width: 640px;">
     <div class="badge badge--accent" style="margin-bottom: 16px;">📚 WAEC 2026 Prep</div>
     <h1 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 12px; line-height: 1.1;">
       Stop reading.<br><span style="color: var(--accent)">Start grinding.</span>
@@ -186,7 +186,7 @@
   <!-- How it works -->
   <div style="margin-top:60px; padding-top:40px; border-top: 1px solid var(--border-subtle);">
     <h3 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:24px; font-family:var(--font-mono);">How the grinder works</h3>
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
+    <div class="how-it-works-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
       <div>
         <div style="font-size:1.5rem; margin-bottom:8px;">📦</div>
         <div style="font-weight:600; margin-bottom:4px; font-size:0.95rem;">Batched Questions</div>
@@ -621,10 +621,6 @@
     }
   });
 
-  // Active size style
-  const style = document.createElement('style');
-  style.textContent = `.active-size { background: var(--accent) !important; color: #000 !important; border-color: var(--accent) !important; }`;
-  document.head.appendChild(style);
 
   init();
 </script>

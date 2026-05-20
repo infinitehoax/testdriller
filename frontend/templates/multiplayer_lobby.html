@@ -125,7 +125,7 @@
           </div>
         </div>
 
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
+        <div class="host-settings-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
           <div class="card" id="random-questions-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="lobby.toggleSetting('randomize_questions', 'random-q-badge')" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.toggleSetting('randomize_questions', 'random-q-badge');}">
             <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
               <div>
