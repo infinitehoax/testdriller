@@ -17,3 +17,11 @@
 ## 2025-05-24 - [Manual ARIA Synchronization & Focus States]
 **Learning:** In a Vanilla JS app where UI state is toggled via CSS classes (e.g., `.selected-mode`), ARIA attributes (like `aria-checked` or `aria-pressed`) must be manually updated in the same event handlers to maintain screen reader accuracy.
 **Action:** Always pair class toggles with `.setAttribute('aria-checked', ...)` calls. For interactive `div`s, use `:focus-visible` to provide clear keyboard focus indicators without affecting mouse users.
+
+## 2025-05-24 - [Modal Backdrop Interaction]
+**Learning:** For modals implemented as full-screen fixed overlays, users intuitively expect to close the modal by clicking the backdrop. In Vanilla JS, this requires a click listener on the overlay itself that checks if the event target is the overlay and not its children.
+**Action:** Add a click listener to the modal overlay. Use `if (e.target === modalElement) closeModal();` to ensure clicks on the content card don't accidentally close the modal.
+
+## 2025-05-24 - [Form Submission Shortcuts]
+**Learning:** Power users find clicking "Submit" on repetitive forms (like theory answers) tedious. Standardizing `Ctrl + Enter` as a submission shortcut significantly improves the UX "flow".
+**Action:** Implement a global keydown listener for `(e.ctrlKey || e.metaKey) && e.key === 'Enter'`. Ensure it bypasses general "isTyping" blocks to remain active while the user is focused on the input field.
