@@ -151,7 +151,7 @@ function renderTheoryQuestion(q, idx, total) {
           </span>
         </div>
         <div class="action-bar__right">
-          <button class="btn btn--primary" id="submit-theory-btn" onclick="UI.submitTheory()">
+          <button class="btn btn--primary" id="submit-theory-btn" onclick="UI.submitTheory()" title="Submit (Ctrl + Enter)">
             ✦ Submit for Grading
           </button>
           <button class="btn btn--primary" id="next-btn" style="display:none" onclick="UI.nextQuestion()">
@@ -566,6 +566,9 @@ const UI = {
       banner.querySelector('.result-banner__sub').textContent = passed
         ? 'Great answer. This question is marked as mastered.'
         : `Below ${Math.round(APP_CONFIG.PASS_THRESHOLD * 100)}% — this question will repeat next batch.`;
+
+      // UX: Scroll to result so user sees the score immediately
+      banner.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
 
     this.checkAchievements({ isComeback: q._from_failed && passed });
@@ -1076,6 +1079,14 @@ const UI = {
     modal.classList.add('visible');
     document.body.style.overflow = 'hidden'; // Prevent scroll
 
+    // UX: Close on backdrop click
+    if (!modal._hasBackdropListener) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) this.closeExplanationModal();
+      });
+      modal._hasBackdropListener = true;
+    }
+
     // Focus the close button for accessibility
     const closeBtn = modal.querySelector('.modal__close');
     if (closeBtn) closeBtn.focus();
@@ -1105,9 +1116,20 @@ window.addEventListener('keydown', (e) => {
     return;
   }
 
-  // Prevent shortcuts if user is typing in an input or textarea
   const activeTag = document.activeElement ? document.activeElement.tagName.toLowerCase() : '';
-  if (activeTag === 'input' || activeTag === 'textarea') return;
+  const isTyping = activeTag === 'input' || activeTag === 'textarea';
+
+  // UX: Ctrl+Enter (or Cmd+Enter) to submit theory
+  if ((e.ctrlKey || e.metaKey) && e.key === 'Enter') {
+    const submitBtn = document.getElementById('submit-theory-btn');
+    if (submitBtn && submitBtn.style.display !== 'none' && !submitBtn.disabled) {
+      UI.submitTheory();
+      return;
+    }
+  }
+
+  // Prevent other shortcuts if user is typing
+  if (isTyping) return;
 
   // Next question on Enter
   if (e.key === 'Enter') {
