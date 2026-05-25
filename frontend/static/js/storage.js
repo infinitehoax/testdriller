@@ -463,16 +463,19 @@ const Storage = {
     let total = 0;
     const subjects = this.getSubjects();
     subjects.forEach(sub => {
-      if (mode === 'obj' || mode === 'both') {
-        total += this.getUnseenObj(sub).length + this.getFailedObj(sub).length;
-      }
-      if (mode === 'theory' || mode === 'both') {
-        total += this.getUnseenTheory(sub).length + this.getFailedTheory(sub).length;
+      if (mode === "review") {
+        total += this.getMasteredObj(sub).length + this.getMasteredTheory(sub).length;
+      } else {
+        if (mode === "obj" || mode === "both") {
+          total += this.getUnseenObj(sub).length + this.getFailedObj(sub).length;
+        }
+        if (mode === "theory" || mode === "both") {
+          total += this.getUnseenTheory(sub).length + this.getFailedTheory(sub).length;
+        }
       }
     });
     return total;
   },
-
   isAllDone(mode) {
     return this.getTotalRemaining(mode) === 0;
   },
