@@ -7308,5 +7308,1310 @@
         "explanation": "Produced by the pancreas, insulin lowers blood sugar levels."
       }
     ]
+  },
+  {
+    "subject": "UNIPORT English Language Post-UTME v1",
+    "obj": [
+      {
+        "id": "obj_eng_comprehension_001",
+        "topic": "Comprehension",
+        "question": "### SECTION A: COMPREHENSION \n*Read the passages carefully and answer the questions that follow.*\n\n**PASSAGE 1**\nIf present trends continue, the world would face a major crisis by the end of this century: insufficient, cheap, convenient energy. For without such energy, industrial production will fall, agricultural output will drop, transport will be restricted and standard of living in developed countries will plummet. At present, almost all our energy comes from fossil fuels. Because power demand is increasing very rapidly, fossil fuels will be exhausted within a relatively short time.\n\n**1. The expression \"standard of living in developed countries will plummet\" means:**",
+        "options": {
+          "A": "the economy of rich nations will stagnate",
+          "B": "economic life will improve in rich nations",
+          "C": "purchasing power will decline sharply in rich nations",
+          "D": "people in developed nations will experience boom"
+        },
+        "correct_option": "C",
+        "explanation": "To \"plummet\" means to fall or drop very sharply."
+      },
+      {
+        "id": "obj_eng_comprehension_002",
+        "topic": "Comprehension",
+        "question": "### SECTION A: COMPREHENSION \n*Read the passages carefully and answer the questions that follow.*\n\n**PASSAGE 1**\nIf present trends continue, the world would face a major crisis by the end of this century: insufficient, cheap, convenient energy. For without such energy, industrial production will fall, agricultural output will drop, transport will be restricted and standard of living in developed countries will plummet. At present, almost all our energy comes from fossil fuels. Because power demand is increasing very rapidly, fossil fuels will be exhausted within a relatively short time.\n\n**2. The writer warns that the world could:**",
+        "options": {
+          "A": "lose all its oil reserves in a matter of years",
+          "B": "face energy crisis soon if production is not stepped up",
+          "C": "experience scarcity and low energy price soon",
+          "D": "face low energy supply and poor agricultural output"
+        },
+        "correct_option": "D",
+        "explanation": "The passage directly states that without energy, \"agricultural output will drop.\""
+      },
+      {
+        "id": "obj_eng_comprehension_003",
+        "topic": "Comprehension",
+        "question": "### SECTION A: COMPREHENSION \n*Read the passages carefully and answer the questions that follow.*\n\n**PASSAGE 1**\nIf present trends continue, the world would face a major crisis by the end of this century: insufficient, cheap, convenient energy. For without such energy, industrial production will fall, agricultural output will drop, transport will be restricted and standard of living in developed countries will plummet. At present, almost all our energy comes from fossil fuels. Because power demand is increasing very rapidly, fossil fuels will be exhausted within a relatively short time.\n\n**3. \"Fossil fuels\" as used in the passage include:**",
+        "options": {
+          "A": "wood, kerosene and natural gas",
+          "B": "oil, coal and natural gas",
+          "C": "limited, butane and charcoal",
+          "D": "wood, coal and oil"
+        },
+        "correct_option": "B",
+        "explanation": "Fossil fuels universally refer to oil, coal, and natural gas."
+      },
+      {
+        "id": "obj_eng_comprehension_004",
+        "topic": "Comprehension",
+        "question": "### SECTION A: COMPREHENSION \n*Read the passages carefully and answer the questions that follow.*\n\n**PASSAGE 1**\nIf present trends continue, the world would face a major crisis by the end of this century: insufficient, cheap, convenient energy. For without such energy, industrial production will fall, agricultural output will drop, transport will be restricted and standard of living in developed countries will plummet. At present, almost all our energy comes from fossil fuels. Because power demand is increasing very rapidly, fossil fuels will be exhausted within a relatively short time.\n\n**4. From the writer's description of the world energy situation, we may conclude that:**",
+        "options": {
+          "A": "developing nations will soon experience poverty",
+          "B": "demand for recoverable fuel will plummet",
+          "C": "consumption has not affected production",
+          "D": "industrial production will plummet"
+        },
+        "correct_option": "D",
+        "explanation": "The passage states that without this energy, \"industrial production will fall (plummet).\""
+      },
+      {
+        "id": "obj_eng_comprehension_005",
+        "topic": "Comprehension",
+        "question": "### SECTION A: COMPREHENSION \n*Read the passages carefully and answer the questions that follow.*\n\n**PASSAGE 2**\nWives maximize their singleness and do not fret over whom they would be found by. They trust God always and strive to please him. Wives cherish their period of preparation and are not in a hurry to jump out of their preparatory period for any man because they would only become incomplete. A woman may prefer you if your parents were dead, but a wife is groomed to handle the complicated patterns of relating with her in-laws. Marriage is about wives, not women.\n\n**5. From the passage, when does a man find a good thing and obtain favour from the Lord?**",
+        "options": {
+          "A": "When he finds a girl",
+          "B": "When he loves his mother",
+          "C": "When he loves a woman",
+          "D": "When he finds a wife"
+        },
+        "correct_option": "D",
+        "explanation": "The passage explicitly differentiates between finding a mere \"woman\" and finding a prepared \"wife\"."
+      },
+      {
+        "id": "obj_eng_comprehension_006",
+        "topic": "Comprehension",
+        "question": "### SECTION A: COMPREHENSION \n*Read the passages carefully and answer the questions that follow.*\n\n**PASSAGE 2**\nWives maximize their singleness and do not fret over whom they would be found by. They trust God always and strive to please him. Wives cherish their period of preparation and are not in a hurry to jump out of their preparatory period for any man because they would only become incomplete. A woman may prefer you if your parents were dead, but a wife is groomed to handle the complicated patterns of relating with her in-laws. Marriage is about wives, not women.\n\n**6. The passage suggests that the difference between a woman and a wife is:**",
+        "options": {
+          "A": "a wife is older",
+          "B": "a wife is prepared and groomed",
+          "C": "a woman is always wicked",
+          "D": "a wife hates in-laws"
+        },
+        "correct_option": "B",
+        "explanation": "The text highlights that a wife cherishes her \"period of preparation\" and is \"groomed.\""
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_007",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**7. His ANTIPATHY to religious ideas makes him unpopular.**",
+        "options": {
+          "A": "Remedy",
+          "B": "Consciousness",
+          "C": "Hostility",
+          "D": "Perceptiveness"
+        },
+        "correct_option": "C",
+        "explanation": "Antipathy means a deep-seated feeling of dislike or hostility."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_008",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**8. The tax rebate was a CONCESSION given to the civil servants.**",
+        "options": {
+          "A": "An incentive",
+          "B": "An allowance",
+          "C": "Work",
+          "D": "Intelligence"
+        },
+        "correct_option": "B",
+        "explanation": "In UNIPORT's marking scheme, a concession here means a given allowance or compromise."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_009",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**9. The rest of the boys admire Olu’s VERVE.**",
+        "options": {
+          "A": "Energy",
+          "B": "Handsomeness",
+          "C": "Work",
+          "D": "Intelligence"
+        },
+        "correct_option": "A",
+        "explanation": "Verve means vigor, spirit, or enthusiasm/energy."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_010",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**10. Our school prefect is too OFFICIOUS and we all hate him.**",
+        "options": {
+          "A": "Efficient",
+          "B": "Efficacious",
+          "C": "Overzealous",
+          "D": "Active"
+        },
+        "correct_option": "C",
+        "explanation": "Officious means being annoyingly bossy or overzealous about minor rules."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_011",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**11. My nephew came in STEALTHILY through the back gate.**",
+        "options": {
+          "A": "Briskly",
+          "B": "Boldly",
+          "C": "Wearily",
+          "D": "Quietly"
+        },
+        "correct_option": "D",
+        "explanation": "Stealthily means acting in a secret, sneaky, and quiet manner."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_012",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**12. Tade has an AQUILINE nose.**",
+        "options": {
+          "A": "Large and curved",
+          "B": "Wide and straight",
+          "C": "Big and pointed",
+          "D": "Small and attracted"
+        },
+        "correct_option": "A",
+        "explanation": "Aquiline means hooked or curved like an eagle's beak."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_013",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**13. It is claimed that there is an EXTINCT volcano near Jos.**",
+        "options": {
+          "A": "Extinguished",
+          "B": "Inactive",
+          "C": "Dead",
+          "D": "Disused"
+        },
+        "correct_option": "C",
+        "explanation": "An extinct volcano is scientifically classified as \"dead\" (it will never erupt again)."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_014",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**14. Bola has a SONOROUS voice.**",
+        "options": {
+          "A": "High pitched",
+          "B": "Beautiful",
+          "C": "Strong",
+          "D": "Throaty"
+        },
+        "correct_option": "B",
+        "explanation": "UNIPORT TRAP! While sonorous means deep/full, in this specific UNIPORT past question, the acceptable synonym used is \"beautiful\"."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_015",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**15. Some workers went on RAMPAGE at the trade fair.**",
+        "options": {
+          "A": "Turned violent",
+          "B": "Robbed",
+          "C": "Were angry",
+          "D": "Demonstrated"
+        },
+        "correct_option": "A",
+        "explanation": "To go on a rampage means to rush around in a violent, destructive frenzy."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_016",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**16. He is well known for his INORDINATE ambition.**",
+        "options": {
+          "A": "Excessive",
+          "B": "Passionate",
+          "C": "Moderate",
+          "D": "Sound"
+        },
+        "correct_option": "A",
+        "explanation": "Inordinate means unusually or disproportionately large; excessive."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_017",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**17. Agbenu was ECSTATIC about her result.**",
+        "options": {
+          "A": "Dispassionate",
+          "B": "Sad",
+          "C": "Pessimistic",
+          "D": "Overjoyed"
+        },
+        "correct_option": "D",
+        "explanation": "Ecstatic means feeling overwhelming happiness."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_018",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**18. Toyin is married to an IMPATIENT, self-centered man.**",
+        "options": {
+          "A": "Fretful",
+          "B": "Tolerant",
+          "C": "Edgy",
+          "D": "Tolerable"
+        },
+        "correct_option": "A",
+        "explanation": "Fretful means feeling distress, irritation, or restlessness (impatient)."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_019",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**19. The case was thrown out because the court lacked JURISDICTION.**",
+        "options": {
+          "A": "Jurors",
+          "B": "Authority",
+          "C": "Prosecutors",
+          "D": "Appellate powers"
+        },
+        "correct_option": "B",
+        "explanation": "Jurisdiction is the official power or authority to make legal decisions."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_020",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**20. The chief will LAUNCH the fund-raising appeal.**",
+        "options": {
+          "A": "Make a speech at",
+          "B": "Eat a meal during",
+          "C": "Travel to",
+          "D": "Start off"
+        },
+        "correct_option": "D",
+        "explanation": "To launch means to begin or start off an enterprise."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_021",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**21. The discussion became ANIMATED.**",
+        "options": {
+          "A": "Specialized",
+          "B": "Lively",
+          "C": "Intellectual",
+          "D": "Unruly"
+        },
+        "correct_option": "B",
+        "explanation": "Animated means full of life, action, or spirit."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_022",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**22. We have to identify the PROTAGONISTS of the new movement.**",
+        "options": {
+          "A": "Enemies",
+          "B": "Leading figures",
+          "C": "Opponents",
+          "D": "Believers"
+        },
+        "correct_option": "B",
+        "explanation": "Protagonists are the principal champions or leading figures of a cause."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_023",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**23. I cannot understand how he suddenly became AUDACIOUS.**",
+        "options": {
+          "A": "Proud",
+          "B": "Bold",
+          "C": "Rude",
+          "D": "Hostile"
+        },
+        "correct_option": "B",
+        "explanation": "Audacious means showing a willingness to take surprisingly bold risks."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_024",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**24. His has been a life of MAKE-BELIEF.**",
+        "options": {
+          "A": "Faith",
+          "B": "Fantasy",
+          "C": "Grandeur",
+          "D": "Religion"
+        },
+        "correct_option": "B",
+        "explanation": "Make-belief means imaginary or fantasy."
+      },
+      {
+        "id": "obj_eng_lexis_synonyms_025",
+        "topic": "Lexis - Synonyms",
+        "question": "### SECTION B: LEXIS (NEAREST IN MEANING / SYNONYMS)\n*Choose the option nearest in meaning to the italicized/capitalized word.*\n\n**25. Everyone was talking about the CAMARADERIE in the club.**",
+        "options": {
+          "A": "Companionship",
+          "B": "Quarrelsomeness",
+          "C": "Commissioning",
+          "D": "Gentle"
+        },
+        "correct_option": "A",
+        "explanation": "Camaraderie means mutual trust and friendship (companionship)."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_026",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**26. Mr. Jack was most FLEXIBLE in his instructions.**",
+        "options": {
+          "A": "Rigid",
+          "B": "Correct",
+          "C": "Stiff",
+          "D": "Upright"
+        },
+        "correct_option": "A",
+        "explanation": "Flexible means adaptable. The direct opposite is rigid (unbending)."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_027",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**27. Mary complained that she slept on the COARSE floor.**",
+        "options": {
+          "A": "Smooth",
+          "B": "Rough",
+          "C": "Bad",
+          "D": "Harsh"
+        },
+        "correct_option": "A",
+        "explanation": "Coarse means rough. The opposite is smooth."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_028",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**28. Jim was one of the SPECTATORS at the concert.**",
+        "options": {
+          "A": "Ushers",
+          "B": "Judges",
+          "C": "Guests",
+          "D": "Performers"
+        },
+        "correct_option": "D",
+        "explanation": "Spectators watch the event. Performers do the event."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_029",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**29. The debtor's husband is LIABLE for his wife's debts.**",
+        "options": {
+          "A": "Unanswerable",
+          "B": "Responsible",
+          "C": "Unquestionable",
+          "D": "Accountable"
+        },
+        "correct_option": "A",
+        "explanation": "Liable means legally responsible. The opposite is unanswerable/unaccountable."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_030",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**30. The lotion recommended by the doctor SOOTHED Okon's aching tooth.**",
+        "options": {
+          "A": "Calmed",
+          "B": "Extracted",
+          "C": "Excited",
+          "D": "Worsened"
+        },
+        "correct_option": "D",
+        "explanation": "Soothed means made better or relieved. The opposite is worsened."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_031",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**31. The lady acted COURAGEOUSLY when thieves attacked her.**",
+        "options": {
+          "A": "Shyly",
+          "B": "Fearlessly",
+          "C": "Indiscreetly",
+          "D": "Timidly"
+        },
+        "correct_option": "D",
+        "explanation": "Courageously means bravely. Timidly means showing fear or lack of courage."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_032",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**32. \"A novel is an EMBELLISHED falsehood\", said the teacher.**",
+        "options": {
+          "A": "Enriched",
+          "B": "Exaggerated",
+          "C": "Adorned",
+          "D": "Obliterated"
+        },
+        "correct_option": "D",
+        "explanation": "UNIPORT TRAP! Embellished means decorated/added to. Obliterated means destroyed or wiped bare."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_033",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**33. CURIOUSLY, he escaped unhurt.**",
+        "options": {
+          "A": "Interestingly",
+          "B": "Unsurprisingly",
+          "C": "Annoyingly",
+          "D": "Unusually"
+        },
+        "correct_option": "B",
+        "explanation": "Curiously here means surprisingly. The opposite is unsurprisingly."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_034",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**34. His comment was so PRINTABLE.**",
+        "options": {
+          "A": "Punishable",
+          "B": "Suitable",
+          "C": "Offensive",
+          "D": "Unfair"
+        },
+        "correct_option": "C",
+        "explanation": "Printable means acceptable for publication. Offensive means inappropriate or vulgar."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_035",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**35. I have had enough of your IMPUDENCE.**",
+        "options": {
+          "A": "Politeness",
+          "B": "Incivility",
+          "C": "Arrogance",
+          "D": "Boldness"
+        },
+        "correct_option": "A",
+        "explanation": "Impudence means disrespect. The opposite is politeness."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_036",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**36. Sola was APATHETIC about his work.**",
+        "options": {
+          "A": "Indifferent",
+          "B": "Enthusiastic",
+          "C": "Halfhearted",
+          "D": "Bored"
+        },
+        "correct_option": "B",
+        "explanation": "Apathetic means showing no interest. Enthusiastic means showing eager interest."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_037",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**37. The compulsory leave made her feel LISTLESS.**",
+        "options": {
+          "A": "Restful",
+          "B": "Great",
+          "C": "Fat",
+          "D": "Energetic"
+        },
+        "correct_option": "D",
+        "explanation": "Listless means lacking energy. The opposite is energetic."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_038",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**38. We were COLLECTIVELY responsible for keeping the machine in good shape.**",
+        "options": {
+          "A": "Jointly",
+          "B": "Severally",
+          "C": "Dutifully",
+          "D": "Socially"
+        },
+        "correct_option": "B",
+        "explanation": "Collectively means together. Severally (in standard/legal English) means individually or separately."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_039",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**39. The HANDSOME profit from her fish business made Mrs. Uba stop complaining.**",
+        "options": {
+          "A": "Ugly",
+          "B": "Meager",
+          "C": "Modest",
+          "D": "Lowly"
+        },
+        "correct_option": "B",
+        "explanation": "Handsome here means large/abundant. The opposite is meager (very small)."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_040",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**40. It pays to be FIRM rather than _______ in a case like this.**",
+        "options": {
+          "A": "Flexible",
+          "B": "Frank",
+          "C": "Irresponsible",
+          "D": "Careless"
+        },
+        "correct_option": "A",
+        "explanation": "Firm means unyielding. The opposite is flexible."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_041",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**41. Usually Joseph is ARTICULATE in his speech but today he sounds _______**",
+        "options": {
+          "A": "Clear",
+          "B": "Turgid",
+          "C": "Timid",
+          "D": "Incoherent"
+        },
+        "correct_option": "D",
+        "explanation": "Articulate means expressing ideas clearly. Incoherent means unclear and confusing."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_042",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**42. The man's first wife is LOYAL, while the second is _______**",
+        "options": {
+          "A": "Unfaithful",
+          "B": "Unkind",
+          "C": "Selfish",
+          "D": "Hostile"
+        },
+        "correct_option": "C",
+        "explanation": "UNIPORT TRAP! In the 2018 past questions, UNIPORT's accepted antonym for loyal in this marital context was \"Selfish\" (lacking self-sacrifice)."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_043",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**43. We thought Uncle Sam's health had IMPROVED but it rather _______**",
+        "options": {
+          "A": "Persisted",
+          "B": "Deteriorated",
+          "C": "Deepened",
+          "D": "Decreased"
+        },
+        "correct_option": "B",
+        "explanation": "The opposite of improved (got better) is deteriorated (got worse)."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_044",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**44. Disgruntled people are INDIFFERENT to any plans to rid the society of evil.**",
+        "options": {
+          "A": "Different from",
+          "B": "Different about",
+          "C": "In agreement with",
+          "D": "Interested in"
+        },
+        "correct_option": "D",
+        "explanation": "Indifferent means uncaring. The opposite is being interested in."
+      },
+      {
+        "id": "obj_eng_lexis_antonyms_045",
+        "topic": "Lexis - Antonyms",
+        "question": "### SECTION C: LEXIS (OPPOSITE IN MEANING / ANTONYMS)\n*Choose the option exactly opposite in meaning to the italicized/capitalized word.*\n\n**45. This card ENTITLES you to attend the film show.**",
+        "options": {
+          "A": "Disqualifies",
+          "B": "Discourages",
+          "C": "Disenchants",
+          "D": "Proclaims"
+        },
+        "correct_option": "A",
+        "explanation": "Entitles means gives you the right. Disqualifies takes that right away."
+      },
+      {
+        "id": "obj_eng_idioms_046",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**46. Our teacher was not speaking literally when he said that the lawyer was UNDER A CLOUD.**",
+        "options": {
+          "A": "Under a real cloud",
+          "B": "Very happy",
+          "C": "Under suspicion",
+          "D": "Dead"
+        },
+        "correct_option": "C",
+        "explanation": "To be under a cloud means to be suspected of doing something wrong."
+      },
+      {
+        "id": "obj_eng_idioms_047",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**47. James and Henry were AT DAGGERS DRAWN when I knew them.**",
+        "options": {
+          "A": "Always angry with each other",
+          "B": "Always wore daggers",
+          "C": "Good at drawing",
+          "D": "Fighting physically"
+        },
+        "correct_option": "A",
+        "explanation": "At daggers drawn means to be bitterly hostile towards each other."
+      },
+      {
+        "id": "obj_eng_idioms_048",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**48. My book has become DOG-EARED through use.**",
+        "options": {
+          "A": "Designed like dog's ears",
+          "B": "The corners of the pages are crumbled",
+          "C": "Torn",
+          "D": "Indispensable"
+        },
+        "correct_option": "B",
+        "explanation": "A dog-eared book has pages folded down at the corners."
+      },
+      {
+        "id": "obj_eng_idioms_049",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**49. Musa is a DYED-IN-THE-WOOL capitalist.**",
+        "options": {
+          "A": "A kind capitalist",
+          "B": "A thoughtful capitalist",
+          "C": "An old capitalist",
+          "D": "An unbending capitalist"
+        },
+        "correct_option": "D",
+        "explanation": "Dyed-in-the-wool means having strong, unchangeable beliefs."
+      },
+      {
+        "id": "obj_eng_idioms_050",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**50. Whenever my cousin comes to realize that I am telling the truth, she will EAT HUMBLE PIE.**",
+        "options": {
+          "A": "Respect me",
+          "B": "Hate herself",
+          "C": "Apologize",
+          "D": "Be ashamed"
+        },
+        "correct_option": "C",
+        "explanation": "To eat humble pie means to admit you are wrong and apologize."
+      },
+      {
+        "id": "obj_eng_idioms_051",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**51. The senior prefect had to CARRY THE CAN because he refused to identify the culprit.**",
+        "options": {
+          "A": "Dispose the can of refuse",
+          "B": "Accept responsibility",
+          "C": "Be a scapegoat",
+          "D": "Bear the brunt"
+        },
+        "correct_option": "B",
+        "explanation": "To carry the can means to take the blame or responsibility."
+      },
+      {
+        "id": "obj_eng_idioms_052",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**52. It is usually hard to change the course of action when one CROSSES THE RUBICON.**",
+        "options": {
+          "A": "Pass a place called Rubicon",
+          "B": "Cross a river",
+          "C": "Cross a bridge",
+          "D": "Be irrevocably committed"
+        },
+        "correct_option": "D",
+        "explanation": "Crossing the Rubicon means passing the point of no return."
+      },
+      {
+        "id": "obj_eng_idioms_053",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**53. His plans are still quite IN THE AIR.**",
+        "options": {
+          "A": "Airmailed",
+          "B": "Air light",
+          "C": "Uncertain",
+          "D": "Airborne"
+        },
+        "correct_option": "C",
+        "explanation": "If plans are in the air, they are not yet decided or finalized."
+      },
+      {
+        "id": "obj_eng_idioms_054",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**54. OLD CUSTOMS DIE HARD.**",
+        "options": {
+          "A": "Cause hardship",
+          "B": "Must be stopped",
+          "C": "Never die out",
+          "D": "Tend to last for a long time"
+        },
+        "correct_option": "D",
+        "explanation": "Habits or customs that \"die hard\" are very difficult to change or stop."
+      },
+      {
+        "id": "obj_eng_idioms_055",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**55. As the wedding day approached, the bride began to develop COLD FEET.**",
+        "options": {
+          "A": "Fall sick",
+          "B": "Feel cold",
+          "C": "Be reluctant",
+          "D": "Become aggressive"
+        },
+        "correct_option": "C",
+        "explanation": "Cold feet means a sudden loss of courage or reluctance to do something."
+      },
+      {
+        "id": "obj_eng_idioms_056",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**56. The clerk refused to ANSWER FOR the mistakes made by the manager.**",
+        "options": {
+          "A": "Reply",
+          "B": "Give an answer",
+          "C": "Accept responsibly",
+          "D": "Account for"
+        },
+        "correct_option": "D",
+        "explanation": "To answer for something means to be held responsible or account for it."
+      },
+      {
+        "id": "obj_eng_idioms_057",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**57. The sudden death of the king PUT PAID TO the ambition of the minister.**",
+        "options": {
+          "A": "Contributed",
+          "B": "Rewarded",
+          "C": "Benefited",
+          "D": "Terminated"
+        },
+        "correct_option": "D",
+        "explanation": "To put paid to something means to stop it abruptly or terminate it."
+      },
+      {
+        "id": "obj_eng_idioms_058",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**58. At the age of 80, Muse wished he could PUT THE CLOCK BACK.**",
+        "options": {
+          "A": "Stop the clock",
+          "B": "Put down the clock",
+          "C": "Go back in time",
+          "D": "Have more time"
+        },
+        "correct_option": "C",
+        "explanation": "Putting the clock back is a figurative expression for returning to the past."
+      },
+      {
+        "id": "obj_eng_idioms_059",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**59. The Director left his secret file to the Secretary IN GOOD FAITH.**",
+        "options": {
+          "A": "With proof",
+          "B": "In anxiety",
+          "C": "In anticipation",
+          "D": "In trust"
+        },
+        "correct_option": "D",
+        "explanation": "To do something in good faith means to do it with honest intentions and trust."
+      },
+      {
+        "id": "obj_eng_idioms_060",
+        "topic": "Idioms & Figurative Expressions",
+        "question": "### SECTION D: IDIOMS & FIGURATIVE EXPRESSIONS\n*Choose the option that best interprets the idiom in italics/capitals.*\n\n**60. The man insisted on having NO STRINGS ATTACHED to the agreement.**",
+        "options": {
+          "A": "Financial obligations",
+          "B": "Documents",
+          "C": "Conditions",
+          "D": "More obligations"
+        },
+        "correct_option": "C",
+        "explanation": "\"No strings attached\" means no special conditions or hidden clauses."
+      },
+      {
+        "id": "obj_eng_grammar_061",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**61. The chairman, no less than the members _______ to blame.**",
+        "options": {
+          "A": "is",
+          "B": "are",
+          "C": "were",
+          "D": "ought to"
+        },
+        "correct_option": "A",
+        "explanation": "Ignore the phrase between the commas (\"no less than the members\"). The verb agrees with the singular \"chairman\"."
+      },
+      {
+        "id": "obj_eng_grammar_062",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**62. Every programming language and software package _______ limitations.**",
+        "options": {
+          "A": "have its",
+          "B": "have their",
+          "C": "has its",
+          "D": "has their"
+        },
+        "correct_option": "C",
+        "explanation": "\"Every\" always takes a singular verb (has) and singular pronoun (its)."
+      },
+      {
+        "id": "obj_eng_grammar_063",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**63. A number of students _______ missed the opportunity to reregister.**",
+        "options": {
+          "A": "is",
+          "B": "have",
+          "C": "has",
+          "D": "do"
+        },
+        "correct_option": "B",
+        "explanation": "The phrase \"A number of\" always takes a plural verb (have)."
+      },
+      {
+        "id": "obj_eng_grammar_064",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**64. The Secretary-General was shocked at the number of _______**",
+        "options": {
+          "A": "child's soldiers",
+          "B": "childish soldiers",
+          "C": "children soldiers",
+          "D": "child soldiers"
+        },
+        "correct_option": "D",
+        "explanation": "The correct compound noun is \"child soldiers\", just like \"boy scouts\"."
+      },
+      {
+        "id": "obj_eng_grammar_065",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**65. Did the ladies enjoy _______?**",
+        "options": {
+          "A": "each other",
+          "B": "one another",
+          "C": "themselves",
+          "D": "theirselves"
+        },
+        "correct_option": "C",
+        "explanation": "Plural reflexive pronoun is \"themselves\". \"Theirselves\" is not a word."
+      },
+      {
+        "id": "obj_eng_grammar_066",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**66. We will have to set up a _______ panel to investigate this matter.**",
+        "options": {
+          "A": "seven men",
+          "B": "seven-men",
+          "C": "seven men",
+          "D": "seven-man"
+        },
+        "correct_option": "D",
+        "explanation": "Hyphenated compound adjectives must remain singular (seven-man)."
+      },
+      {
+        "id": "obj_eng_grammar_067",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**67. Cook had _______ oil and so could not prepare the soup.**",
+        "options": {
+          "A": "little",
+          "B": "small",
+          "C": "some",
+          "D": "a little"
+        },
+        "correct_option": "A",
+        "explanation": "Because she \"could not\" prepare it, the amount is virtually zero. \"Little\" carries this negative meaning, whereas \"a little\" is positive."
+      },
+      {
+        "id": "obj_eng_grammar_068",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**68. Our teacher is _______ to make a mistake.**",
+        "options": {
+          "A": "too much intelligent",
+          "B": "intelligent to much",
+          "C": "much too intelligent",
+          "D": "to intelligent much"
+        },
+        "correct_option": "C",
+        "explanation": "Use \"much too\" before an adjective (intelligent)."
+      },
+      {
+        "id": "obj_eng_grammar_069",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**69. The statement, \"My father gave me this watch\", re-written in the passive form becomes: I _______ this watch by my father.**",
+        "options": {
+          "A": "had been given",
+          "B": "am given",
+          "C": "were given",
+          "D": "was given"
+        },
+        "correct_option": "D",
+        "explanation": "The original sentence is in the simple past tense (\"gave\"). The passive must also be simple past (\"was given\")."
+      },
+      {
+        "id": "obj_eng_grammar_070",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**70. He has stopped drinking, _______?**",
+        "options": {
+          "A": "does he?",
+          "B": "has he?",
+          "C": "hadn't he?",
+          "D": "hasn't he?"
+        },
+        "correct_option": "D",
+        "explanation": "Positive statement (\"has\") takes a negative tag with the same auxiliary (\"hasn't\")."
+      },
+      {
+        "id": "obj_eng_grammar_071",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**71. Lima doesn't like working in the dark, _______?**",
+        "options": {
+          "A": "did she",
+          "B": "has she",
+          "C": "will she",
+          "D": "does she"
+        },
+        "correct_option": "D",
+        "explanation": "Negative statement (\"doesn't\") takes a positive tag (\"does\")."
+      },
+      {
+        "id": "obj_eng_grammar_072",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**72. You can't travel on your own, _______?**",
+        "options": {
+          "A": "isn't it",
+          "B": "can you",
+          "C": "won't you",
+          "D": "shan't you"
+        },
+        "correct_option": "B",
+        "explanation": "Negative statement (\"can't\") takes a positive tag (\"can you\")."
+      },
+      {
+        "id": "obj_eng_grammar_073",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**73. Several _______ were passed at the meeting.**",
+        "options": {
+          "A": "memorandum",
+          "B": "memorandums",
+          "C": "memoranda",
+          "D": "memorandas"
+        },
+        "correct_option": "C",
+        "explanation": "The plural of memorandum is memoranda."
+      },
+      {
+        "id": "obj_eng_grammar_074",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**74. The man is refurbishing the flat with a view to _______ it.**",
+        "options": {
+          "A": "sell",
+          "B": "selling",
+          "C": "have sold",
+          "D": "be selling"
+        },
+        "correct_option": "B",
+        "explanation": "The phrase \"with a view to\" must be followed by a gerund (verb + ing)."
+      },
+      {
+        "id": "obj_eng_grammar_075",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**75. Some motor bikes shuttle _______ Aroma and Unizik.**",
+        "options": {
+          "A": "along",
+          "B": "to",
+          "C": "between",
+          "D": "from"
+        },
+        "correct_option": "C",
+        "explanation": "You shuttle \"between\" two locations."
+      },
+      {
+        "id": "obj_eng_grammar_076",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**76. I advise you to refuse the _______**",
+        "options": {
+          "A": "advice",
+          "B": "advise",
+          "C": "advices",
+          "D": "advicing"
+        },
+        "correct_option": "A",
+        "explanation": "\"Advise\" is the verb. \"Advice\" is the noun."
+      },
+      {
+        "id": "obj_eng_grammar_077",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**77. The train _______ before I arrived.**",
+        "options": {
+          "A": "was leaving",
+          "B": "has left",
+          "C": "had left",
+          "D": "would leave"
+        },
+        "correct_option": "C",
+        "explanation": "Past perfect tense. The train leaving happened *before* another past action (arrived)."
+      },
+      {
+        "id": "obj_eng_grammar_078",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**78. I am writing to you for _______ reasons.**",
+        "options": {
+          "A": "concerned",
+          "B": "several",
+          "C": "plenty",
+          "D": "a myriad of"
+        },
+        "correct_option": "D",
+        "explanation": "Standard English collocation is \"a myriad of\" or just \"myriad\"."
+      },
+      {
+        "id": "obj_eng_grammar_079",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**79. As we sat _______ the silence, my eyes _______ the room.**",
+        "options": {
+          "A": "under / looked",
+          "B": "over / surrounded",
+          "C": "in / roamed",
+          "D": "along / observed"
+        },
+        "correct_option": "C",
+        "explanation": "You sit \"in\" silence, and eyes \"roam\" a room."
+      },
+      {
+        "id": "obj_eng_grammar_080",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**80. Oduma had _______ enough money to pay the fines so he went to jail for distributing libelous _______**",
+        "options": {
+          "A": "no / brochures",
+          "B": "not / circulars",
+          "C": "no / publications",
+          "D": "not / pamphlets"
+        },
+        "correct_option": "D",
+        "explanation": "Grammatically, you have \"not enough\" money. Libelous materials are commonly called \"pamphlets\"."
+      },
+      {
+        "id": "obj_eng_grammar_081",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**81. The litigants finally opted _______ an out of court settlement.**",
+        "options": {
+          "A": "by",
+          "B": "in",
+          "C": "to",
+          "D": "for"
+        },
+        "correct_option": "D",
+        "explanation": "You opt \"for\" something."
+      },
+      {
+        "id": "obj_eng_grammar_082",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**82. When two or more independent clauses are joined together by a coordinating conjunction, the sentence is a:**",
+        "options": {
+          "A": "Simple sentence",
+          "B": "Compound sentence",
+          "C": "Complex sentence",
+          "D": "Compound-complex"
+        },
+        "correct_option": "B",
+        "explanation": "Definition of a compound sentence."
+      },
+      {
+        "id": "obj_eng_grammar_083",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**83. He listed HIMSELF in the directory. The capitalized word is a:**",
+        "options": {
+          "A": "Relative pronoun",
+          "B": "Personal pronoun",
+          "C": "Reciprocal pronoun",
+          "D": "Reflexive pronoun"
+        },
+        "correct_option": "D",
+        "explanation": "Pronouns ending in -self or -selves are reflexive."
+      },
+      {
+        "id": "obj_eng_grammar_084",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**84. My father, who is standing by the wall, is a VERY good dancer. The capitalized word is an:**",
+        "options": {
+          "A": "Adverb",
+          "B": "Conjunction",
+          "C": "Adjective",
+          "D": "Pronoun"
+        },
+        "correct_option": "A",
+        "explanation": "\"Very\" modifies the adjective \"good\", making it an adverb."
+      },
+      {
+        "id": "obj_eng_grammar_085",
+        "topic": "Grammar, Concord & Prepositions",
+        "question": "### SECTION E: GRAMMAR, CONCORD & PREPOSITIONS\n*Choose the word or phrase that best completes the sentence.*\n\n**85. \"The girl AT THE GATE saw me\". The capitalized phrase is an:**",
+        "options": {
+          "A": "Adverbial phrase",
+          "B": "Adjectival phrase",
+          "C": "Verbial phrase",
+          "D": "Noun phrase"
+        },
+        "correct_option": "B",
+        "explanation": "It describes the noun \"girl\", so it functions as an adjective."
+      },
+      {
+        "id": "obj_eng_oral_vowels_086",
+        "topic": "Oral English - Vowels & Consonants",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the option that has a DIFFERENT vowel or consonant sound.*\n\n**86. Identify the word with a different vowel sound:**",
+        "options": {
+          "A": "Key",
+          "B": "Win",
+          "C": "Even",
+          "D": "People"
+        },
+        "correct_option": "B",
+        "explanation": "Key, Even, and People have the long /i:/ sound. Win has the short /ɪ/ sound."
+      },
+      {
+        "id": "obj_eng_oral_vowels_087",
+        "topic": "Oral English - Vowels & Consonants",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the option that has a DIFFERENT vowel or consonant sound.*\n\n**87. Identify the word with a different vowel sound:**",
+        "options": {
+          "A": "Cost",
+          "B": "Won't",
+          "C": "Hope",
+          "D": "Coast"
+        },
+        "correct_option": "A",
+        "explanation": "Won't, Hope, and Coast have the long /əʊ/ sound (oh). Cost has the short /ɒ/ sound (aw)."
+      },
+      {
+        "id": "obj_eng_oral_consonants_088",
+        "topic": "Oral English - Vowels & Consonants",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the option that has a DIFFERENT vowel or consonant sound.*\n\n**88. Identify the word with a different consonant sound:**",
+        "options": {
+          "A": "Wife",
+          "B": "Of",
+          "C": "Off",
+          "D": "Laugh"
+        },
+        "correct_option": "B",
+        "explanation": "Wife, Off, and Laugh are pronounced with the /f/ sound. \"Of\" is pronounced with the /v/ sound."
+      },
+      {
+        "id": "obj_eng_oral_consonants_089",
+        "topic": "Oral English - Vowels & Consonants",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the option that has a DIFFERENT vowel or consonant sound.*\n\n**89. Identify the word with a different consonant sound:**",
+        "options": {
+          "A": "Chemistry",
+          "B": "Chorus",
+          "C": "Machine",
+          "D": "Character"
+        },
+        "correct_option": "C",
+        "explanation": "Chemistry, Chorus, and Character have the /k/ sound. Machine has the /ʃ/ (sh) sound."
+      },
+      {
+        "id": "obj_eng_oral_consonants_090",
+        "topic": "Oral English - Vowels & Consonants",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the option that has a DIFFERENT vowel or consonant sound.*\n\n**90. Identify the word containing a silent letter:**",
+        "options": {
+          "A": "Plumber",
+          "B": "Number",
+          "C": "Timber",
+          "D": "Chamber"
+        },
+        "correct_option": "A",
+        "explanation": "The 'b' in plumber is silent (pronounced plum-er). It is pronounced in the others."
+      },
+      {
+        "id": "obj_eng_oral_rhymes_091",
+        "topic": "Oral English - Rhymes",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the word that rhymes with the given word.*\n\n**91. Tough**",
+        "options": {
+          "A": "Bough",
+          "B": "Dough",
+          "C": "Through",
+          "D": "Cough"
+        },
+        "correct_option": "A",
+        "explanation": "Tough (tuff) rhymes with Bough (buff)."
+      },
+      {
+        "id": "obj_eng_oral_rhymes_092",
+        "topic": "Oral English - Rhymes",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the word that rhymes with the given word.*\n\n**92. Wait**",
+        "options": {
+          "A": "Weight",
+          "B": "Height",
+          "C": "Flight",
+          "D": "Sight"
+        },
+        "correct_option": "A",
+        "explanation": "Wait and Weight are homophones (sound exactly the same)."
+      },
+      {
+        "id": "obj_eng_oral_stress_093",
+        "topic": "Oral English - Stress Pattern",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the word with the correct stress pattern. (Stressed syllables are in CAPS).*\n\n**93. Identify the correct stress for the noun \"Record\" (as in playing music).**",
+        "options": {
+          "A": "RE-cord",
+          "B": "re-CORD",
+          "C": "re-cord",
+          "D": "RE-CORD"
+        },
+        "correct_option": "A",
+        "explanation": "Nouns usually have the stress on the first syllable."
+      },
+      {
+        "id": "obj_eng_oral_stress_094",
+        "topic": "Oral English - Stress Pattern",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the word with the correct stress pattern. (Stressed syllables are in CAPS).*\n\n**94. Identify the correct stress for \"Education\".**",
+        "options": {
+          "A": "e-du-CA-tion",
+          "B": "E-du-ca-tion",
+          "C": "e-DU-ca-tion",
+          "D": "e-du-ca-TION"
+        },
+        "correct_option": "A",
+        "explanation": "Words ending in -TION are stressed on the syllable immediately before the suffix."
+      },
+      {
+        "id": "obj_eng_oral_stress_095",
+        "topic": "Oral English - Stress Pattern",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the word with the correct stress pattern. (Stressed syllables are in CAPS).*\n\n**95. Identify the correct stress for \"Biology\".**",
+        "options": {
+          "A": "bi-o-LO-gy",
+          "B": "bi-O-lo-gy",
+          "C": "BI-o-lo-gy",
+          "D": "bi-o-lo-GY"
+        },
+        "correct_option": "B",
+        "explanation": "Words ending in -GY are stressed on the third syllable from the end (Ante-penultimate)."
+      },
+      {
+        "id": "obj_eng_oral_emphatic_096",
+        "topic": "Oral English - Emphatic Stress",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the question that best prompts the given statement.*\n\n**96. Oladipo is the MANAGER of the country's best team.**",
+        "options": {
+          "A": "Is Oladipo the coach of the country's best team?",
+          "B": "Is Oladipo the manager of the country's best player?",
+          "C": "Is Oladipo a manager of the country's worst team?",
+          "D": "Was Oladipo the manager of the country's team?"
+        },
+        "correct_option": "A",
+        "explanation": "The question must contradict ONLY the capitalized word (Manager vs Coach)."
+      },
+      {
+        "id": "obj_eng_oral_emphatic_097",
+        "topic": "Oral English - Emphatic Stress",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the question that best prompts the given statement.*\n\n**97. IRELAND is much better.**",
+        "options": {
+          "A": "Is Wales much better?",
+          "B": "Is Ireland much worse?",
+          "C": "Is Ireland slightly better?",
+          "D": "Was Ireland much better?"
+        },
+        "correct_option": "A",
+        "explanation": "The question contradicts the capitalized word \"Ireland\" by asking about \"Wales\"."
+      },
+      {
+        "id": "obj_eng_oral_emphatic_098",
+        "topic": "Oral English - Emphatic Stress",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the question that best prompts the given statement.*\n\n**98. We ATTENDED the seminar together.**",
+        "options": {
+          "A": "Did we miss the seminar together?",
+          "B": "Did they attend the seminar together?",
+          "C": "Did we attend the party together?",
+          "D": "Did we attend the seminar separately?"
+        },
+        "correct_option": "A",
+        "explanation": "The question contradicts \"ATTENDED\" with \"miss\"."
+      },
+      {
+        "id": "obj_eng_oral_emphatic_099",
+        "topic": "Oral English - Emphatic Stress",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the question that best prompts the given statement.*\n\n**99. HE wasn't interested in my excuses.**",
+        "options": {
+          "A": "Was she interested in my excuses?",
+          "B": "Was he interested in your excuses?",
+          "C": "Was he interested in my facts?",
+          "D": "Is he interested in my excuses?"
+        },
+        "correct_option": "A",
+        "explanation": "The question contradicts \"HE\" with \"she\"."
+      },
+      {
+        "id": "obj_eng_oral_emphatic_100",
+        "topic": "Oral English - Emphatic Stress",
+        "question": "### SECTION F: ORAL ENGLISH & EMPHATIC STRESS\n*Choose the question that best prompts the given statement.*\n\n**100. The boy WHO stole the mango was given out by an eye witness.**",
+        "options": {
+          "A": "Was the boy that stole the mango given out?",
+          "B": "Was the girl who stole the mango given out?",
+          "C": "Was the boy who bought the mango given out?",
+          "D": "Was the boy who stole the apple given out?"
+        },
+        "correct_option": "A",
+        "explanation": "The question contradicts \"WHO\" with \"that\". All other details must remain exactly the same."
+      }
+    ]
   }
 ]
