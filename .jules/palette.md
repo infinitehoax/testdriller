@@ -33,3 +33,7 @@
 ## 2026-05-26 - Improving Shortcut Discoverability & Selection States
 **Learning:** Keyboard shortcuts ('S' for skip, 'Enter' for next, 'Ctrl+Enter' for theory) are powerful but invisible. Users often miss them unless they read documentation. Additionally, toggle buttons (like batch size or timed session) in Vanilla JS environments often lack proper ARIA communication for their "pressed" state, making them inaccessible to screen readers.
 **Action:** Always include subtle <kbd> hints in the UI for keyboard-driven actions (hiding them on mobile). Use 'aria-pressed' and 'aria-label' on toggle buttons and ensure the JS handlers update these attributes during DOM manipulation to maintain accessibility.
+
+## 2025-05-27 - [Redundant Progress Indicators]
+**Learning:** When using visual progress bars alongside textual summaries (e.g., "12/55 mastered"), the bar itself provides redundant information that can clutter screen reader output if not handled.
+**Action:** Apply `aria-hidden="true"` to the visual progress bar container. Ensure the textual summary is descriptive enough to stand alone for accessibility users while the bar provides "at-a-glance" value for visual users.
