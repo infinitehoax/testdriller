@@ -26,3 +26,7 @@
 ## 2025-05-28 - [Indexed Storage Lookups]
 **Learning:** Even simple UI counters (like `getSubjectsWithMasteryCount`) can become performance bottlenecks if they rely on `localStorage.length` and `localStorage.key(i)` iterations. In applications with many stored items, this O(N) scan causes noticeable UI jank.
 **Action:** Always prefer indexed lookups using a tracking key (like `wg_subjects_started`) to bound the search space to relevant items only.
+
+## 2025-05-30 - [External API Connection Pooling]
+**Learning:** Making repeated HTTP requests to external services (like Trophy or LLM providers) without connection pooling incurs significant latency due to the overhead of TCP and TLS handshakes for every call.
+**Action:** Always utilize a global `requests.Session()` instance for external service integrations to enable TCP connection reuse, measurably reducing API latency and improving application responsiveness.
