@@ -292,6 +292,8 @@
   window.toggleRandomizeOptions = toggleRandomizeOptions;
   window.toggleLeaderboard = toggleLeaderboard;
   window.editPlayerName = editPlayerName;
+  window.selectAllSubjects = selectAllSubjects;
+  window.selectNoneSubjects = selectNoneSubjects;
 
   async function init() {
     // Update nav stats immediately from local storage
@@ -481,6 +483,16 @@
       </div>
     `;
     }).join('');
+  }
+
+  function selectAllSubjects() {
+    document.querySelectorAll('.subject-checkbox').forEach(cb => cb.checked = true);
+    updateSubjectSelection();
+  }
+
+  function selectNoneSubjects() {
+    document.querySelectorAll('.subject-checkbox').forEach(cb => cb.checked = false);
+    updateSubjectSelection();
   }
 
   function populateSubjects() {
