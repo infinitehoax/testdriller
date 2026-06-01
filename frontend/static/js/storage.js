@@ -31,6 +31,7 @@ const KEYS = {
   LEADERBOARD_ENABLED: 'wg_leaderboard_enabled',
   LEADERBOARD_CACHE:   'wg_leaderboard_cache',
   LEADERBOARD_NEEDS_UPDATE: 'wg_leaderboard_needs_update',
+  CBT_MODE:          'wg_cbt_mode',
 };
 
 const SUB_KEYS = {
@@ -383,6 +384,9 @@ const Storage = {
   setBatchStartTime(v) { Storage._set(KEYS.BATCH_START_TIME, v); },
   clearBatchStartTime() { Storage._remove(KEYS.BATCH_START_TIME); },
 
+
+  isCbtMode() { return !!Storage._get(KEYS.CBT_MODE); },
+  setCbtMode(v) { Storage._set(KEYS.CBT_MODE, !!v); },
   isRandomizedQuestions() { return !!Storage._get(KEYS.RANDOMIZE_QUESTIONS); },
   setRandomizedQuestions(v) { Storage._set(KEYS.RANDOMIZE_QUESTIONS, !!v); },
 

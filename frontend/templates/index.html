@@ -180,7 +180,6 @@
           <div id="random-options-status-badge" class="badge badge--neutral">OFF</div>
         </div>
       </div>
-
       <div class="card" id="leaderboard-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="toggleLeaderboard()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleLeaderboard();}">
         <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
           <div>
@@ -190,7 +189,17 @@
           <div id="leaderboard-status-badge" class="badge badge--neutral">OFF</div>
         </div>
       </div>
-    </div>
+
+      <div class="card" id="cbt-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="toggleCbtMode()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCbtMode();}">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div>
+            <div style="font-weight:600; margin-bottom:4px;">CBT Mode</div>
+            <div style="font-size:0.85rem; color:var(--text-secondary);">Question navigator & skip to review.</div>
+          </div>
+          <div id="cbt-status-badge" class="badge badge--neutral">OFF</div>
+        </div>
+      </div>
+</div>
 
     <!-- Mode selection cards -->
     <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:28px;" role="radiogroup" aria-label="Study Mode Selection">
@@ -584,6 +593,7 @@
     updateToggleUI('random-questions', isRandomizedQuestions);
     updateToggleUI('random-options', isRandomizedOptions);
     updateToggleUI('leaderboard', Storage.isLeaderboardEnabled());
+    updateToggleUI('cbt', Storage.isCbtMode());
   }
 
   function updateToggleUI(prefix, state) {
@@ -614,6 +624,13 @@
   function toggleRandomizeOptions() {
     isRandomizedOptions = !isRandomizedOptions;
     updateToggleUI('random-options', isRandomizedOptions);
+  }
+
+
+  function toggleCbtMode() {
+    const newState = !Storage.isCbtMode();
+    Storage.setCbtMode(newState);
+    updateToggleUI('cbt', newState);
   }
 
   function toggleLeaderboard() {
