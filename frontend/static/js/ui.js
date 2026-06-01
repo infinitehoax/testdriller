@@ -101,10 +101,12 @@ function renderObjQuestion(q, idx, total) {
       </div>
       <div class="action-bar">
         <div class="action-bar__left">
+          ${Storage.isCbtMode() ? `<button class="btn btn--ghost btn--sm" onclick="UI.prevQuestion()" ${idx === 0 ? 'disabled' : ''} aria-label="Previous question">&larr; Back</button>` : ''}
           <button class="btn btn--ghost btn--sm" onclick="UI.skipQuestion()" aria-label="Skip this question"><span class="kbd-hint" aria-hidden="true">S</span>Skip</button>
         </div>
         <div class="action-bar__right">
-          <button class="btn btn--primary" id="next-btn" style="display:none" onclick="UI.nextQuestion()" aria-label="Next question">
+          ${Storage.isCbtMode() && idx === total - 1 ? `<button class="btn btn--accent" onclick="UI.showBatchComplete()" aria-label="Finish and submit batch">Finish & Submit</button>` : ''}
+          <button class="btn btn--primary" id="next-btn" style="${(Storage.isCbtMode() && idx < total - 1) || q._status === 'answered' ? '' : 'display:none'}" onclick="UI.nextQuestion()" aria-label="Next question">
             Next <span class="kbd-hint" aria-hidden="true">Enter</span> &rarr;
           </button>
         </div>
@@ -145,16 +147,18 @@ function renderTheoryQuestion(q, idx, total) {
       </div>
       <div class="action-bar">
         <div class="action-bar__left">
+          ${Storage.isCbtMode() ? `<button class="btn btn--ghost btn--sm" onclick="UI.prevQuestion()" ${idx === 0 ? 'disabled' : ''} aria-label="Previous question">&larr; Back</button>` : ''}
           <button class="btn btn--ghost btn--sm" onclick="UI.skipQuestion()" aria-label="Skip this question"><span class="kbd-hint" aria-hidden="true">S</span>Skip</button>
           <span class="score-tally hidden" id="score-tally">
             Score: <strong id="score-val">0</strong> / ${totalMaxMarks}
           </span>
         </div>
         <div class="action-bar__right">
+          ${Storage.isCbtMode() && idx === total - 1 ? `<button class="btn btn--accent" onclick="UI.showBatchComplete()" aria-label="Finish and submit batch">Finish & Submit</button>` : ''}
           <button class="btn btn--primary" id="submit-theory-btn" onclick="UI.submitTheory()" aria-label="Submit answer for AI grading">
             ✦ Submit for Grading <span class="kbd-hint" aria-hidden="true">Ctrl+Enter</span>
           </button>
-          <button class="btn btn--primary" id="next-btn" style="display:none" onclick="UI.nextQuestion()" aria-label="Next question">
+          <button class="btn btn--primary" id="next-btn" style="${(Storage.isCbtMode() && idx < total - 1) || q._status === 'answered' ? '' : 'display:none'}" onclick="UI.nextQuestion()" aria-label="Next question">
             Next <span class="kbd-hint" aria-hidden="true">Enter</span> &rarr;
           </button>
         </div>
@@ -288,7 +292,10 @@ const UI = {
   _timerInterval: null,
 
   init(batch) {
-    this.batch = batch;
+    this.batch = batch.map(q => ({
+      ...q,
+      _status: q._status || 'unvisited' // preserve status if resuming
+    }));
     this.currentIdx = Storage.loadIdx();
 
     // Initialize batch start time if starting fresh
@@ -340,6 +347,7 @@ const UI = {
     }, 200);
 
     this.updateStepDots();
+    this.renderNavigator();
   },
 
   updateProgress() {
@@ -359,6 +367,43 @@ const UI = {
         label.textContent = `${this.currentIdx} / ${this.batch.length}`;
       }
     }
+  },
+
+
+  renderNavigator() {
+    const container = document.getElementById('question-navigator');
+    if (!container) return;
+
+    if (!Storage.isCbtMode()) {
+      container.style.display = 'none';
+      return;
+    }
+
+    container.style.display = 'grid';
+    container.innerHTML = this.batch.map((q, i) => {
+      let cls = 'nav-box';
+      if (i === this.currentIdx) cls += ' nav-box--current';
+      else if (q._status === 'answered') cls += ' nav-box--answered';
+      else if (q._status === 'skipped') cls += ' nav-box--skipped';
+
+      return `<button class="${cls}" onclick="UI.jumpToQuestion(${i})" aria-label="Go to question ${i + 1}">${i + 1}</button>`;
+    }).join('');
+  },
+
+  prevQuestion() {
+    if (this.currentIdx > 0) {
+      this.jumpToQuestion(this.currentIdx - 1);
+    }
+  },
+
+  jumpToQuestion(idx) {
+    if (idx < 0 || idx >= this.batch.length) return;
+    this.currentIdx = idx;
+    Storage.saveIdx(idx);
+    this.renderCurrent();
+    this.updateProgress();
+    updateNavStats();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
   },
 
   updateStepDots() {
@@ -423,6 +468,8 @@ const UI = {
     // Record result
     const q = this.batch[this.currentIdx];
     Engine.markObjResult(q, passed);
+    q._status = 'answered';
+    Storage.saveBatch(this.batch);
 
     // Track mastery to Trophy if passed
     if (passed && !q._is_review && !q._is_multiplayer) {
@@ -491,7 +538,9 @@ const UI = {
     let totalScore, maxScore, passed;
     Storage.incrementSystemStat('api_calls');
     try {
-      ({ totalScore, maxScore, passed } = await Engine.gradeTheoryQuestion(
+      q._status = 'answered';
+    Storage.saveBatch(this.batch);
+    ({ totalScore, maxScore, passed } = await Engine.gradeTheoryQuestion(
         q,
         answers,
         (subId, result) => {
@@ -619,24 +668,31 @@ const UI = {
     this.resumeTimer();
     showToast('Question skipped', 'info');
     const q = this.batch[this.currentIdx];
-    // Push skipped unseen questions back to unseen queue (don't count as failed)
+
+    if (Storage.isCbtMode()) {
+      q._status = 'skipped';
+      Storage.saveBatch(this.batch);
+      if (this.currentIdx < this.batch.length - 1) {
+        this.nextQuestion();
+      } else {
+        this.renderCurrent();
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+      return;
+    }
+
     if (!q._from_failed) {
       if (q._type === 'obj') Storage.pushUnseenObj(q);
       else Storage.pushUnseenTheory(q);
     }
-    // Remove it from the current batch so it doesn't affect grading/stats
     this.batch.splice(this.currentIdx, 1);
     Storage.saveBatch(this.batch);
 
-    // If we were at the last question and skipped it, we might be out of bounds now
     if (this.currentIdx >= this.batch.length && this.batch.length > 0) {
-        // We can't stay at this index if it doesn't exist anymore
-        // Unless it was the last one, in which case we should probably finish the batch
         this.showBatchComplete();
     } else if (this.batch.length === 0) {
         this.showBatchComplete();
     } else {
-        // Do NOT increment currentIdx, just re-render current index
         this.renderCurrent();
         this.updateProgress();
         updateNavStats();
@@ -1207,7 +1263,7 @@ window.addEventListener('keydown', (e) => {
 
   const key = e.key.toUpperCase();
 
-  // 'S' to skip question
+  // 'B' to go back\n  if (key === 'B' && Storage.isCbtMode()) {\n    UI.prevQuestion();\n    return;\n  }\n\n  // 'S' to skip question
   if (key === 'S') {
     const skipBtn = document.querySelector('.action-bar__left .btn--ghost');
     if (skipBtn && window.getComputedStyle(skipBtn).display !== 'none') {
