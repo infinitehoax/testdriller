@@ -14,7 +14,7 @@
     <div class="card">
       <h3 style="margin-bottom: 20px;">Create a Room</h3>
       <div style="margin-bottom: 16px;">
-        <label style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Your Name</label>
+        <label for="create-name" style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Your Name</label>
         <input type="text" id="create-name" placeholder="Enter your name" class="form-input" style="width:100%; padding:10px; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-primary); border-radius:8px;">
       </div>
       <div style="margin-bottom: 16px;">
@@ -62,11 +62,11 @@
     <div class="card">
       <h3 style="margin-bottom: 20px;">Join a Room</h3>
       <div style="margin-bottom: 16px;">
-        <label style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Your Name</label>
+        <label for="join-name" style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Your Name</label>
         <input type="text" id="join-name" placeholder="Enter your name" class="form-input" style="width:100%; padding:10px; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-primary); border-radius:8px;">
       </div>
       <div style="margin-bottom: 20px;">
-        <label style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Room ID</label>
+        <label for="join-room-id" style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Room ID</label>
         <input type="text" id="join-room-id" placeholder="Enter 6-char Room ID" class="form-input" style="width:100%; padding:10px; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-primary); border-radius:8px; text-transform: uppercase;">
       </div>
       <button class="btn btn--secondary" style="width:100%;" onclick="lobby.joinRoom()">Join Room</button>
