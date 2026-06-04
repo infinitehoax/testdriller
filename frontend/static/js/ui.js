@@ -83,7 +83,7 @@ function renderObjQuestion(q, idx, total) {
           if (q._selected_letter === letter) cls += ' selected';
 
           return `
-            <button class="${cls}" data-letter="${letter}" onclick="UI.selectOption(this, '${letter}')" aria-label="Option ${letter}: ${escapeHtml(text)}">
+            <button class="${cls}" data-letter="${letter}" onclick="UI.selectOption(this, '${letter}')" aria-label="Option ${letter}: ${escapeHtml(text)}" aria-pressed="${q._selected_letter === letter}">
               <span class="option-letter" aria-hidden="true">${letter}</span>
               <span class="option-text">${formatText(text)}</span>
             </button>
@@ -387,11 +387,23 @@ const UI = {
     container.style.display = 'grid';
     container.innerHTML = this.batch.map((q, i) => {
       let cls = 'nav-box';
-      if (i === this.currentIdx) cls += ' nav-box--current';
-      else if (q._status === 'answered') cls += ' nav-box--answered';
-      else if (q._status === 'skipped') cls += ' nav-box--skipped';
+      let status = '';
+      let ariaCurrent = '';
+      if (i === this.currentIdx) {
+        cls += ' nav-box--current';
+        status = ' (Current)';
+        ariaCurrent = ' aria-current="step"';
+      }
+      else if (q._status === 'answered') {
+        cls += ' nav-box--answered';
+        status = ' (Answered)';
+      }
+      else if (q._status === 'skipped') {
+        cls += ' nav-box--skipped';
+        status = ' (Skipped)';
+      }
 
-      return `<button class="${cls}" onclick="UI.jumpToQuestion(${i})" aria-label="Go to question ${i + 1}">${i + 1}</button>`;
+      return `<button class="${cls}" onclick="UI.jumpToQuestion(${i})" aria-label="Question ${i + 1}${status}"${ariaCurrent}>${i + 1}</button>`;
     }).join('');
   },
 
@@ -451,6 +463,18 @@ const UI = {
           </div>
         `;
       }
+      // Exam Mode: Just record selection, no feedback
+      q._selected_letter = letter;
+      q._status = 'answered';
+      q._passed = (letter === correct);
+
+      // Update UI selection
+      document.querySelectorAll('.option-btn').forEach(b => {
+        b.classList.remove('selected');
+        b.setAttribute('aria-pressed', 'false');
+      });
+      btn.classList.add('selected');
+      btn.setAttribute('aria-pressed', 'true');
 
       for (const q of this.batch) {
         if (q._status === "answered" && !q._graded) {
@@ -491,6 +515,7 @@ const UI = {
 
     const passed = letter === correct;
     btn.classList.add(passed ? 'correct' : 'wrong');
+    btn.setAttribute('aria-pressed', 'true');
 
     if (!passed) {
       const correctBtn = document.querySelector(`.option-btn[data-letter="${correct}"]`);
@@ -869,8 +894,9 @@ const UI = {
     const totalCount = answeredBatch.length;
 
     const remainingInBatch = Storage.isCbtDelayMarking() ? 0 : (this.batch.length - this.currentIdx);
-    const initialFailedQueueSize = (Storage.getFailedObj().length + Storage.getFailedTheory().length) +
-                                  remainingInBatch; // approximation
+    // Optimization: Use getQuickCounts() to avoid cloning and concatenating multiple large arrays just for length checks.
+    const currentFailedCount = Storage.getQuickCounts().failed;
+    const initialFailedQueueSize = currentFailedCount + remainingInBatch; // approximation
 
     const startTime = Storage.getBatchStartTime();
     const durationMs = startTime ? Date.now() - startTime : 0;
@@ -898,7 +924,7 @@ const UI = {
         allPassed,
         batch: answeredBatch,
         initialFailedQueueSize,
-        failedQueueSize: Storage.getFailedObj().length + Storage.getFailedTheory().length
+        failedQueueSize: currentFailedCount
     };
 
     if (allPassed) {

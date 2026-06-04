@@ -1,3 +1,6 @@
+## 2025-05-15 - Vanilla JS ARIA Sync & Module Exposure
+**Learning:** In Vanilla JS, dynamic UI state changes (like toggling host settings) require manual ARIA attribute synchronization to remain accessible. Additionally, when using ES modules, objects must be explicitly attached to `window` to be accessible from inline HTML `onclick` handlers.
+**Action:** Use `Lobby.updateSubjectUI(this)` and ensure `window.Lobby` is assigned in the template. Synchronize `aria-pressed` in all toggle handlers.
 ## 2026-05-17 - [Accessible Modal Focus & Keyboard Support]
 **Learning:** In a Vanilla JS app where modals are toggled by adding/removing CSS classes (e.g., '.visible'), manual focus management and global keyboard listeners are necessary since the 'dialog' element's native behaviors aren't used.
 **Action:** Always save the 'document.activeElement' before opening a modal and restore it upon closure. Use 'setTimeout' or direct '.focus()' on the close button to ensure keyboard users are not lost in the background DOM.
@@ -52,3 +55,7 @@
 ## 2025-05-30 - [Visual Progress in Compressed Lists]
 **Learning:** When adding visual progress indicators to compressed list items (like subject selection), using flex containers with explicit constraints (min-width/max-width) ensures layout stability across different screen sizes. Combining this with 'aria-hidden="true"' and a parent 'aria-label' maintains WCAG compliance without cluttering the accessibility tree with redundant percentage announcements.
 **Action:** Use 'min-width' on sibling labels and 'max-width' on progress bars within flex containers to prevent layout shifting during dynamic content rendering.
+
+## 2025-06-01 - [Semantic Form & State Communication]
+**Learning:** In Jinja2-based Vanilla JS apps, form labels often lose association if 'for' attributes aren't explicitly paired with 'id's. Additionally, for single-selection lists styled as buttons (like OBJ options), using 'aria-pressed' provides an immediate accessibility win by communicating the 'selected' state to screen readers without a full radio-group refactor.
+**Action:** Always verify label-input pairing in templates. Use 'aria-pressed' and 'aria-current' for dynamic selection and navigation states.
