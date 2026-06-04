@@ -52,3 +52,7 @@
 ## 2025-05-30 - [Visual Progress in Compressed Lists]
 **Learning:** When adding visual progress indicators to compressed list items (like subject selection), using flex containers with explicit constraints (min-width/max-width) ensures layout stability across different screen sizes. Combining this with 'aria-hidden="true"' and a parent 'aria-label' maintains WCAG compliance without cluttering the accessibility tree with redundant percentage announcements.
 **Action:** Use 'min-width' on sibling labels and 'max-width' on progress bars within flex containers to prevent layout shifting during dynamic content rendering.
+
+## 2025-06-01 - [Semantic Form & State Communication]
+**Learning:** In Jinja2-based Vanilla JS apps, form labels often lose association if 'for' attributes aren't explicitly paired with 'id's. Additionally, for single-selection lists styled as buttons (like OBJ options), using 'aria-pressed' provides an immediate accessibility win by communicating the 'selected' state to screen readers without a full radio-group refactor.
+**Action:** Always verify label-input pairing in templates. Use 'aria-pressed' and 'aria-current' for dynamic selection and navigation states.
