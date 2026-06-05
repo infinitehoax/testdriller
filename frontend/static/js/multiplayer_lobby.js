@@ -15,6 +15,7 @@ const lobby = {
     randomize_questions: false,
     randomize_options: false,
     filter_mastered: false,
+    anti_cheat: false,
     totalQuestions: 10,
     timeLimit: 0,
 
@@ -228,9 +229,10 @@ const lobby = {
             sessionStorage.setItem('wg_multiplayer_room', JSON.stringify(this.roomState));
             sessionStorage.setItem('wg_multiplayer_room_id', this.roomId);
 
-            // Sync randomization flags to storage
+            // Sync flags to storage
             Storage.setRandomizedQuestions(data.room_state.randomize_questions || false);
             Storage.setRandomizedOptions(data.room_state.randomize_options || false);
+            Storage.setAntiCheatEnabled(data.room_state.anti_cheat || false);
 
             window.location.href = '/multiplayer/study';
         };
@@ -339,7 +341,8 @@ const lobby = {
         const cardIdMap = {
             'randomize_questions': 'random-questions-config-card',
             'randomize_options': 'random-options-config-card',
-            'filter_mastered': 'filter-mastered-config-card'
+            'filter_mastered': 'filter-mastered-config-card',
+            'anti_cheat': 'anti-cheat-config-card'
         };
         const cardId = cardIdMap[key];
         const card = document.getElementById(cardId);
@@ -377,7 +380,8 @@ const lobby = {
             this.timeLimit,
             this.randomize_questions,
             this.randomize_options,
-            this.filter_mastered
+            this.filter_mastered,
+            this.anti_cheat
         );
     },
 

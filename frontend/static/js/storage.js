@@ -33,6 +33,7 @@ const KEYS = {
   LEADERBOARD_NEEDS_UPDATE: 'wg_leaderboard_needs_update',
   CBT_DELAY_MARKING: "wg_cbt_delay_marking",
   CBT_MODE:          'wg_cbt_mode',
+  ANTI_CHEAT:        'wg_anti_cheat',
 };
 
 const SUB_KEYS = {
@@ -399,6 +400,8 @@ const Storage = {
   setCbtMode(v) { Storage._set(KEYS.CBT_MODE, !!v); },
   isCbtDelayMarking() { return !!Storage._get(KEYS.CBT_DELAY_MARKING); },
   setCbtDelayMarking(v) { Storage._set(KEYS.CBT_DELAY_MARKING, !!v); },
+  isAntiCheatEnabled() { return !!Storage._get(KEYS.ANTI_CHEAT); },
+  setAntiCheatEnabled(v) { Storage._set(KEYS.ANTI_CHEAT, !!v); },
   isRandomizedQuestions() { return !!Storage._get(KEYS.RANDOMIZE_QUESTIONS); },
   setRandomizedQuestions(v) { Storage._set(KEYS.RANDOMIZE_QUESTIONS, !!v); },
 
