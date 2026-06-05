@@ -89,6 +89,18 @@ const multiplayer_study = {
             this.renderSidebar();
         };
 
+        SocketClient.onPlayerCheated = (data) => {
+            this._updateRoomState(data.room_state);
+            const player = data.room_state.players[data.player_id];
+            const name = player ? player.name : 'A player';
+            showToast(`⚠️ ${name} was disqualified for cheating: ${data.reason}`, 'error', 10000);
+            this.renderSidebar();
+
+            if (this.roomState.status === 'finished') {
+                this.showFinalScoreboard();
+            }
+        };
+
         SocketClient.onMessage = (data) => {
             this.appendMessage(data);
         };
@@ -113,9 +125,10 @@ const multiplayer_study = {
                 Storage.setTimerEnd(this.roomState.end_time);
             }
 
-            // Sync randomization flags to storage
+            // Sync flags to storage
             Storage.setRandomizedQuestions(data.room_state.randomize_questions || false);
             Storage.setRandomizedOptions(data.room_state.randomize_options || false);
+            Storage.setAntiCheatEnabled(data.room_state.anti_cheat || false);
 
             // Re-init UI with new questions
             const questions = this.roomState.questions.map(q => ({ ...q, _is_multiplayer: true }));
@@ -134,6 +147,13 @@ const multiplayer_study = {
         UI.pauseTimer = () => {};
         UI.resumeTimer = () => {};
 
+        // Override handleCheatViolation for multiplayer
+        const originalHandleCheatViolation = UI.handleCheatViolation;
+        UI.handleCheatViolation = (reason) => {
+            SocketClient.reportCheat(this.roomId, reason);
+            originalHandleCheatViolation.call(UI, reason);
+        };
+
         // Sync initial room configuration to Storage
         if (this.roomState) {
             Storage._set('wg_current_subject', this.roomState.subjects);
@@ -143,6 +163,7 @@ const multiplayer_study = {
             if (this.roomState.time_limit > 0 && this.roomState.end_time) {
                 Storage.setTimerEnd(this.roomState.end_time);
             }
+            Storage.setAntiCheatEnabled(this.roomState.anti_cheat || false);
         }
 
         // Initialize UI with room questions
@@ -288,8 +309,15 @@ const multiplayer_study = {
             nameSpan.textContent = `${player.name} ${isYou ? '(You)' : ''}`;
 
             const statSpan = document.createElement('span');
-            statSpan.className = player.finished ? 'player-finished' : '';
-            statSpan.textContent = player.finished ? `DONE (${player.score} pts)` : `${player.progress}/${player.total} (${player.score} pts)`;
+            if (player.cheated) {
+                statSpan.className = 'player-cheated';
+                statSpan.style.color = 'var(--fail)';
+                statSpan.style.fontWeight = 'bold';
+                statSpan.textContent = '⚠️ CHEATED';
+            } else {
+                statSpan.className = player.finished ? 'player-finished' : '';
+                statSpan.textContent = player.finished ? `DONE (${player.score} pts)` : `${player.progress}/${player.total} (${player.score} pts)`;
+            }
 
             info.appendChild(nameSpan);
             info.appendChild(statSpan);
@@ -402,7 +430,8 @@ const multiplayer_study = {
             this.roomState.time_limit,
             this.roomState.randomize_questions,
             this.roomState.randomize_options,
-            this.roomState.filter_mastered
+            this.roomState.filter_mastered,
+            this.roomState.anti_cheat
         );
     },
 
@@ -412,7 +441,12 @@ const multiplayer_study = {
         if (!wrapper) return;
 
         const sortedPlayers = Object.entries(this.roomState.players)
-            .sort((a, b) => b[1].score - a[1].score);
+            .sort((a, b) => {
+                // Cheaters always rank last
+                if (a[1].cheated && !b[1].cheated) return 1;
+                if (!a[1].cheated && b[1].cheated) return -1;
+                return b[1].score - a[1].score;
+            });
 
         // Stats tracking
         const myUuid = Storage.getPlayerUuid();
@@ -483,11 +517,16 @@ const multiplayer_study = {
             const div = document.createElement("div");
             div.className = `player-tag ${sid === myUuid ? 'is-you' : ''}`;
             div.style.marginBottom = '8px';
+            if (p.cheated) {
+                div.style.borderColor = 'var(--fail)';
+                div.style.background = 'rgba(255, 71, 87, 0.05)';
+            }
 
             const span = document.createElement('span');
-            span.textContent = `#${idx+1} ${p.name}`;
+            span.textContent = `${p.cheated ? '🚫' : '#' + (idx + 1)} ${p.name}`;
             const strong = document.createElement('strong');
-            strong.textContent = ` ${p.score} pts`;
+            strong.textContent = p.cheated ? ' DISQUALIFIED' : ` ${p.score} pts`;
+            if (p.cheated) strong.style.color = 'var(--fail)';
 
             div.appendChild(span);
             div.appendChild(strong);

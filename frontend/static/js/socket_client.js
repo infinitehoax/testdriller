@@ -68,6 +68,11 @@ class SocketClient {
             if (this.onMessage) this.onMessage(data);
         });
 
+        this.socket.on('player_cheated', (data) => {
+            this.roomState = data.room_state;
+            if (this.onPlayerCheated) this.onPlayerCheated(data);
+        });
+
         this.socket.on('error', (data) => {
             if (this.onError) this.onError(data.message);
         });
@@ -85,7 +90,7 @@ class SocketClient {
         this.socket.emit('join_room', { room_id: roomId, name, player_uuid, mastered_ids });
     }
 
-    startGame(roomId, total_questions, time_limit, randomize_questions = false, randomize_options = false, filter_mastered = false) {
+    startGame(roomId, total_questions, time_limit, randomize_questions = false, randomize_options = false, filter_mastered = false, anti_cheat = false) {
         const player_uuid = Storage.getPlayerUuid();
         this.socket.emit('start_game', {
             room_id: roomId,
@@ -94,13 +99,19 @@ class SocketClient {
             time_limit,
             randomize_questions,
             randomize_options,
-            filter_mastered
+            filter_mastered,
+            anti_cheat
         });
     }
 
     updateProgress(roomId, progress, score, finished = false) {
         const player_uuid = Storage.getPlayerUuid();
         this.socket.emit('update_progress', { room_id: roomId, player_uuid, progress, score, finished });
+    }
+
+    reportCheat(roomId, reason) {
+        const player_uuid = Storage.getPlayerUuid();
+        this.socket.emit('cheat_detected', { room_id: roomId, player_uuid, reason });
     }
 
     sendMessage(roomId, name, text) {

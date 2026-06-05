@@ -318,6 +318,11 @@ const UI = {
     if (timeLimit) {
       this.startTimer(timeLimit);
     }
+
+    // Strict Anti-Cheat
+    if (Storage.isAntiCheatEnabled()) {
+      this.setupAntiCheat();
+    }
   },
 
   autoResize(el) {
@@ -1328,6 +1333,129 @@ const UI = {
         this._lastActiveElement = null;
       }
     }
+  },
+
+  setupAntiCheat() {
+    if (this._antiCheatActive) return;
+    this._antiCheatActive = true;
+
+    // 1. Create Overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'anti-cheat-overlay';
+    overlay.innerHTML = `
+      <div class="anti-cheat-modal card animate-bounce-in">
+        <div style="font-size:3rem; margin-bottom:16px;">🛡️</div>
+        <h2 style="margin-bottom:12px;">Strict Anti-Cheat Active</h2>
+        <p style="margin-bottom:24px; color:var(--text-secondary); line-height:1.6;">
+          This session is protected. To prevent cheating, the following rules are enforced:<br>
+          <span style="color:var(--fail);">
+            • Fullscreen mode is mandatory.<br>
+            • Switching tabs/apps terminates the session.<br>
+            • Copying/pasting is disabled.
+          </span>
+        </p>
+        <button class="btn btn--primary btn--lg" onclick="UI.enterAntiCheatFullscreen()">
+          Enter Fullscreen & Begin
+        </button>
+      </div>
+    `;
+    overlay.style = `
+      position: fixed; top:0; left:0; width:100%; height:100%;
+      background: rgba(0,0,0,0.9); z-index: 9999;
+      display: flex; align-items:center; justify-content:center; padding: 20px;
+    `;
+    document.body.appendChild(overlay);
+
+    // 2. Prevent right-click and copy/paste
+    const prevent = (e) => {
+        if (!this._antiCheatActive) return;
+        e.preventDefault();
+        showToast('Action disabled by Anti-Cheat', 'error');
+    };
+    window.addEventListener('contextmenu', prevent);
+    window.addEventListener('copy', prevent);
+    window.addEventListener('paste', prevent);
+    window.addEventListener('cut', prevent);
+
+    // 3. Monitor tab switching / focus loss
+    const handleViolation = () => {
+        if (!this._antiCheatActive) return;
+        this.handleCheatViolation('Tab/App Switch Detected');
+    };
+
+    window.addEventListener('visibilitychange', () => {
+        if (document.visibilityState === 'hidden') handleViolation();
+    });
+    window.addEventListener('blur', handleViolation);
+
+    // 4. Monitor fullscreen exit
+    document.addEventListener('fullscreenchange', () => {
+        if (!document.fullscreenElement && this._antiCheatActive) {
+            this.handleCheatViolation('Fullscreen Exited');
+        }
+    });
+  },
+
+  enterAntiCheatFullscreen() {
+    const docEl = document.documentElement;
+    const requestFs = docEl.requestFullscreen || docEl.mozRequestFullScreen || docEl.webkitRequestFullScreen || docEl.msRequestFullscreen;
+
+    if (requestFs) {
+      requestFs.call(docEl).then(() => {
+        const overlay = document.getElementById('anti-cheat-overlay');
+        if (overlay) overlay.remove();
+      }).catch(err => {
+        showToast('Fullscreen mandatory for Anti-Cheat', 'error');
+      });
+    } else {
+      // Mobile browsers might need a direct user interaction
+      showToast('Fullscreen not supported on this browser', 'error');
+    }
+  },
+
+  handleCheatViolation(reason) {
+    if (!this._antiCheatActive) return;
+    this._antiCheatActive = false;
+
+    // Remove pre-start overlay if present
+    const overlay = document.getElementById('anti-cheat-overlay');
+    if (overlay) overlay.remove();
+
+    // Terminate session
+    if (this._timerInterval) clearInterval(this._timerInterval);
+    Storage.clearBatch();
+    Storage.clearTimer();
+
+    // Exit fullscreen if still in it
+    if (document.fullscreenElement) {
+        document.exitFullscreen().catch(() => {});
+    }
+
+    // Show Termination Screen
+    const wrapper = document.getElementById('question-wrapper');
+    if (wrapper) {
+      wrapper.innerHTML = `
+        <div class="card animate-bounce-in" style="text-align:center; padding:64px 32px; border-color:var(--fail); background:rgba(255, 71, 87, 0.05);">
+          <div style="font-size:4rem; margin-bottom:20px;">🚫</div>
+          <h1 style="color:var(--fail); margin-bottom:12px;">Session Terminated</h1>
+          <p style="font-size:1.1rem; margin-bottom:32px;">
+            Strict Anti-Cheat violation: <strong>${reason}</strong>.<br>
+            Your progress for this batch has been voided.
+          </p>
+          <div style="display:flex; gap:16px; justify-content:center;">
+            <a href="/" class="btn btn--primary">Return to Dashboard</a>
+          </div>
+        </div>
+      `;
+
+      // Hide headers to focus on termination
+      const header = document.querySelector('.batch-header');
+      if (header) header.style.display = 'none';
+      const nav = document.querySelector('nav');
+      if (nav) nav.style.display = 'none';
+    }
+
+    showToast(`Anti-Cheat Violation: ${reason}`, 'error', 10000);
   }
 };
 

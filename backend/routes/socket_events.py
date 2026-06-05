@@ -60,6 +60,7 @@ def handle_start_game(data):
     randomize_questions = data.get('randomize_questions', False)
     randomize_options = data.get('randomize_options', False)
     filter_mastered = data.get('filter_mastered', False)
+    anti_cheat = data.get('anti_cheat', False)
 
     success, result = room_service.start_game(
         room_id,
@@ -68,7 +69,8 @@ def handle_start_game(data):
         time_limit,
         randomize_questions,
         randomize_options,
-        filter_mastered
+        filter_mastered,
+        anti_cheat
     )
 
     if success:
@@ -93,6 +95,24 @@ def handle_update_progress(data):
             'progress': progress,
             'score': score,
             'finished': finished,
+            'room_state': state
+        }, to=room_id)
+
+        if game_just_finished:
+            emit('game_finished', {'room_state': state}, to=room_id)
+
+@socketio.on('cheat_detected')
+def handle_cheat_detected(data):
+    room_id = data.get('room_id')
+    player_uuid = data.get('player_uuid')
+    reason = data.get('reason', 'Unknown')
+
+    success, game_just_finished = room_service.report_player_cheat(room_id, player_uuid, reason)
+    if success:
+        state = room_service.get_room_state(room_id, include_questions=False, include_messages=False)
+        emit('player_cheated', {
+            'player_id': player_uuid,
+            'reason': reason,
             'room_state': state
         }, to=room_id)
 

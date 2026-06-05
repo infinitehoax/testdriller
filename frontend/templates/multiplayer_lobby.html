@@ -161,6 +161,16 @@
               <div id="filter-m-badge" class="badge badge--neutral">OFF</div>
             </div>
           </div>
+
+          <div class="card" id="anti-cheat-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="lobby.toggleSetting('anti_cheat', 'anti-cheat-badge')" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.toggleSetting('anti_cheat', 'anti-cheat-badge');}">
+            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+              <div>
+                <div style="font-weight:600; margin-bottom:4px;">Strict Anti-Cheat</div>
+                <div style="font-size:0.85rem; color:var(--text-secondary);">Force Fullscreen & tab monitoring for all.</div>
+              </div>
+              <div id="anti-cheat-badge" class="badge badge--neutral">OFF</div>
+            </div>
+          </div>
         </div>
       </div>
 

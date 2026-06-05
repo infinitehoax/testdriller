@@ -62,7 +62,9 @@ def create_room(player_uuid, sid, host_name, mode, subjects=None, mastered_ids=N
                 "total": 0,
                 "score": 0,
                 "finished": False,
-                "mastered_ids": mastered_ids or []
+                "mastered_ids": mastered_ids or [],
+                "cheated": False,
+                "cheat_reason": None
             }
         },
         "questions": [],
@@ -71,7 +73,8 @@ def create_room(player_uuid, sid, host_name, mode, subjects=None, mastered_ids=N
         "subjects": subjects or [],
         "messages": [],
         "randomize_questions": False,
-        "randomize_options": False
+        "randomize_options": False,
+        "anti_cheat": False
     }
     return room_id
 
@@ -99,7 +102,9 @@ def join_room(room_id, player_uuid, sid, player_name, mastered_ids=None):
         "total": len(rooms[room_id]["questions"]),
         "score": 0,
         "finished": False,
-        "mastered_ids": mastered_ids or []
+        "mastered_ids": mastered_ids or [],
+        "cheated": False,
+        "cheat_reason": None
     }
     return True, get_room_state(room_id)
 
@@ -147,7 +152,7 @@ def check_room_finished(room_id):
         return True
     return False
 
-def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_questions=False, randomize_options=False, filter_mastered=False):
+def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_questions=False, randomize_options=False, filter_mastered=False, anti_cheat=False):
     if room_id not in rooms:
         return False, "Room not found"
 
@@ -257,6 +262,7 @@ def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_q
     rooms[room_id]["time_limit"] = time_limit
     rooms[room_id]["randomize_questions"] = randomize_questions
     rooms[room_id]["randomize_options"] = randomize_options
+    rooms[room_id]["anti_cheat"] = anti_cheat
 
     if time_limit > 0:
         rooms[room_id]["end_time"] = (time.time() * 1000) + (time_limit * 60 * 1000)
@@ -266,8 +272,22 @@ def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_q
         rooms[room_id]["players"][p_id]["progress"] = 0
         rooms[room_id]["players"][p_id]["score"] = 0
         rooms[room_id]["players"][p_id]["finished"] = False
+        rooms[room_id]["players"][p_id]["cheated"] = False
+        rooms[room_id]["players"][p_id]["cheat_reason"] = None
 
     return True, get_room_state(room_id)
+
+def report_player_cheat(room_id, player_uuid, reason):
+    if room_id in rooms and player_uuid in rooms[room_id]["players"]:
+        player = rooms[room_id]["players"][player_uuid]
+        player["cheated"] = True
+        player["cheat_reason"] = reason
+        player["finished"] = True
+
+        # Check if all players are finished now
+        game_just_finished = check_room_finished(room_id)
+        return True, game_just_finished
+    return False, False
 
 def update_player_progress(room_id, player_uuid, progress, score, finished=False):
     if room_id in rooms and player_uuid in rooms[room_id]["players"]:

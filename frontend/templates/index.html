@@ -209,6 +209,16 @@
           <div id="exam-mode-status-badge" class="badge badge--neutral">OFF</div>
         </div>
       </div>
+
+      <div class="card" id="anti-cheat-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="toggleAntiCheat()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleAntiCheat();}">
+        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div>
+            <div style="font-weight:600; margin-bottom:4px;">Strict Anti-Cheat</div>
+            <div style="font-size:0.85rem; color:var(--text-secondary);">Force Fullscreen. Terminate session on tab-switch.</div>
+          </div>
+          <div id="anti-cheat-status-badge" class="badge badge--neutral">OFF</div>
+        </div>
+      </div>
 </div>
 
     <!-- Mode selection cards -->
@@ -313,6 +323,7 @@
   window.toggleRandomizeOptions = toggleRandomizeOptions;
   window.toggleLeaderboard = toggleLeaderboard;
   window.toggleCbtMode = toggleCbtMode;
+  window.toggleAntiCheat = toggleAntiCheat;
   window.editPlayerName = editPlayerName;
 
   async function init() {
@@ -610,6 +621,7 @@
     updateToggleUI('leaderboard', Storage.isLeaderboardEnabled());
     updateToggleUI('cbt', Storage.isCbtMode());
     updateToggleUI('exam-mode', Storage.isCbtDelayMarking());
+    updateToggleUI('anti-cheat', Storage.isAntiCheatEnabled());
     document.getElementById('exam-mode-config-card').style.display = Storage.isCbtMode() ? 'block' : 'none';
   }
 
@@ -655,6 +667,12 @@
     const newState = !Storage.isCbtDelayMarking();
     Storage.setCbtDelayMarking(newState);
     updateToggleUI('exam-mode', newState);
+  }
+
+  function toggleAntiCheat() {
+    const newState = !Storage.isAntiCheatEnabled();
+    Storage.setAntiCheatEnabled(newState);
+    updateToggleUI('anti-cheat', newState);
   }
 
   function toggleLeaderboard() {
