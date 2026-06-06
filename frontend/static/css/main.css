@@ -1,5 +1,5 @@
 /* ============================================
-   WAEC GRINDER — Global Styles
+   Testdriller GRINDER — Global Styles
    ============================================ */
 
 *, *::before, *::after {
@@ -140,7 +140,7 @@ code, pre, .mono {
 .btn--primary:hover {
   background: #ffc233;
   transform: translateY(-1px);
-  box-shadow: 0 4px 20px rgba(240, 165, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 229, 255, 0.3);
 }
 .btn--primary:active { transform: translateY(0); }
 

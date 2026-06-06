@@ -55,7 +55,7 @@ def grade_sub_question(sub_question: str, student_answer: str, rubric: str, max_
             "feedback": "No answer was provided for this sub-question."
         }
 
-    system_prompt = "You are a strict but fair WAEC (West African Examinations Council) examiner for Nigeria."
+    system_prompt = "You are a strict but fair Testdriller (West African Examinations Council) examiner for Nigeria."
 
     user_prompt = f"""Your task is to grade ONE specific sub-question answer.
 
@@ -86,8 +86,8 @@ Now grade the student's answer and output the scoring JSON:"""
     headers = {
         "Authorization": f"Bearer {Config.OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://waec-grinder.local",
-        "X-Title": "WAEC Grinder Study Tool"
+        "HTTP-Referer": "https://testdriller.local",
+        "X-Title": "Testdriller Study Tool"
     }
 
     payload = {
@@ -176,7 +176,7 @@ def explain_concept(question_data: dict) -> str:
     if options:
         # OBJ Question
         options_text = "\n".join([f"{k}: {v}" for k, v in options.items()])
-        prompt = f"""You are a friendly and helpful tutor for a student preparing for WAEC exams.
+        prompt = f"""You are a friendly and helpful tutor for a student preparing for Testdriller exams.
 The student is confused by this multiple-choice question:
 
 QUESTION:
@@ -198,7 +198,7 @@ Your task:
 Keep your tone encouraging and your language simple. Use Markdown for formatting."""
     else:
         # Theory Question
-        prompt = f"""You are a friendly and helpful tutor for a student preparing for WAEC exams.
+        prompt = f"""You are a friendly and helpful tutor for a student preparing for Testdriller exams.
 The student is struggling with this theory question:
 
 QUESTION:
@@ -217,8 +217,8 @@ Keep your tone encouraging and your language simple. Use Markdown for formatting
     headers = {
         "Authorization": f"Bearer {Config.OPENROUTER_API_KEY}",
         "Content-Type": "application/json",
-        "HTTP-Referer": "https://waec-grinder.local",
-        "X-Title": "WAEC Grinder Study Tool"
+        "HTTP-Referer": "https://testdriller.local",
+        "X-Title": "Testdriller Study Tool"
     }
 
     payload = {

@@ -1,5 +1,5 @@
 // ============================================
-// WAEC GRINDER — Multiplayer Study Logic
+// Testdriller GRINDER — Multiplayer Study Logic
 // ============================================
 
 import SocketClient from './socket_client.js';

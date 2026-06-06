@@ -1,7 +1,7 @@
 import json
 import os
 
-DATA_FILE = os.path.join(os.path.dirname(__file__), '..', 'data', 'waec_questions.json')
+DATA_FILE = os.path.join(os.path.dirname(__file__), '..', 'data', 'testdriller_questions.json')
 
 # In-memory cache to prevent redundant disk I/O
 _cached_questions = None
@@ -42,7 +42,7 @@ def load_questions() -> dict:
         _cached_questions = processed_data
         return {"success": True, "data": _cached_questions}
     except FileNotFoundError:
-        return {"success": False, "error": "waec_questions.json not found. Please add your questions file."}
+        return {"success": False, "error": "testdriller_questions.json not found. Please add your questions file."}
     except json.JSONDecodeError as e:
         return {"success": False, "error": f"Invalid JSON in questions file: {str(e)}"}
     except Exception as e:

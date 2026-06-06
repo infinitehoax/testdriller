@@ -1,0 +1,89 @@
+[
+  {
+    "subject": "Mathematics",
+    "obj": [
+      {
+        "id": "math_2023_01",
+        "year": "2023",
+        "topic": "Algebra",
+        "question": "If 2x + 3 = 11, what is x?",
+        "options": {
+          "A": "2",
+          "B": "3",
+          "C": "4",
+          "D": "5"
+        },
+        "correct_option": "C",
+        "explanation": "2x = 11 - 3 = 8. x = 8 / 2 = 4.",
+        "topic": "Algebra"
+      },
+      {
+        "id": "math_2023_02",
+        "year": "2023",
+        "topic": "Geometry",
+        "question": "What is the area of a circle with radius 7? (Take pi = 22/7)",
+        "options": {
+          "A": "44",
+          "B": "154",
+          "C": "49",
+          "D": "14"
+        },
+        "correct_option": "B",
+        "explanation": "Area = pi * r^2 = 22/7 * 7 * 7 = 22 * 7 = 154.",
+        "topic": "Geometry"
+      },
+      {
+        "id": "math_2022_01",
+        "year": "2022",
+        "topic": "Algebra",
+        "question": "Simplify: 3(x + 2) - 2x",
+        "options": {
+          "A": "x + 6",
+          "B": "x + 2",
+          "C": "5x + 6",
+          "0": "x - 6"
+        },
+        "correct_option": "A",
+        "explanation": "3x + 6 - 2x = x + 6.",
+        "topic": "Algebra"
+      }
+    ],
+    "theory": []
+  },
+  {
+    "subject": "Physics",
+    "obj": [
+      {
+        "id": "phy_2023_01",
+        "year": "2023",
+        "topic": "Mechanics",
+        "question": "Which of the following is a vector quantity?",
+        "options": {
+          "A": "Mass",
+          "B": "Speed",
+          "C": "Velocity",
+          "D": "Time"
+        },
+        "correct_option": "C",
+        "explanation": "Velocity has both magnitude and direction.",
+        "topic": "Mechanics"
+      },
+      {
+        "id": "phy_2022_01",
+        "year": "2022",
+        "topic": "Heat",
+        "question": "The boiling point of water in Kelvin is?",
+        "options": {
+          "A": "0 K",
+          "B": "100 K",
+          "C": "273 K",
+          "D": "373 K"
+        },
+        "correct_option": "D",
+        "explanation": "100 + 273 = 373 K.",
+        "topic": "Heat"
+      }
+    ],
+    "theory": []
+  }
+]

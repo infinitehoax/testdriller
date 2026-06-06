@@ -1,16 +1,16 @@
 const ACHIEVEMENTS = [
-  // 🇳🇬 The "WAEC Flavor"
+  // 🇳🇬 The "Testdriller Flavor"
   { id: 'a1_parallel', title: 'A1 Parallel', description: 'Master 100 questions across 3 different subjects.', icon: '🥇' },
   { id: 'senior_prefect', title: 'Senior Prefect', description: 'Create and host 10 multiplayer rooms.', icon: '👔' },
   { id: 'efiko', title: 'Efiko / Bookworm', description: 'Complete a batch between 12:00 AM and 4:00 AM.', icon: '🦉' },
   { id: 'jambite_no_more', title: 'Jambite No More', description: 'Achieve 100% mastery in your first full subject.', icon: '🎓' },
   { id: 'oga_at_the_top', title: 'Oga at the Top', description: 'Place 1st in a fully loaded 5-player multiplayer room.', icon: '👑' },
 
-  // ⚙️ The Grinder
+  // ⚙️ The Testdriller
   { id: 'the_grind_begins', title: 'The Grind Begins', description: 'Complete your very first batch.', icon: '⚙️' },
   { id: 'century_maker', title: 'Century Maker', description: 'Master 100 OBJ questions.', icon: '💯' },
   { id: 'grandmaster', title: 'Grandmaster', description: 'Master 500 OBJ questions.', icon: '🐉' },
-  { id: 'waec_conqueror', title: 'WAEC Conqueror', description: 'Master 1,000 total questions.', icon: '🗻' },
+  { id: 'testdriller_conqueror', title: 'Testdriller Conqueror', description: 'Master 1,000 total questions.', icon: '🗻' },
   { id: 'essayist', title: 'Essayist', description: 'Master 50 Theory questions.', icon: '✍️' },
   { id: 'nobel_laureate', title: 'Nobel Laureate', description: 'Master 200 Theory questions.', icon: '📜' },
   { id: 'polymath', title: 'Polymath', description: 'Start a study session with 3 or more subjects merged together.', icon: '🧠' },
@@ -66,7 +66,7 @@ const ACHIEVEMENTS = [
   { id: 'custom_tailor', title: 'Custom Tailor', description: 'Play a session using a custom batch size (e.g., typing in 7 or 12).', icon: '✂️' },
   { id: 'mixed_bag', title: 'Mixed Bag', description: 'Complete a session with "Both (Recommended)" mode selected.', icon: '🎒' },
   { id: 'api_funder', title: 'API Heavyweight', description: 'Trigger the OpenRouter grading API 100 times.', icon: '💳' },
-  { id: 'the_true_grinder', title: 'The True Grinder', description: 'Accumulate a total of 24 hours of active study time inside the app.', icon: '🌌' }
+  { id: 'the_true_grinder', title: 'The True Testdriller', description: 'Accumulate a total of 24 hours of active study time inside the app.', icon: '🌌' }
 ];
 
 const AchievementEngine = {
@@ -84,18 +84,18 @@ const AchievementEngine = {
 
     // stats contains current session data + global persistence data
 
-    // 🇳🇬 The "WAEC Flavor"
+    // 🇳🇬 The "Testdriller Flavor"
     check('a1_parallel', stats.mastered_total >= 100 && stats.subjects_with_mastery >= 3);
     check('senior_prefect', stats.multi_stats.rooms_hosted >= 10);
     check('efiko', stats.isBatchEnd && stats.currentHour >= 0 && stats.currentHour < 4);
     check('jambite_no_more', stats.subjects_mastered_all.length >= 1);
     check('oga_at_the_top', stats.isMultiWin && stats.multiCapacity >= 5);
 
-    // ⚙️ The Grinder
+    // ⚙️ The Testdriller
     check('the_grind_begins', stats.batches_completed >= 1);
     check('century_maker', stats.mastered_obj >= 100);
     check('grandmaster', stats.mastered_obj >= 500);
-    check('waec_conqueror', stats.mastered_total >= 1000);
+    check('testdriller_conqueror', stats.mastered_total >= 1000);
     check('essayist', stats.mastered_theory >= 50);
     check('nobel_laureate', stats.mastered_theory >= 200);
     check('polymath', stats.subjects_merged >= 3);

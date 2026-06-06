@@ -1,5 +1,5 @@
 // ============================================
-// WAEC GRINDER — Frontend Config
+// Testdriller GRINDER — Frontend Config
 // ============================================
 
 const APP_CONFIG = {

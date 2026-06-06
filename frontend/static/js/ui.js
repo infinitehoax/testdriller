@@ -1,5 +1,5 @@
 // ============================================
-// WAEC GRINDER — UI Module
+// Testdriller GRINDER — UI Module
 // DOM manipulation, rendering, transitions
 // ============================================
 

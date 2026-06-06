@@ -1,521 +1,209 @@
 {% extends "base.html" %}
-{% block title %}Dashboard — WAEC Grinder{% endblock %}
+
+{% block title %}Dashboard — Testdriller{% endblock %}
 
 {% block content %}
-<div class="container" style="padding-top: 60px; padding-bottom: 80px;">
+<div class="container animate-fade-in" style="max-width: 900px; margin-top: 40px; margin-bottom: 80px;">
 
-  <!-- Hero -->
-  <div class="hero-section" style="margin-bottom: 56px; max-width: 640px;">
-    <div class="badge badge--accent" style="margin-bottom: 16px;">📚 WAEC 2026 Prep</div>
-    <h1 style="font-size: clamp(2rem, 5vw, 3rem); margin-bottom: 12px; line-height: 1.1;">
-      Stop reading.<br><span style="color: var(--accent)">Start grinding.</span>
-    </h1>
-    <p style="font-size: 1.05rem; max-width: 480px; line-height: 1.7;">
-      Spaced repetition, AI-powered theory grading, and a queue system that forces you to confront your mistakes until you master them.
-    </p>
-  </div>
-
-  <!-- API warning -->
-  <div class="api-warning hidden" id="api-warning">
-    <span class="api-warning__icon">⚠️</span>
-    <span>
-      No OpenRouter API key detected. Theory questions won't be AI-graded until you add one.
-      See <strong>README.md</strong> for setup steps, or
-      <a href="https://openrouter.ai" target="_blank" rel="noopener">openrouter.ai</a> to get a free key.
-    </span>
-  </div>
-
-  <!-- Session continuation notice -->
-  <div class="card" id="resume-card" style="margin-bottom: 24px; display:none; border-color: rgba(240,165,0,0.2); background: var(--accent-glow);">
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
+  <!-- Header -->
+  <header style="margin-bottom: 40px;">
+    <div class="badge badge--accent" style="margin-bottom: 16px;">📚 Testdriller 2026 Prep</div>
+    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
       <div>
-        <div style="font-weight:700; color: var(--text-primary); margin-bottom:4px;">📌 Resume session</div>
-        <div style="font-size:0.875rem; color: var(--text-secondary);" id="resume-desc">You have an active study session.</div>
+        <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em;">Welcome back, <span id="player-name-display" style="color: var(--accent);">Student</span>!</h1>
+        <p style="color: var(--text-secondary); font-size: 1.1rem;">Pick a subject and start your mastery journey.</p>
       </div>
-      <div style="display:flex;gap:10px;">
-        <button class="btn btn--primary" onclick="resumeSession()">Continue &rarr;</button>
-        <button class="btn btn--ghost btn--sm" onclick="clearSession()">Reset</button>
-      </div>
+      <button class="btn btn--ghost" onclick="editPlayerName()" style="border: 1px solid var(--border-subtle);">
+        <span>⚙️</span> Edit Profile
+      </button>
     </div>
-  </div>
+  </header>
 
-  <!-- User Profile -->
-  <div class="card" id="profile-card" style="margin-bottom: 32px; border-color: var(--accent-glow); background: var(--bg-card);">
-    <div style="display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;">
-      <div style="display:flex; align-items:center; gap:12px;">
-        <div style="font-size:1.5rem;">👤</div>
-        <div>
-          <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; font-family:var(--font-mono);">Your Profile</div>
-          <div id="player-name-display" style="font-weight:700; font-size:1.1rem;">Student</div>
-        </div>
+  <!-- Resume Card -->
+  <div id="resume-card" class="card animate-bounce-in" style="display:none; border-left: 4px solid var(--accent); margin-bottom: 32px; background: var(--accent-glow);">
+    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div>
+        <div style="font-weight:700; font-size:1.1rem; margin-bottom:4px;">Continue your last session?</div>
+        <div id="resume-desc" style="font-size:0.9rem; color:var(--text-secondary);"></div>
       </div>
-      <button class="btn btn--ghost btn--sm" onclick="editPlayerName()">Edit Name</button>
-    </div>
-  </div>
-
-  <!-- Leaderboard -->
-  <div id="leaderboard-section" style="margin-bottom: 32px;">
-    <h2 style="font-size: 1.1rem; margin-bottom: 16px; color: var(--text-secondary); font-weight: 500;">
-      🏆 Top Daily Grinders
-    </h2>
-    <div class="card" style="padding: 0; overflow: hidden;">
-      <div id="leaderboard-list" style="min-height: 100px;">
-        <div style="padding: 20px; text-align: center; color: var(--text-muted);">Loading rankings...</div>
+      <div style="display:flex; gap:12px;">
+        <button class="btn btn--ghost" onclick="clearSession()">Clear Progress</button>
+        <button class="btn btn--primary" onclick="resumeSession()">Resume Session &rarr;</button>
       </div>
     </div>
   </div>
 
-  <!-- Weakest Topics -->
-  <div id="weak-topics-section" style="margin-bottom: 32px; display: none;">
-    <h2 style="font-size: 1.1rem; margin-bottom: 16px; color: var(--text-secondary); font-weight: 500;">
-      Your Weakest Areas
-    </h2>
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;" id="weak-topics-grid">
-      <!-- Generated via JS -->
-    </div>
-  </div>
+  <!-- Main Config Section -->
+  <div class="card" style="padding: 32px; margin-bottom: 32px;">
 
-  <style>
-    .subject-item { display: flex; align-items: center; justify-content: space-between; gap: 10px; padding: 8px 12px; cursor: pointer; transition: all var(--transition-fast); border-radius: var(--radius-sm); border: 1px solid transparent; }
-    .subject-item:hover { background: var(--bg-card-hover); transform: translateY(-1px); }
-    .subject-item.is-selected { background: var(--accent-glow); border-color: var(--accent); box-shadow: 0 0 10px var(--accent-glow); }
-    .subject-item:focus-within { outline: 2px solid var(--accent); outline-offset: -2px; }
-    .subject-info { display: flex; flex-direction: column; }
-    .subject-name { font-size: 0.9rem; font-weight: 500; }
-    .subject-meta { font-size: 0.7rem; color: var(--text-muted); font-family: var(--font-mono); }
-    .mode-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-  </style>
-
-  <!-- Mode Selection + Subject display -->
-  <div style="margin-bottom: 32px;" id="start-section">
-    <h2 style="font-size: 1.1rem; margin-bottom: 20px; color: var(--text-secondary); font-weight: 500;">
-      Start a new session
-    </h2>
-
-    <!-- Subject Selection -->
-    <div class="card" style="margin-bottom: 20px;">
-      <div style="margin-bottom: 12px; display: flex; justify-content: space-between; align-items: flex-end;">
-        <div>
-          <div style="font-weight:600; margin-bottom:4px;">Select Subjects</div>
-          <div style="font-size:0.85rem; color:var(--text-secondary);">Choose one or more subjects to merge into your session.</div>
-        </div>
+    <!-- Subject Row -->
+    <div style="margin-bottom: 28px;">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
+        <h3 style="margin: 0; font-size: 1.2rem;">Select Subject</h3>
         <div style="display: flex; gap: 8px;">
-          <button class="btn btn--ghost btn--sm" onclick="selectAllSubjects()" type="button" style="padding: 4px 8px; font-size: 0.7rem;">All</button>
-          <button class="btn btn--ghost btn--sm" onclick="selectNoneSubjects()" type="button" style="padding: 4px 8px; font-size: 0.7rem;">None</button>
+          <button class="btn btn--ghost btn--sm" onclick="selectAllSubjects()" style="font-size: 0.75rem;">All</button>
+          <button class="btn btn--ghost btn--sm" onclick="selectNoneSubjects()" style="font-size: 0.75rem;">None</button>
         </div>
       </div>
-      <div id="subject-list" style="display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 10px; max-height: 240px; overflow-y: auto; padding: 4px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--bg-input);">
-        <!-- Generated via JS -->
+      <div id="subject-list" style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 4px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+        <!-- Generated via JS: Subject Cards -->
       </div>
     </div>
 
-    <!-- Subject info -->
-    <div class="card" style="margin-bottom: 20px; display:none;" id="subject-card">
-      <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:12px;">
-        <div>
-          <div style="font-size:0.75rem; color:var(--text-muted); text-transform:uppercase; letter-spacing:0.08em; margin-bottom:4px; font-family:var(--font-mono);">Selected Configuration</div>
-          <div style="font-size:1.2rem; font-weight:700;" id="subject-name">–</div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 28px;">
+      <!-- Topic Search & Dropdown -->
+      <div>
+        <label for="topic-select" style="display: block; font-weight: 600; margin-bottom: 8px;">Topic (Optional)</label>
+        <div style="position: relative;">
+          <input type="text" id="topic-search" list="topics-datalist" placeholder="Search topics..." style="width: 100%; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+          <datalist id="topics-datalist">
+            <!-- Populated via JS -->
+          </datalist>
         </div>
-        <div style="display:flex; gap:16px; font-size:0.8rem; font-family:var(--font-mono); color:var(--text-muted);">
-          <span>OBJ: <strong id="obj-count" style="color:var(--text-primary)">–</strong></span>
-          <span>Theory: <strong id="theory-count" style="color:var(--text-primary)">–</strong></span>
+      </div>
+
+      <!-- Year Dropdown -->
+      <div>
+        <label for="year-select" style="display: block; font-weight: 600; margin-bottom: 8px;">Year (Optional)</label>
+        <select id="year-select" style="width: 100%; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+          <option value="ALL">ALL Years</option>
+          <!-- Populated via JS -->
+        </select>
+      </div>
+    </div>
+
+    <!-- Mode Selection -->
+    <div style="margin-bottom: 28px;">
+      <label style="display: block; font-weight: 600; margin-bottom: 12px;">Study Mode</label>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
+        <div class="card mode-card" data-mode="obj" onclick="selectMode('obj')" style="cursor:pointer; text-align: center; padding: 20px;">
+          <div style="font-size: 1.5rem; margin-bottom: 8px;">🔤</div>
+          <div style="font-weight: 700;">OBJ Only</div>
+        </div>
+        <div class="card mode-card" data-mode="theory" onclick="selectMode('theory')" style="cursor:pointer; text-align: center; padding: 20px;">
+          <div style="font-size: 1.5rem; margin-bottom: 8px;">✍️</div>
+          <div style="font-weight: 700;">Theory Only</div>
+        </div>
+        <div class="card mode-card selected-mode" data-mode="both" onclick="selectMode('both')" style="cursor:pointer; text-align: center; padding: 20px; border-color: var(--accent); background: var(--accent-glow);">
+          <div style="font-size: 1.5rem; margin-bottom: 8px;">⚡</div>
+          <div style="font-weight: 700;">Both</div>
         </div>
       </div>
     </div>
 
-    <!-- Batch size selector / Timed session / Randomization -->
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; margin-bottom: 20px;">
-      <div class="card" id="batch-config-card">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <div style="font-weight:600; margin-bottom:4px;">Batch Size</div>
-            <div style="font-size:0.85rem; color:var(--text-secondary);">Questions per round.</div>
-          </div>
-          <div style="display:flex; gap:8px; align-items: center; flex-wrap: wrap;">
-            <div style="display:flex; gap:8px;">
-              <button class="btn btn--ghost btn--sm batch-size-btn" data-size="3" aria-pressed="false">3</button>
-              <button class="btn btn--ghost btn--sm batch-size-btn active-size" data-size="5" aria-pressed="true">5</button>
-              <button class="btn btn--ghost btn--sm batch-size-btn" data-size="10" aria-pressed="false">10</button>
-            </div>
-            <span style="color: var(--text-muted); font-size: 0.8rem; margin: 0 4px;">or</span>
-            <input type="number" id="custom-batch-size" placeholder="Custom" class="input-custom" style="width: 80px;">
-          </div>
-        </div>
+    <!-- Batch Size -->
+    <div style="margin-bottom: 32px;">
+      <label style="display: block; font-weight: 600; margin-bottom: 12px;">Batch Size</label>
+      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
+        <button class="btn btn--ghost batch-size-btn" data-size="3">3</button>
+        <button class="btn btn--ghost batch-size-btn active-size" data-size="5" style="border-color: var(--accent);">5</button>
+        <button class="btn btn--ghost batch-size-btn" data-size="10">10</button>
+        <input type="number" id="custom-batch-size" placeholder="Custom" style="width: 80px; padding: 8px; border-radius: 4px; background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
       </div>
-
-      <div class="card" id="timed-config-card" style="border-color: var(--border-subtle); opacity: 0.7;">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <div style="font-weight:600; margin-bottom:4px;">Timed Session</div>
-            <div style="font-size:0.85rem; color:var(--text-secondary);">Grind for a set duration.</div>
-          </div>
-          <div style="display:flex; gap:8px; align-items: center; flex-wrap: wrap;">
-            <div style="display:flex; gap:8px;">
-              <button class="btn btn--ghost btn--sm timed-btn" data-time="5" aria-pressed="false">5m</button>
-              <button class="btn btn--ghost btn--sm timed-btn" data-time="10" aria-pressed="false">10m</button>
-              <button class="btn btn--ghost btn--sm timed-btn" data-time="15" aria-pressed="false">15m</button>
-            </div>
-            <span style="color: var(--text-muted); font-size: 0.8rem; margin: 0 4px;">or</span>
-            <input type="number" id="custom-time-limit" placeholder="Mins" class="input-custom" style="width: 80px;">
-          </div>
-        </div>
-      </div>
-
-      <div class="card" id="random-questions-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="toggleRandomizeQuestions()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRandomizeQuestions();}">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <div style="font-weight:600; margin-bottom:4px;">Randomize Questions</div>
-            <div style="font-size:0.85rem; color:var(--text-secondary);">Shuffle question order.</div>
-          </div>
-          <div id="random-questions-status-badge" class="badge badge--neutral">OFF</div>
-        </div>
-      </div>
-
-      <div class="card" id="random-options-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="toggleRandomizeOptions()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleRandomizeOptions();}">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <div style="font-weight:600; margin-bottom:4px;">Randomize Options</div>
-            <div style="font-size:0.85rem; color:var(--text-secondary);">Shuffle A, B, C, D order.</div>
-          </div>
-          <div id="random-options-status-badge" class="badge badge--neutral">OFF</div>
-        </div>
-      </div>
-      <div class="card" id="leaderboard-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="toggleLeaderboard()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleLeaderboard();}">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <div style="font-weight:600; margin-bottom:4px;">Leaderboard UI</div>
-            <div style="font-size:0.85rem; color:var(--text-secondary);">Show daily rankings.</div>
-          </div>
-          <div id="leaderboard-status-badge" class="badge badge--neutral">OFF</div>
-        </div>
-      </div>
-
-      <div class="card" id="cbt-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="toggleCbtMode()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCbtMode();}">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <div style="font-weight:600; margin-bottom:4px;">CBT Mode</div>
-            <div style="font-size:0.85rem; color:var(--text-secondary);">Question navigator & skip to review.</div>
-          </div>
-          <div id="cbt-status-badge" class="badge badge--neutral">OFF</div>
-        </div>
-      </div>
-
-      <div class="card" id="exam-mode-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer; display: none;" onclick="toggleCbtDelayMarking()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleCbtDelayMarking();}">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <div style="font-weight:600; margin-bottom:4px;">Exam Mode</div>
-            <div style="font-size:0.85rem; color:var(--text-secondary);">Grade all at the end. No instant feedback.</div>
-          </div>
-          <div id="exam-mode-status-badge" class="badge badge--neutral">OFF</div>
-        </div>
-      </div>
-
-      <div class="card" id="anti-cheat-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="toggleAntiCheat()" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();toggleAntiCheat();}">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-          <div>
-            <div style="font-weight:600; margin-bottom:4px;">Strict Anti-Cheat</div>
-            <div style="font-size:0.85rem; color:var(--text-secondary);">Force Fullscreen. Terminate session on tab-switch.</div>
-          </div>
-          <div id="anti-cheat-status-badge" class="badge badge--neutral">OFF</div>
-        </div>
-      </div>
-</div>
-
-    <!-- Mode selection cards -->
-    <div style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:16px; margin-bottom:28px;" role="radiogroup" aria-label="Study Mode Selection">
-
-      <div class="card mode-card" data-mode="obj" onclick="selectMode('obj')" style="cursor:pointer; border-color: var(--border-subtle); transition: all 0.2s;" role="radio" aria-checked="false" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectMode('obj');}">
-        <div style="font-size:2rem; margin-bottom:10px;">🔤</div>
-        <div style="font-weight:700; margin-bottom:6px;">OBJ Only</div>
-        <div style="font-size:0.85rem; color:var(--text-secondary);">Multiple choice questions, auto-graded instantly.</div>
-      </div>
-
-      <div class="card mode-card" data-mode="theory" onclick="selectMode('theory')" style="cursor:pointer; border-color: var(--border-subtle); transition: all 0.2s;" role="radio" aria-checked="false" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectMode('theory');}">
-        <div style="font-size:2rem; margin-bottom:10px;">✍️</div>
-        <div style="font-weight:700; margin-bottom:6px;">Theory Only</div>
-        <div style="font-size:0.85rem; color:var(--text-secondary);">Essay questions graded by AI against a rubric.</div>
-      </div>
-
-      <div class="card mode-card selected-mode" data-mode="both" onclick="selectMode('both')" style="cursor:pointer; border-color: var(--accent); background: var(--accent-glow); transition: all 0.2s;" role="radio" aria-checked="true" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectMode('both');}">
-        <div style="font-size:2rem; margin-bottom:10px;">⚡</div>
-        <div style="font-weight:700; margin-bottom:6px;">Both (Recommended)</div>
-        <div style="font-size:0.85rem; color:var(--text-secondary);">Mixed session covering all question types.</div>
-      </div>
-
-      <div class="card mode-card" id="review-mode-card" data-mode="review" onclick="selectMode('review')" style="display:none; cursor:pointer; border-color: var(--border-subtle); border-style: dashed; transition: all 0.2s;" role="radio" aria-checked="false" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();selectMode('review');}">
-        <div style="font-size:2rem; margin-bottom:10px;">🔄</div>
-        <div style="font-weight:700; margin-bottom:6px;">Review Mastered</div>
-        <div style="font-size:0.85rem; color:var(--text-secondary);">Revisit questions you've already mastered.</div>
-      </div>
-
     </div>
 
-    <div class="card" style="margin-bottom: 28px; border-color: var(--accent); background: rgba(0, 240, 165, 0.05);">
-        <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
-            <div>
-                <div style="font-weight:700; color: var(--accent); margin-bottom:4px;">🎮 Multiplayer Mode</div>
-                <div style="font-size:0.85rem; color:var(--text-secondary);">Create a room and compete with 2-5 players in real-time.</div>
-            </div>
-            <a href="/multiplayer" class="btn btn--primary">Go to Lobby &rarr;</a>
-        </div>
-    </div>
-
-    <button class="btn btn--primary btn--lg" id="start-btn" onclick="startSession()">
-      Start Grinding &rarr;
+    <button class="btn btn--primary btn--lg" id="start-btn" onclick="startSession()" style="width: 100%; font-size: 1.2rem; padding: 16px;">
+      Start Learning &rarr;
     </button>
   </div>
 
-  <!-- How it works -->
-  <div style="margin-top:60px; padding-top:40px; border-top: 1px solid var(--border-subtle);">
-    <h3 style="font-size:0.75rem; text-transform:uppercase; letter-spacing:0.1em; color:var(--text-muted); margin-bottom:24px; font-family:var(--font-mono);">How the grinder works</h3>
-    <div class="how-it-works-grid" style="display:grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap:20px;">
-      <div>
-        <div style="font-size:1.5rem; margin-bottom:8px;">📦</div>
-        <div style="font-weight:600; margin-bottom:4px; font-size:0.95rem;">Batched Questions</div>
-        <div style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">Questions come in small batches of 3–10. Failed questions always appear in the next batch.</div>
-      </div>
-      <div>
-        <div style="font-size:1.5rem; margin-bottom:8px;">🤖</div>
-        <div style="font-weight:600; margin-bottom:4px; font-size:0.95rem;">AI Theory Grading</div>
-        <div style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">Each sub-question is graded separately against your teacher's rubric by an AI examiner.</div>
-      </div>
-      <div>
-        <div style="font-size:1.5rem; margin-bottom:8px;">🔁</div>
-        <div style="font-weight:600; margin-bottom:4px; font-size:0.95rem;">Spaced Repetition</div>
-        <div style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">Questions you fail come back. Questions you master are removed permanently.</div>
-      </div>
-      <div>
-        <div style="font-size:1.5rem; margin-bottom:8px;">🏆</div>
-        <div style="font-weight:600; margin-bottom:4px; font-size:0.95rem;">True Mastery</div>
-        <div style="font-size:0.85rem; color:var(--text-secondary); line-height:1.6;">You only finish when every single question has been answered correctly at least once.</div>
-      </div>
+  <!-- Quick Actions / Stats -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
+    <div class="card" style="text-align: center;">
+      <div style="font-size: 2rem; margin-bottom: 8px;">🔥</div>
+      <div id="stat-streak" style="font-size: 1.5rem; font-weight: 800;">0</div>
+      <div style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase;">Day Streak</div>
+    </div>
+    <div class="card" style="text-align: center;">
+      <div style="font-size: 2rem; margin-bottom: 8px;">🏆</div>
+      <div id="stat-mastered" style="font-size: 1.5rem; font-weight: 800;">0</div>
+      <div style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase;">Mastered</div>
+    </div>
+    <div class="card" style="text-align: center; cursor: pointer;" onclick="window.location.href='/multiplayer'">
+      <div style="font-size: 2rem; margin-bottom: 8px;">👥</div>
+      <div style="font-weight: 700;">Multiplayer</div>
+      <div style="color: var(--text-secondary); font-size: 0.8rem;">Compete with friends</div>
     </div>
   </div>
 
 </div>
+
+<style>
+  .subject-card {
+    min-width: 160px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: 2px solid var(--border-subtle);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+  }
+  .subject-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+  }
+  .subject-card.is-selected {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    box-shadow: 0 0 15px var(--accent-glow);
+  }
+  .subject-card__icon {
+    font-size: 2rem;
+  }
+  .subject-card__name {
+    font-weight: 700;
+    text-align: center;
+    font-size: 0.95rem;
+  }
+  .active-size {
+    background: var(--accent-glow);
+    color: var(--accent);
+  }
+  #subject-list::-webkit-scrollbar {
+    height: 8px;
+  }
+  #subject-list::-webkit-scrollbar-track {
+    background: var(--bg-input);
+    border-radius: 4px;
+  }
+  #subject-list::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 4px;
+  }
+  #subject-list::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+  }
+</style>
 {% endblock %}
 
 {% block scripts %}
 <script type="module">
   import Storage from '/static/js/storage.js';
   import API from '/static/js/api.js';
-  import APP_CONFIG from '/static/js/config.js';
 
+  let allQuestions = [];
+  let selectedSubjects = [];
   let selectedMode = 'both';
   let selectedBatchSize = 5;
-  let selectedTimeLimit = null; // in minutes
-  let allQuestions = null;
-  let selectedSubjects = [];
-  let isRandomizedQuestions = false;
-  let isRandomizedOptions = false;
-
-  // Make functions available globally for onclick handlers
-  window.toggleCbtDelayMarking = toggleCbtDelayMarking;
-      window.selectMode = selectMode;
-  window.selectAllSubjects = selectAllSubjects;
-  window.selectNoneSubjects = selectNoneSubjects;
-  window.startSession = startSession;
-  window.resumeSession = resumeSession;
-  window.clearSession = clearSession;
-  window.updateSubjectSelection = updateSubjectSelection;
-  window.startWeaknessSession = startWeaknessSession;
-  window.toggleRandomizeQuestions = toggleRandomizeQuestions;
-  window.toggleRandomizeOptions = toggleRandomizeOptions;
-  window.toggleLeaderboard = toggleLeaderboard;
-  window.toggleCbtMode = toggleCbtMode;
-  window.toggleAntiCheat = toggleAntiCheat;
-  window.editPlayerName = editPlayerName;
 
   async function init() {
-    // Update nav stats immediately from local storage
-    updateNavDisplay();
-    updatePlayerProfile();
-    loadLeaderboard();
-
-    // Load questions + config
     try {
-      [allQuestions] = await Promise.all([API.getQuestions(), loadServerConfig()]);
-                  populateSubjects();
-    } catch (e) {
-      console.error(e);
-      document.getElementById('subject-list').innerHTML = '<div style="padding:10px; color:var(--fail)">Error loading subjects</div>';
-    }
+      const response = await fetch('/api/questions');
+      allQuestions = await response.json();
 
-    // Check for existing session
-    refreshResumeCard();
-    selectMode(selectedMode);
+      const playerName = Storage.getPlayerName();
+      document.getElementById('player-name-display').textContent = playerName;
 
-    // Update nav stats
-    updateNavDisplay();
-  }
-
-  function updatePlayerProfile() {
-    const nameDisplay = document.getElementById('player-name-display');
-    if (nameDisplay) {
-      const name = Storage.getPlayerName();
-      if (name.toLowerCase() === 'student') {
-        nameDisplay.style.color = 'var(--fail)';
-        nameDisplay.innerHTML = `${name} <span style="font-size:0.7rem; font-weight:400; display:block; color:var(--text-muted)">(Action Required: Change Name)</span>`;
-      } else {
-        nameDisplay.textContent = name;
-        nameDisplay.style.color = 'var(--text-primary)';
-      }
-    }
-  }
-
-  function editPlayerName() {
-    const oldName = Storage.getPlayerName();
-    let newName = prompt('Enter your name for the leaderboard (cannot be "Student"):', oldName.toLowerCase() === 'student' ? '' : oldName);
-
-    if (newName === null) return false; // User cancelled
-
-    newName = newName.trim();
-    if (!newName || newName.toLowerCase() === 'student') {
-      alert('Please enter a valid name that is not "Student".');
-      return editPlayerName();
-    }
-
-    Storage.setPlayerName(newName);
-    updatePlayerProfile();
-    return true;
-  }
-
-  async function loadLeaderboard() {
-    const list = document.getElementById('leaderboard-list');
-    const section = document.getElementById('leaderboard-section');
-    if (!list || !section) return;
-
-    if (!Storage.isLeaderboardEnabled()) {
-        section.style.display = 'none';
-        return;
-    }
-    section.style.display = 'block';
-
-    const cached = Storage.getLeaderboardCache();
-    const needsUpdate = Storage.leaderboardNeedsUpdate();
-
-    if (cached && !needsUpdate) {
-        renderLeaderboard(cached);
-        return;
-    }
-
-    try {
-      const rankings = await API.getLeaderboard();
-      Storage.setLeaderboardCache(rankings);
-      Storage.setLeaderboardNeedsUpdate(false);
-      renderLeaderboard(rankings);
+      populateSubjects();
+      updateGlobalStats();
+      refreshResumeCard();
     } catch (err) {
-      console.error('[Leaderboard] Load failed:', err);
-      if (cached) {
-          renderLeaderboard(cached);
-      } else {
-          list.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--fail);">Failed to load rankings.</div>';
-      }
+      console.error("Failed to load questions:", err);
     }
-  }
-
-  function renderLeaderboard(rankings) {
-    const list = document.getElementById('leaderboard-list');
-    if (!list) return;
-
-    if (!rankings || rankings.length === 0) {
-      list.innerHTML = '<div style="padding: 20px; text-align: center; color: var(--text-muted);">No rankings yet. Start grinding to be the first!</div>';
-      return;
-    }
-
-    list.innerHTML = rankings.map((entry, idx) => {
-        const isYou = entry.userId === Storage.getPlayerUuid();
-        return `
-          <div style="display: flex; align-items: center; justify-content: space-between; padding: 12px 20px; border-bottom: 1px solid var(--border-subtle); ${isYou ? 'background: var(--accent-glow);' : ''}">
-            <div style="display: flex; align-items: center; gap: 16px;">
-              <div style="width: 24px; font-weight: 800; color: ${idx < 3 ? 'var(--accent)' : 'var(--text-muted)'}; font-family: var(--font-mono);">${idx + 1}</div>
-              <div style="font-weight: 600; color: var(--text-primary);">${idx === 0 ? '👑 ' : ''}${entry.userName || 'Anonymous'}${isYou ? ' <span style="font-size:0.7rem; opacity:0.6;">(YOU)</span>' : ''}</div>
-            </div>
-            <div style="font-weight: 800; font-family: var(--font-mono); color: var(--accent);">${entry.value} <span style="font-size: 0.7rem; font-weight: 400; color: var(--text-muted);">MASTERED</span></div>
-          </div>
-        `;
-      }).join('');
-  }
-
-  async function loadServerConfig() {
-    try {
-      const cfg = await API.getConfig();
-      if (!cfg.has_api_key) {
-        document.getElementById('api-warning').classList.remove('hidden');
-      }
-      APP_CONFIG.PASS_THRESHOLD = cfg.pass_threshold || 0.5;
-    } catch {}
-  }
-
-  function updateNavDisplay() {
-    const summary = Storage.getSessionSummary();
-    const navMastered = document.getElementById('nav-mastered');
-    const navFailed = document.getElementById('nav-failed');
-    const navUnseen = document.getElementById('nav-unseen');
-    const navStreak = document.getElementById('nav-streak');
-
-    if (navMastered) navMastered.textContent = summary.stats.mastered;
-    if (navFailed) navFailed.textContent = summary.failed_obj + summary.failed_theory;
-    if (navUnseen) navUnseen.textContent = summary.unseen_obj + summary.unseen_theory;
-    if (navStreak) navStreak.textContent = Storage.getStreak();
-
-    updateWeakTopics();
-  }
-
-  function updateWeakTopics() {
-    const section = document.getElementById('weak-topics-section');
-    const grid = document.getElementById('weak-topics-grid');
-    if (!section || !grid) return;
-
-    const stats = Storage.getStats();
-    if (!stats.topic_stats || Object.keys(stats.topic_stats).length === 0) {
-      section.style.display = 'none';
-      return;
-    }
-
-    const topics = Object.entries(stats.topic_stats)
-      .map(([name, s]) => ({
-        name,
-        successRate: s.total > 0 ? (s.correct / s.total) * 100 : 0,
-        total: s.total
-      }))
-      .filter(t => t.total > 0)
-      .sort((a, b) => a.successRate - b.successRate)
-      .slice(0, 3);
-
-    if (topics.length === 0) {
-      section.style.display = 'none';
-      return;
-    }
-
-    section.style.display = 'block';
-    grid.innerHTML = topics.map(t => {
-      const escapedTopic = t.name.replace(/'/g, "\\'");
-      return `
-      <div class="card" style="border-left: 4px solid ${t.successRate < 50 ? 'var(--fail)' : 'var(--accent)'};">
-        <div style="display:flex; justify-content:space-between; align-items:flex-start; margin-bottom:12px;">
-          <div>
-            <div style="font-weight:700; margin-bottom:2px;">${t.name}</div>
-            <div style="font-size:0.8rem; color:var(--text-muted);">${Math.round(t.successRate)}% Success rate</div>
-          </div>
-          <button class="btn btn--ghost btn--sm" onclick="startWeaknessSession('${escapedTopic}')">Focus ➔</button>
-        </div>
-        <div style="height:6px; background:var(--border-subtle); border-radius:3px; overflow:hidden;">
-          <div style="height:100%; width:${t.successRate}%; background:${t.successRate < 50 ? 'var(--fail)' : 'var(--accent)'}; transition:width 0.5s ease-out;"></div>
-        </div>
-      </div>
-    `;
-    }).join('');
-  }
-
-  function selectAllSubjects() {
-    document.querySelectorAll('.subject-checkbox').forEach(cb => cb.checked = true);
-    updateSubjectSelection();
-  }
-
-  function selectNoneSubjects() {
-    document.querySelectorAll('.subject-checkbox').forEach(cb => cb.checked = false);
-    updateSubjectSelection();
   }
 
   function populateSubjects() {
@@ -527,184 +215,88 @@
 
     allQuestions.forEach((s, idx) => {
       const isChecked = lastList.includes(s.subject) || (lastList.length === 0 && idx === 0);
-      const stats = Storage.getStats(s.subject);
-      const totalQ = (s.obj?.length || 0) + (s.theory?.length || 0);
-      const masteryPct = totalQ > 0 ? Math.round((stats.mastered / totalQ) * 100) : 0;
 
-      const item = document.createElement('label');
-      item.className = 'subject-item';
+      const card = document.createElement('div');
+      card.className = `card subject-card ${isChecked ? 'is-selected' : ''}`;
+      card.dataset.index = idx;
+      card.onclick = () => toggleSubject(card, idx);
 
-      item.innerHTML = `
-        <div style="display: flex; align-items: center; gap: 12px; flex: 1;">
-          <input type="checkbox" class="subject-checkbox" value="${idx}" ${isChecked ? 'checked' : ''} onchange="updateSubjectSelection()" style="width:18px; height:18px; accent-color:var(--accent);">
-          <div class="subject-info" style="flex: 1;">
-            <span class="subject-name">${s.subject}</span>
-            <span class="subject-meta" style="display: block; margin-bottom: 4px;">${s.obj?.length || 0} OBJ • ${s.theory?.length || 0} Theory</span>
-            <div class="subject-progress-mini" style="width: 100%; height: 6px; max-width: 100px; background: var(--bg-input); border: 1px solid var(--border-subtle); border-radius: 3px; overflow: hidden;" aria-hidden="true">
-              <div class="subject-progress-mini__fill" style="width: ${masteryPct}%; height: 100%; background-color: ${masteryPct === 100 ? 'var(--pass)' : 'var(--accent)'}; transition: width 0.3s ease;"></div>
-            </div>
-          </div>
-        </div>
-        <div style="text-align: right; min-width: 60px; margin-left: 8px;" aria-label="${masteryPct}% Mastered">
-          <div style="font-size: 0.75rem; font-weight: 700; color: ${masteryPct === 100 ? 'var(--pass)' : 'var(--accent)'}" aria-hidden="true">${masteryPct}%</div>
-          <div style="font-size: 0.6rem; color: var(--text-muted); text-transform: uppercase;" aria-hidden="true">Mastery</div>
-        </div>
+      const icons = {
+        'Mathematics': '📐',
+        'Physics': '⚛️',
+        'Biology': '🧬',
+        'Chemistry': '🧪',
+        'English': '📚',
+        'Economics': '📈',
+        'History': '📜',
+        'Government': '🏛️'
+      };
+      const icon = icons[s.subject] || '📖';
+
+      card.innerHTML = `
+        <div class="subject-card__icon">${icon}</div>
+        <div class="subject-card__name">${s.subject}</div>
       `;
-      list.appendChild(item);
+      list.appendChild(card);
     });
 
     updateSubjectSelection();
   }
 
+  function toggleSubject(card, idx) {
+    card.classList.toggle('is-selected');
+    updateSubjectSelection();
+  }
+
+  function selectAllSubjects() {
+    document.querySelectorAll('.subject-card').forEach(c => c.classList.add('is-selected'));
+    updateSubjectSelection();
+  }
+
+  function selectNoneSubjects() {
+    document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('is-selected'));
+    updateSubjectSelection();
+  }
+
   function updateSubjectSelection() {
-    const checkboxes = document.querySelectorAll('.subject-checkbox');
-    checkboxes.forEach(cb => {
-        const item = cb.closest('.subject-item');
-        if (item) {
-            if (cb.checked) item.classList.add('is-selected');
-            else item.classList.remove('is-selected');
-        }
-    });
+    const selectedCards = document.querySelectorAll('.subject-card.is-selected');
+    selectedSubjects = Array.from(selectedCards).map(c => allQuestions[parseInt(c.dataset.index)]);
 
-    const checked = Array.from(document.querySelectorAll('.subject-checkbox:checked')).map(cb => allQuestions[parseInt(cb.value)]);
-    selectedSubjects = checked;
-
-    if (selectedSubjects.length === 0) {
-      document.getElementById('subject-card').style.display = 'none';
-      document.getElementById('start-btn').disabled = true;
-      updateStartBtnText();
-      return;
-    }
-
-    document.getElementById('start-btn').disabled = false;
-    document.getElementById('subject-card').style.display = 'block';
-
-    if (selectedSubjects.length === 1) {
-      document.getElementById('subject-name').textContent = selectedSubjects[0].subject;
-    } else {
-      document.getElementById('subject-name').textContent = `${selectedSubjects.length} Subjects Merged`;
-    }
-
-    const totalObj = selectedSubjects.reduce((acc, s) => acc + (s.obj || []).length, 0);
-    const totalTheory = selectedSubjects.reduce((acc, s) => acc + (s.theory || []).length, 0);
-
-    document.getElementById('obj-count').textContent = totalObj;
-    document.getElementById('theory-count').textContent = totalTheory;
-
-    // Show/Hide Review Mode based on mastered count
-    const totalMastered = selectedSubjects.reduce((acc, s) => {
-        const stats = Storage.getStats(s.subject);
-        return acc + (stats.mastered || 0);
-    }, 0);
-
-    const reviewCard = document.getElementById('review-mode-card');
-    if (totalMastered > 0) {
-        reviewCard.style.display = 'block';
-    } else {
-        reviewCard.style.display = 'none';
-        if (selectedMode === 'review') selectMode('both');
-    }
-
-    // Refresh resume card
-    refreshResumeCard();
-    updateNavDisplay();
-    // Initialize toggles from storage
-    initToggles();
+    updateFilters();
     updateStartBtnText();
   }
 
-  function initToggles() {
-    // We don't persist these across refreshes intentionally as per memory,
-    // but we should ensure they match the local variables.
-    updateToggleUI('random-questions', isRandomizedQuestions);
-    updateToggleUI('random-options', isRandomizedOptions);
-    updateToggleUI('leaderboard', Storage.isLeaderboardEnabled());
-    updateToggleUI('cbt', Storage.isCbtMode());
-    updateToggleUI('exam-mode', Storage.isCbtDelayMarking());
-    updateToggleUI('anti-cheat', Storage.isAntiCheatEnabled());
-    document.getElementById('exam-mode-config-card').style.display = Storage.isCbtMode() ? 'block' : 'none';
-  }
+  function updateFilters() {
+    const topicDatalist = document.getElementById('topics-datalist');
+    const yearSelect = document.getElementById('year-select');
 
-  function updateToggleUI(prefix, state) {
-    const card = document.getElementById(`${prefix}-config-card`);
-    const badge = document.getElementById(`${prefix}-status-badge`);
-    if (!card || !badge) return;
+    const topics = new Set();
+    const years = new Set();
 
-    if (state) {
-      card.style.borderColor = 'var(--accent)';
-      card.style.opacity = '1';
-      badge.textContent = 'ON';
-      badge.className = 'badge badge--accent';
-      card.setAttribute('aria-pressed', 'true');
-    } else {
-      card.style.borderColor = 'var(--border-subtle)';
-      card.style.opacity = '0.7';
-      badge.textContent = 'OFF';
-      badge.className = 'badge badge--neutral';
-      card.setAttribute('aria-pressed', 'false');
-    }
-  }
+    selectedSubjects.forEach(s => {
+      const pool = [...(s.obj || []), ...(s.theory || [])];
+      pool.forEach(q => {
+        if (q.topic) topics.add(q.topic);
+        if (q.year) years.add(q.year);
+      });
+    });
 
-  function toggleRandomizeQuestions() {
-    isRandomizedQuestions = !isRandomizedQuestions;
-    updateToggleUI('random-questions', isRandomizedQuestions);
-  }
+    topicDatalist.innerHTML = '';
+    topics.forEach(t => {
+      const opt = document.createElement('option');
+      opt.value = t;
+      topicDatalist.appendChild(opt);
+    });
 
-  function toggleRandomizeOptions() {
-    isRandomizedOptions = !isRandomizedOptions;
-    updateToggleUI('random-options', isRandomizedOptions);
-  }
-
-
-  function toggleCbtMode() {
-    const newState = !Storage.isCbtMode();
-    Storage.setCbtMode(newState);
-    updateToggleUI('cbt', newState);
-    document.getElementById('exam-mode-config-card').style.display = newState ? 'block' : 'none';
-  }
-
-  function toggleCbtDelayMarking() {
-    const newState = !Storage.isCbtDelayMarking();
-    Storage.setCbtDelayMarking(newState);
-    updateToggleUI('exam-mode', newState);
-  }
-
-  function toggleAntiCheat() {
-    const newState = !Storage.isAntiCheatEnabled();
-    Storage.setAntiCheatEnabled(newState);
-    updateToggleUI('anti-cheat', newState);
-  }
-
-  function toggleLeaderboard() {
-    const newState = !Storage.isLeaderboardEnabled();
-    Storage.setLeaderboardEnabled(newState);
-    updateToggleUI('leaderboard', newState);
-    loadLeaderboard();
-  }
-
-  function trackCustomBatch() {
-    Storage._set('wg_custom_batch_used', true);
-    Storage.incrementSystemStat('custom_batch_starts');
-  }
-
-  function refreshResumeCard() {
-    const resumeCard = document.getElementById('resume-card');
-    const currentActiveSubject = Storage.getSubject();
-
-    // For now, only show resume if the exact set of subjects matches or if it's a single subject
-    // Actually, let's keep it simple: if there's any session, show it.
-    if (Storage.hasExistingSession()) {
-      const summary = Storage.getSessionSummary();
-      const total = summary.unseen_obj + summary.unseen_theory + summary.failed_obj + summary.failed_theory;
-      if (total > 0) {
-        const desc = document.getElementById('resume-desc');
-        resumeCard.style.display = 'block';
-        const subDisplay = Array.isArray(summary.subject) ? `${summary.subject.length} subjects` : summary.subject;
-        desc.textContent = `Subject: ${subDisplay} | ${summary.failed_obj + summary.failed_theory} failed, ${summary.unseen_obj + summary.unseen_theory} unseen, ${summary.stats.mastered} mastered.`;
-        return;
-      }
-    }
-    resumeCard.style.display = 'none';
+    const currentYear = yearSelect.value;
+    yearSelect.innerHTML = '<option value="ALL">ALL Years</option>';
+    Array.from(years).sort().reverse().forEach(y => {
+      const opt = document.createElement('option');
+      opt.value = y;
+      opt.textContent = y;
+      yearSelect.appendChild(opt);
+    });
+    if (years.has(currentYear)) yearSelect.value = currentYear;
   }
 
   function selectMode(mode) {
@@ -713,199 +305,101 @@
       c.classList.remove('selected-mode');
       c.style.borderColor = 'var(--border-subtle)';
       c.style.background = '';
-      c.setAttribute('aria-checked', 'false');
     });
     const active = document.querySelector(`.mode-card[data-mode="${mode}"]`);
-    if (active) {
-      active.classList.add('selected-mode');
-      active.style.borderColor = 'var(--accent)';
-      active.style.background = 'var(--accent-glow)';
-      active.setAttribute('aria-checked', 'true');
-    }
-
+    active.classList.add('selected-mode');
+    active.style.borderColor = 'var(--accent)';
+    active.style.background = 'var(--accent-glow)';
     updateStartBtnText();
   }
 
   function updateStartBtnText() {
-    const startBtn = document.getElementById('start-btn');
-    if (!startBtn) return;
-
+    const btn = document.getElementById('start-btn');
     if (selectedSubjects.length === 0) {
-        startBtn.textContent = 'Select Subjects to Start';
-        return;
-    }
-
-    if (selectedMode === 'review') {
-        startBtn.textContent = 'Start Reviewing \u2192';
+      btn.textContent = 'Select a Subject to Start';
+      btn.disabled = true;
     } else {
-        startBtn.textContent = `Start Grinding (Batch of ${selectedBatchSize}) \u2192`;
+      btn.textContent = 'Start Learning \u2192';
+      btn.disabled = false;
     }
   }
 
-  async function startSession() {
-    if (Storage.getPlayerName().toLowerCase() === 'student') {
-      if (!editPlayerName()) return;
+  window.editPlayerName = function() {
+    const name = prompt("Enter your name:", Storage.getPlayerName());
+    if (name) {
+      Storage.setPlayerName(name);
+      document.getElementById('player-name-display').textContent = name;
     }
+  }
 
-    if (selectedSubjects.length === 0) {
-      alert('Please select at least one subject.');
-      return;
-    }
+  window.startSession = function() {
+    const topic = document.getElementById('topic-search').value;
+    const year = document.getElementById('year-select').value;
 
-    const btn = document.getElementById('start-btn');
-    btn.disabled = true;
-    btn.textContent = 'Building session...';
-
-    // Ensure we start with a fresh batch for the new session
     Storage.clearBatch();
-    Storage.clearTimer();
-    Storage.setRandomizedQuestions(isRandomizedQuestions);
-    Storage.setRandomizedOptions(isRandomizedOptions);
-
-    if (selectedTimeLimit) {
-      Storage.setTimeLimit(selectedTimeLimit);
-    } else {
-      Storage.clearTimer();
-    }
+    Storage.setFocusTopic(topic || null);
+    Storage.setFocusYear(year);
     Storage.setBatchSize(selectedBatchSize);
-
-    Storage.setFocusTopic(null);
-    Storage._set('wg_custom_batch_used', false);
-    if (document.getElementById('custom-batch-size').value) {
-        trackCustomBatch();
-    }
-
     Storage.initSession(selectedSubjects, selectedMode);
-    selectedSubjects.forEach(sub => Storage.trackSubjectStarted(sub.subject));
 
-    // If all already done, soft-reset (except for review mode)
-    if (selectedMode !== "review" && Storage.isAllDone(selectedMode)) {
-      Storage.softReset(selectedSubjects, selectedMode);
-    }
-
-    // Navigate to study page
     window.location.href = `/study?mode=${selectedMode}`;
   }
 
-  function resumeSession() {
+  window.clearSession = function() {
+    if (confirm("Clear session progress?")) {
+      Storage.clearCurrentSession();
+      location.reload();
+    }
+  }
+
+  window.resumeSession = function() {
     const mode = Storage.getMode();
     window.location.href = `/study?mode=${mode}`;
   }
 
-  function startWeaknessSession(topic) {
-    if (Storage.getPlayerName().toLowerCase() === 'student') {
-      if (!editPlayerName()) return;
-    }
-    if (selectedSubjects.length === 0) return;
-    Storage.clearBatch();
-    Storage.setFocusTopic(topic);
-    Storage.incrementSystemStat('weakness_starts');
-    // Focus topic sessions usually happen on a single subject but here we use whatever is selected
-    Storage.initSession(selectedSubjects, 'both');
-    window.location.href = '/study?mode=both';
+  function updateGlobalStats() {
+    const counts = Storage.getQuickCounts();
+    document.getElementById('stat-streak').textContent = counts.streak;
+    document.getElementById('stat-mastered').textContent = counts.mastered;
   }
 
-  function clearSession() {
-    const summary = Storage.getSessionSummary();
-    const subjectsToClear = Array.isArray(summary.subject) ? summary.subject : [summary.subject];
-    const subjectDisplay = subjectsToClear.length === 1 ? subjectsToClear[0] : `${subjectsToClear.length} subjects`;
-
-    if (confirm(`This will clear all your progress for ${subjectDisplay}. Are you sure?`)) {
-      subjectsToClear.forEach(s => Storage.clearSubjectProgress(s));
-      populateSubjects();
-      refreshResumeCard();
-      updateNavDisplay();
+  function refreshResumeCard() {
+    if (Storage.hasExistingSession()) {
+      const summary = Storage.getSessionSummary();
+      const total = summary.unseen_obj + summary.unseen_theory + summary.failed_obj + summary.failed_theory;
+      if (total > 0) {
+        document.getElementById('resume-card').style.display = 'block';
+        document.getElementById('resume-desc').textContent = `You have ${total} questions remaining in your ${summary.mode} session.`;
+      }
     }
   }
 
-  // Batch size buttons
+  // Batch size logic
   document.querySelectorAll('.batch-size-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
+    btn.onclick = () => {
       document.querySelectorAll('.batch-size-btn').forEach(b => {
         b.classList.remove('active-size');
-        b.setAttribute('aria-pressed', 'false');
+        b.style.borderColor = 'var(--border-subtle)';
+        b.style.background = '';
       });
       btn.classList.add('active-size');
-      btn.setAttribute('aria-pressed', 'true');
+      btn.style.borderColor = 'var(--accent)';
       selectedBatchSize = parseInt(btn.dataset.size);
       document.getElementById('custom-batch-size').value = '';
-      document.getElementById('batch-config-card').style.borderColor = 'var(--accent)';
-      document.getElementById('batch-config-card').style.opacity = '1';
-      updateStartBtnText();
-    });
+    };
   });
 
-  document.getElementById('custom-batch-size').addEventListener('input', (e) => {
+  document.getElementById('custom-batch-size').oninput = (e) => {
     const val = parseInt(e.target.value);
     if (val > 0) {
       selectedBatchSize = val;
       document.querySelectorAll('.batch-size-btn').forEach(b => {
         b.classList.remove('active-size');
-        b.setAttribute('aria-pressed', 'false');
+        b.style.borderColor = 'var(--border-subtle)';
+        b.style.background = '';
       });
-      document.getElementById('batch-config-card').style.borderColor = 'var(--accent)';
-      document.getElementById('batch-config-card').style.opacity = '1';
-    } else {
-      // Revert to default 5 if cleared
-      selectedBatchSize = 5;
-      document.querySelectorAll('.batch-size-btn').forEach(b => {
-        b.classList.remove('active-size');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      const defaultBtn = document.querySelector('.batch-size-btn[data-size="5"]');
-      defaultBtn.classList.add('active-size');
-      defaultBtn.setAttribute('aria-pressed', 'true');
     }
-    updateStartBtnText();
-  });
-
-  // Timed session buttons
-  document.querySelectorAll('.timed-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      if (btn.classList.contains('active-size')) {
-        // Toggle off
-        btn.classList.remove('active-size');
-        btn.setAttribute('aria-pressed', 'false');
-        selectedTimeLimit = null;
-        document.getElementById('timed-config-card').style.borderColor = 'var(--border-subtle)';
-        document.getElementById('timed-config-card').style.opacity = '0.7';
-        return;
-      }
-
-      document.querySelectorAll('.timed-btn').forEach(b => {
-        b.classList.remove('active-size');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      btn.classList.add('active-size');
-      btn.setAttribute('aria-pressed', 'true');
-      selectedTimeLimit = parseInt(btn.dataset.time);
-      document.getElementById('custom-time-limit').value = '';
-      document.getElementById('timed-config-card').style.borderColor = 'var(--accent)';
-      document.getElementById('timed-config-card').style.opacity = '1';
-    });
-  });
-
-  document.getElementById('custom-time-limit').addEventListener('input', (e) => {
-    const val = parseInt(e.target.value);
-    if (val > 0) {
-      selectedTimeLimit = val;
-      document.querySelectorAll('.timed-btn').forEach(b => {
-        b.classList.remove('active-size');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      document.getElementById('timed-config-card').style.borderColor = 'var(--accent)';
-      document.getElementById('timed-config-card').style.opacity = '1';
-    } else {
-      selectedTimeLimit = null;
-      document.querySelectorAll('.timed-btn').forEach(b => {
-        b.classList.remove('active-size');
-        b.setAttribute('aria-pressed', 'false');
-      });
-      document.getElementById('timed-config-card').style.borderColor = 'var(--border-subtle)';
-      document.getElementById('timed-config-card').style.opacity = '0.7';
-    }
-  });
-
+  };
 
   init();
 </script>
