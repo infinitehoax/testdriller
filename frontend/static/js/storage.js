@@ -142,6 +142,7 @@ const Storage = {
     if (!subject) return;
 
     let isFullyMastered = false;
+    let topicNewlyMastered = false;
 
     Storage.updateSubjectData(subject, (data) => {
       // 1. Initialize stats if missing
@@ -189,6 +190,22 @@ const Storage = {
       if (remaining === 0) {
         isFullyMastered = true;
       }
+
+      // 8. Check for topic completion
+      if (passed && q.topic) {
+        if (!data.stats.mastered_topics) data.stats.mastered_topics = [];
+        if (!data.stats.mastered_topics.includes(q.topic)) {
+          const remainingInTopic =
+            (data.unseen_obj || []).filter(x => x.topic === q.topic).length +
+            (data.unseen_theory || []).filter(x => x.topic === q.topic).length +
+            (data.failed_obj || []).filter(x => x.topic === q.topic).length +
+            (data.failed_theory || []).filter(x => x.topic === q.topic).length;
+          if (remainingInTopic === 0) {
+            data.stats.mastered_topics.push(q.topic);
+            topicNewlyMastered = true;
+          }
+        }
+      }
     });
 
     // Handle cross-key updates and achievement tracking outside the atomic subject write
@@ -201,11 +218,10 @@ const Storage = {
     } else {
       Storage.trackQuestionFail(q.id, subject);
     }
+
+    return { topicMastered: topicNewlyMastered, topicName: q.topic };
   },
 
-  /**
-   * Atomically removes multiple questions from unseen queues of their respective subjects.
-   */
   drainBatchFromUnseen(batch) {
     const bySubject = {};
     batch.forEach(q => {
