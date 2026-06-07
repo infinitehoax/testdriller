@@ -844,6 +844,218 @@
         "explanation": "Earthworms, crayfish, and centipedes are segmented. Tapeworms have 'proglottids' (pseudo-segmentation). In past UNIPORT marking schemes, Shark (which lacks metameric segmentation entirely) is often the accepted odd-one-out for vertebrates."
       },
       {
+        "id": "obj_2015_001",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "In mammals, the function of the sebaceous gland is to:",
+        "options": {
+          "A": "Produce sweat",
+          "B": "Secrete sodium",
+          "C": "Secrete water",
+          "D": "Produce an oil substance"
+        },
+        "correct_option": "D",
+        "explanation": "Sebaceous glands are microscopic exocrine glands in the skin that secrete sebum, an oily/waxy substance that lubricates and waterproofs the skin and hair."
+      },
+      {
+        "id": "obj_2015_002",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "Movement and positions of the head in man are detected by the:",
+        "options": {
+          "A": "Cochlea",
+          "B": "Malleus",
+          "C": "Utriculus",
+          "D": "Semicircular canals"
+        },
+        "correct_option": "D",
+        "explanation": "The semicircular canals are three fluid-filled loops in the inner ear that contain hair cells to detect rotational movements and positions of the head."
+      },
+      {
+        "id": "obj_2015_003",
+        "year": "2015",
+        "topic": "Form and Function in Plants: Reproduction and Germination",
+        "question": "The maize grain is a fruit and not a seed because it:",
+        "options": {
+          "A": "Has a large endosperm",
+          "B": "Is formed from an ovary",
+          "C": "Is a monocotyledon",
+          "D": "Has no plumule and radicle"
+        },
+        "correct_option": "B",
+        "explanation": "Maize grains are caryopses (dry, one-seeded fruits) because they develop from a fertilized ovary, and their outer wall (pericarp) is fused with the seed coat (testa)."
+      },
+      {
+        "id": "obj_2015_004",
+        "year": "2015",
+        "topic": "Evolution and Genetics: Genetics and Heredity",
+        "question": "The characters by which an organism is recognized are termed its:",
+        "options": {
+          "A": "Phenotype",
+          "B": "Genotype",
+          "C": "Morphology",
+          "D": "Anatomy"
+        },
+        "correct_option": "A",
+        "explanation": "The phenotype is the set of observable physical or structural characteristics of an organism, resulting from the interaction of its genotype with the environment."
+      },
+      {
+        "id": "obj_2015_005",
+        "year": "2015",
+        "topic": "Form and Function in Plants: Reproduction and Germination",
+        "question": "Germination which results in the cotyledons being brought above ground is called:",
+        "options": {
+          "A": "Hypocotyls",
+          "B": "Epicotyls",
+          "C": "Epigeal",
+          "D": "Hypogeal"
+        },
+        "correct_option": "C",
+        "explanation": "In epigeal germination, the hypocotyl elongates rapidly and arches, pulling the cotyledons upward out of the soil and into the light."
+      },
+      {
+        "id": "obj_2015_006",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Nervous System",
+        "question": "In a mammal, stimulus is transferred from the receptor muscle to the central nervous system through the:",
+        "options": {
+          "A": "Motor neurons",
+          "B": "Effector muscle",
+          "C": "Dendrites",
+          "D": "Sensory neurons"
+        },
+        "correct_option": "D",
+        "explanation": "Sensory (or afferent) neurons are specialized nerve cells that carry sensory information from the peripheral receptors toward the central nervous system."
+      },
+      {
+        "id": "obj_2015_007",
+        "year": "2015",
+        "topic": "Ecology and Environmental Biology: Food Chains and Energy Flow",
+        "question": "Which of the following food chains represents the correct sequence?",
+        "options": {
+          "A": "Weeds -> tadpoles -> beetles -> fish -> man",
+          "B": "Weeds -> tadpoles -> fish -> beetles -> man",
+          "C": "Tadpoles -> beetles -> weeds -> man -> fish",
+          "D": "Man -> fish -> beetles -> tadpoles -> weeds"
+        },
+        "correct_option": "A",
+        "explanation": "This food chain correctly tracks the flow of energy: Producer (Weeds) -> Primary Consumer (Tadpoles) -> Secondary Consumer (Beetles) -> Tertiary Consumer (Fish) -> Quaternary Consumer (Man)."
+      },
+      {
+        "id": "obj_2015_008",
+        "year": "2015",
+        "topic": "Microorganisms and Public Health: Pathogens and Vectors",
+        "question": "The primary and secondary hosts respectively of bilharzias are:",
+        "options": {
+          "A": "Fish and man",
+          "B": "Man and dog",
+          "C": "Snail and man",
+          "D": "Man and snail"
+        },
+        "correct_option": "D",
+        "explanation": "The human blood fluke (Schistosoma) uses humans (man) as the primary host where sexual reproduction occurs, and aquatic snails as the secondary host where asexual multiplication takes place."
+      },
+      {
+        "id": "obj_2015_009",
+        "year": "2015",
+        "topic": "Agricultural Biology: Soil Science",
+        "question": "The origin of mineral particles in the soil is:",
+        "options": {
+          "A": "Humus",
+          "B": "Water",
+          "C": "Micro-organisms",
+          "D": "Weathered rock"
+        },
+        "correct_option": "D",
+        "explanation": "Soil minerals are inorganic components that originate from the mechanical and chemical weathering of underlying parent rocks. (Note: The original UNIPORT past question printed 'seed' instead of 'soil')."
+      },
+      {
+        "id": "obj_2015_010",
+        "year": "2015",
+        "topic": "Agricultural Biology: Soil Science",
+        "question": "The initial volume of water poured into a bag of dry soil was 50ml and the amount that drained through was 35ml. The percentage water content of the fully soaked soil is therefore:",
+        "options": {
+          "A": "46.7%",
+          "B": "25.0%",
+          "C": "20.0%",
+          "D": "30.0%"
+        },
+        "correct_option": "D",
+        "explanation": "The volume of water retained is 15ml (50ml - 35ml). The percentage water content is (15 / 50) x 100 = 30%."
+      },
+      {
+        "id": "obj_2015_011",
+        "year": "2015",
+        "topic": "Evolution and Genetics: Evolution and Mutation",
+        "question": "From the following list of types of mutation, identify the one that is NOT hereditary:",
+        "options": {
+          "A": "Germinal mutation",
+          "B": "Somatic mutation",
+          "C": "Genetic mutation",
+          "D": "Chromosomal mutation"
+        },
+        "correct_option": "B",
+        "explanation": "Somatic mutations occur in non-reproductive body cells and are not passed down to future generations. Germinal mutations happen in reproductive gametes and are highly hereditary."
+      },
+      {
+        "id": "obj_2015_012",
+        "year": "2015",
+        "topic": "Cell Biology: Cell Structure and Organelles",
+        "question": "In a cell, digestive enzymes mostly occur in:",
+        "options": {
+          "A": "Ribosomes",
+          "B": "Lysosomes",
+          "C": "Mitochondria",
+          "D": "Plastids"
+        },
+        "correct_option": "B",
+        "explanation": "Lysosomes act as the digestive compartments of cells, housing specialized acidic, hydrolytic enzymes that break down macromolecules, old organelles, and waste."
+      },
+      {
+        "id": "obj_2015_013",
+        "year": "2015",
+        "topic": "Ecology and Environmental Biology: Biomes and Habitats",
+        "question": "Which of the following habitats supports the highest diversity of living species?",
+        "options": {
+          "A": "Tropical rain forests",
+          "B": "Savannah grassland",
+          "C": "Desert",
+          "D": "Tropical forests"
+        },
+        "correct_option": "A",
+        "explanation": "Tropical rainforests are terrestrial hotspots of biodiversity, supporting over 50% of the world's plant and animal species due to rich ecological stratification, warmth, and rainfall."
+      },
+      {
+        "id": "obj_2015_014",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "Lack of protein in the diet of children manifests easily because:",
+        "options": {
+          "A": "Children do not store up protein efficiently",
+          "B": "It is difficult for children to chew meat",
+          "C": "Protein supplies energy to the body",
+          "D": "Protein is responsible for growth and repairs"
+        },
+        "correct_option": "D",
+        "explanation": "Proteins are structurally vital for physiological growth, cellular division, and tissue repair. Because children are actively growing, protein deficiencies immediately halt growth, manifesting quickly as Kwashiorkor."
+      },
+      {
+        "id": "obj_2015_015",
+        "year": "2015",
+        "topic": "Form and Function in Plants: Plant Growth and Responses",
+        "question": "The growth response of a plant to a light gradient is known as:",
+        "options": {
+          "A": "Mastic movement",
+          "B": "Geotropism",
+          "C": "Hydrotropism",
+          "D": "Phototropism"
+        },
+        "correct_option": "D",
+        "explanation": "Phototropism is the directional growth of plants towards a source of light, driven primarily by light-induced auxin redistribution."
+      }
+    ]
+  }
+]
         "id": "obj_2014_011",
         "year": "2014",
         "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
