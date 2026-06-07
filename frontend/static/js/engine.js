@@ -188,9 +188,9 @@ const Engine = {
   markObjResult(q, passed) {
     q._passed = passed;
     // Review mode is low-stakes: no stats or queue changes
-    if (q._is_review || Storage.getMode() === 'review' || q._is_multiplayer) return;
+    if (q._is_review || Storage.getMode() === 'review' || q._is_multiplayer) return null;
 
-    Storage.recordQuestionResult(q, passed);
+    return Storage.recordQuestionResult(q, passed);
   },
 
   /**
@@ -204,11 +204,11 @@ const Engine = {
     const passed = pct >= APP_CONFIG.PASS_THRESHOLD;
     q._passed = passed;
 
-    if (q._is_review || Storage.getMode() === 'review' || q._is_multiplayer) return passed;
+    if (q._is_review || Storage.getMode() === 'review' || q._is_multiplayer) return { passed, topicResult: null };
 
-    Storage.recordQuestionResult(q, passed);
+    const topicResult = Storage.recordQuestionResult(q, passed);
 
-    return passed;
+    return { passed, topicResult };
   },
 
   /**
@@ -247,8 +247,8 @@ const Engine = {
       maxScore += res.max_marks;
     });
 
-    const passed = this.markTheoryResult(q, totalScore, maxScore);
-    return { totalScore, maxScore, passed };
+    const { passed, topicResult } = this.markTheoryResult(q, totalScore, maxScore);
+    return { totalScore, maxScore, passed, topicResult };
   },
 };
 

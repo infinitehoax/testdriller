@@ -521,7 +521,10 @@ const UI = {
     }
 
     // Record result
-    Engine.markObjResult(q, passed);
+    const topicResult = Engine.markObjResult(q, passed);
+    if (topicResult && topicResult.topicMastered) {
+      this.showTopicMasteredModal(topicResult.topicName);
+    }
     q._status = 'answered';
     Storage.saveBatch(this.batch);
 
@@ -611,7 +614,8 @@ const UI = {
     try {
       q._status = 'answered';
     Storage.saveBatch(this.batch);
-    ({ totalScore, maxScore, passed } = await Engine.gradeTheoryQuestion(
+    let topicResult;
+    ({ totalScore, maxScore, passed, topicResult } = await Engine.gradeTheoryQuestion(
         q,
         answers,
         (subId, result) => {
@@ -727,6 +731,9 @@ const UI = {
     Storage.saveBatch(this.batch);
 
     updateNavStats();
+    if (topicResult && topicResult.topicMastered) {
+      this.showTopicMasteredModal(topicResult.topicName);
+    }
     this._gradingActive = false;
 
     const nextBtn = document.getElementById('next-btn');
@@ -1361,6 +1368,46 @@ const UI = {
     }
   },
 
+  showTopicMasteredModal(topicName) {
+    // Create modal if it doesn't exist
+    let modal = document.getElementById('topic-mastered-modal');
+    if (!modal) {
+      modal = document.createElement('div');
+      modal.id = 'topic-mastered-modal';
+      modal.className = 'modal';
+      modal.innerHTML = `
+        <div class="modal__content card animate-bounce-in" style="text-align: center; max-width: 400px; padding: 40px;">
+          <div style="font-size: 4rem; margin-bottom: 20px;">🎉</div>
+          <h2 style="margin-bottom: 12px; color: var(--accent);">Topic Mastered!</h2>
+          <p style="margin-bottom: 24px; line-height: 1.6;">
+            Excellent work! You have mastered all questions in:<br>
+            <strong style="font-size: 1.2rem;">${topicName}</strong>
+          </p>
+          <button class="btn btn--primary btn--lg" onclick="UI.closeTopicMasteredModal()">Keep Going</button>
+        </div>
+      `;
+      document.body.appendChild(modal);
+    } else {
+      modal.querySelector('strong').textContent = topicName;
+    }
+
+    modal.classList.add('visible');
+    document.body.style.overflow = 'hidden';
+
+    // Auto-close after 5 seconds
+    if (this._topicModalTimeout) clearTimeout(this._topicModalTimeout);
+    this._topicModalTimeout = setTimeout(() => this.closeTopicMasteredModal(), 5000);
+  },
+
+  closeTopicMasteredModal() {
+    const modal = document.getElementById('topic-mastered-modal');
+    if (modal) {
+      modal.classList.remove('visible');
+      document.body.style.overflow = '';
+    }
+    if (this._topicModalTimeout) clearTimeout(this._topicModalTimeout);
+  },
+
   closeExplanationModal() {
     const modal = document.getElementById('explanation-modal');
     if (modal) {
@@ -1500,6 +1547,7 @@ const UI = {
 
 // Expose UI globally so inline onclick handlers work
 window.UI = UI;
+window.UI.closeTopicMasteredModal = UI.closeTopicMasteredModal.bind(UI);
 
 // Global Keyboard Shortcuts
 window.addEventListener('keydown', (e) => {
