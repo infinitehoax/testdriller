@@ -844,6 +844,148 @@
         "explanation": "Earthworms, crayfish, and centipedes are segmented. Tapeworms have 'proglottids' (pseudo-segmentation). In past UNIPORT marking schemes, Shark (which lacks metameric segmentation entirely) is often the accepted odd-one-out for vertebrates."
       },
       {
+        "id": "obj_2018_011",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "Which path does sound entering the human ear follow?",
+        "options": {
+          "A": "Oral window -> ossicles -> eardrum",
+          "B": "Eardrum -> oval window -> ossicles",
+          "C": "Ossicles -> eardrum -> oval window",
+          "D": "Eardrum -> ossicles -> oval window"
+        },
+        "correct_option": "D",
+        "explanation": "Sound hits the eardrum first, causing the three middle ear ossicles (hammer, anvil, stirrup) to vibrate. These ossicles then amplify and transmit the sound to the oval window. (Note: UNIPORT's past printed keys mistakenly listed B, but D is the biologically correct pathway)."
+      },
+      {
+        "id": "obj_2018_012",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "The activity of ptyalin is likely to decrease with an increase in the concentration of:",
+        "options": {
+          "A": "Oxygen",
+          "B": "Starch",
+          "C": "Protein",
+          "D": "Acid"
+        },
+        "correct_option": "D",
+        "explanation": "Ptyalin (salivary amylase) is active in the mouth where the pH is neutral or slightly alkaline. An increase in acid concentration (such as when it enters the stomach) denatures the enzyme and halts its activity."
+      },
+      {
+        "id": "obj_2018_013",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "An individual in the AB blood group is a universal recipient for blood donation because:",
+        "options": {
+          "A": "All the red blood cells do not carry antigen",
+          "B": "All the red blood cells carry antigen A",
+          "C": "All the red blood cells carry antigen B",
+          "D": "There are no antigen A and B anti-bodies in the serum"
+        },
+        "correct_option": "D",
+        "explanation": "Individuals with blood group AB possess both A and B antigens on their red blood cells, which means they do not produce anti-A or anti-B antibodies in their blood serum. Consequently, they can receive blood from any group without triggering an immune attack."
+      },
+      {
+        "id": "obj_2018_014",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Nervous System",
+        "question": "Neurons that receive stimuli from the body or internal organs are called:",
+        "options": {
+          "A": "Sensory neurons",
+          "B": "Efferent neurons",
+          "C": "Motor neurons",
+          "D": "Relay neurons"
+        },
+        "correct_option": "A",
+        "explanation": "Sensory (afferent) neurons are specialized cells that detect environmental changes or internal stimuli and transmit these signals towards the central nervous system."
+      },
+      {
+        "id": "obj_2018_015",
+        "year": "2018",
+        "topic": "Ecology and Environmental Biology: Ecological Concepts",
+        "question": "A population is defined as a collection of similar organisms that:",
+        "options": {
+          "A": "Behave in the same way",
+          "B": "Interbreed freely",
+          "C": "Are found in the same habitat",
+          "D": "Eat the same food"
+        },
+        "correct_option": "B",
+        "explanation": "In ecology, a population refers to a group of individuals of the same species living in a specific area who are capable of interbreeding freely to produce fertile offspring."
+      },
+      {
+        "id": "obj_2018_016",
+        "year": "2018",
+        "topic": "Ecology and Environmental Biology: Food Chains and Energy Flow",
+        "question": "In a typical predator food chain involving secondary and tertiary consumers, organisms become progressively:",
+        "options": {
+          "A": "Smaller and more numerous along the food chain",
+          "B": "Equal in number and size along the food chain",
+          "C": "Larger and fewer along the food chain",
+          "D": "Parasitized along the food chain as consumers get bigger"
+        },
+        "correct_option": "C",
+        "explanation": "Predators tend to be larger than the prey they consume. Because only about 10% of the energy is transferred up to each successive trophic level, the population size decreases, making them larger but fewer."
+      },
+      {
+        "id": "obj_2018_017",
+        "year": "2018",
+        "topic": "Form and Function in Plants: Reproduction and Germination",
+        "question": "In a bean seed, absorption of water at the beginning of germination is through the:",
+        "options": {
+          "A": "Hilum",
+          "B": "Micropyle",
+          "C": "Testa",
+          "D": "Plumule"
+        },
+        "correct_option": "B",
+        "explanation": "Water enters the dry bean seed through a tiny opening in the seed coat (testa) known as the micropyle (spelled 'Microphyle' in the original UNIPORT exam) to initiate metabolic activities for germination."
+      },
+      {
+        "id": "obj_2018_018",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Excretory System",
+        "question": "The reproductive system of a male mammal is made up of:",
+        "options": {
+          "A": "Claspers, prostate gland, sperm duct and vas deferens",
+          "B": "Testes, prostate gland, sperm duct and vas deferens",
+          "C": "Oviduct, urethra, testis and sperm duct",
+          "D": "Testis, uterus, prostate gland and sperm duct"
+        },
+        "correct_option": "B",
+        "explanation": "A male mammal's reproductive tract consists of testes, the prostate gland, sperm ducts, and the vas deferens. (Note: UNIPORT had a typo spelling it 'prostrate' in some options, and 'claspers' are found in male sharks, not mammals)."
+      },
+      {
+        "id": "obj_2018_019",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Skeletal System",
+        "question": "The axial skeleton is found in the:",
+        "options": {
+          "A": "Skull, ribs, vertebral column and breast bone",
+          "B": "Skull, humerus, vertebral column",
+          "C": "Breast bone, clavicle, ribs and vertebral column",
+          "D": "Femur, sternum, ulna and skull"
+        },
+        "correct_option": "A",
+        "explanation": "The axial skeleton comprises bones that lie along the central axis of the body: the skull, ribs, vertebral column, and sternum (breastbone)."
+      },
+      {
+        "id": "obj_2018_020",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Excretory System",
+        "question": "In insects, the structure that performs the same function as the kidney in man is the:",
+        "options": {
+          "A": "Nephridium",
+          "B": "Flame cell",
+          "C": "Malpighian tubule",
+          "D": "Trachea"
+        },
+        "correct_option": "C",
+        "explanation": "The Malpighian tubules in insects are responsible for absorbing metabolic wastes and salt from the surrounding hemolymph, acting as the equivalent of the vertebrate kidney."
+      }
+    ]
+  }
+]
         "id": "obj_2015_001",
         "year": "2015",
         "topic": "Form and Function in Animals: Sensory Organs",
