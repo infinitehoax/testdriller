@@ -35,6 +35,7 @@ const KEYS = {
   CBT_DELAY_MARKING: "wg_cbt_delay_marking",
   CBT_MODE:          'wg_cbt_mode',
   ANTI_CHEAT:        'wg_anti_cheat',
+  THEME:             'wg_theme',
 };
 
 const SUB_KEYS = {
@@ -425,6 +426,10 @@ const Storage = {
   setCbtDelayMarking(v) { Storage._set(KEYS.CBT_DELAY_MARKING, !!v); },
   isAntiCheatEnabled() { return !!Storage._get(KEYS.ANTI_CHEAT); },
   setAntiCheatEnabled(v) { Storage._set(KEYS.ANTI_CHEAT, !!v); },
+
+  getTheme() { return Storage._get(KEYS.THEME) || 'dark'; },
+  setTheme(v) { Storage._set(KEYS.THEME, v); },
+
   isRandomizedQuestions() { return !!Storage._get(KEYS.RANDOMIZE_QUESTIONS); },
   setRandomizedQuestions(v) { Storage._set(KEYS.RANDOMIZE_QUESTIONS, !!v); },
 

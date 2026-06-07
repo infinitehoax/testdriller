@@ -14,6 +14,13 @@
   <link rel="stylesheet" href="{{ url_for('static', filename='css/achievements.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/multiplayer.css') }}" />
   <link rel="stylesheet" href="{{ url_for('static', filename='css/summary.css') }}" />
+
+  <script>
+    (function() {
+      const theme = localStorage.getItem('wg_theme') ? JSON.parse(localStorage.getItem('wg_theme')) : 'dark';
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
+  </script>
 </head>
 <body>
 
@@ -49,6 +56,10 @@
           <span>🏆</span>
           <span>Badges</span>
         </a>
+        <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark/light mode">
+          <span class="theme-toggle__icon theme-toggle__icon--sun">☀️</span>
+          <span class="theme-toggle__icon theme-toggle__icon--moon">🌙</span>
+        </button>
       </div>
     </div>
   </nav>
@@ -79,6 +90,7 @@
   <script src="{{ url_for('static', filename='vendor/marked.min.js') }}"></script>
   <script src="{{ url_for('static', filename='vendor/katex.min.js') }}"></script>
 
+  <script type="module" src="{{ url_for('static', filename='js/theme.js') }}"></script>
   {% block scripts %}{% endblock %}
 </body>
 </html>

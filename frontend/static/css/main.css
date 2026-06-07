@@ -278,10 +278,62 @@ code, pre, .mono {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(13, 15, 20, 0.85);
+  background: var(--bg-nav);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--border-subtle);
   padding: 14px 0;
+}
+
+/* ---- Theme Toggle ---- */
+.theme-toggle {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-primary);
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all var(--transition-med);
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  box-shadow: var(--shadow-sm);
+  transform: translateY(-1px);
+}
+
+.theme-toggle__icon {
+  position: absolute;
+  transition: transform var(--transition-med), opacity var(--transition-med);
+  font-size: 1.2rem;
+}
+
+/* When in dark mode (default), show sun to switch to light */
+[data-theme='light'] .theme-toggle__icon--sun {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+[data-theme='light'] .theme-toggle__icon--moon {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Default state: Moon is hidden, Sun is shown */
+.theme-toggle__icon--sun {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.theme-toggle__icon--moon {
+  opacity: 0;
+  transform: translateY(-20px);
 }
 
 .nav__inner {
