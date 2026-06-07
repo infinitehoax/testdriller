@@ -842,6 +842,118 @@
         },
         "correct_option": "E",
         "explanation": "Earthworms, crayfish, and centipedes are segmented. Tapeworms have 'proglottids' (pseudo-segmentation). In past UNIPORT marking schemes, Shark (which lacks metameric segmentation entirely) is often the accepted odd-one-out for vertebrates."
+      },
+      {
+        "id": "obj_2014_011",
+        "year": "2014",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "The components of the circulatory system are the heart, blood vessels, and:",
+        "options": {
+          "A": "Veins",
+          "B": "Arteries",
+          "C": "Lymph",
+          "D": "Plasma"
+        },
+        "correct_option": "D",
+        "explanation": "The mammalian circulatory system consists of the heart, blood vessels (which already include veins and arteries), and blood. Plasma represents the fluid medium of blood that circulates these components."
+      },
+      {
+        "id": "obj_2014_012",
+        "year": "2014",
+        "topic": "Form and Function in Plants: Plant Tissues",
+        "question": "The veins of the leaf are formed by the:",
+        "options": {
+          "A": "Vascular bundles",
+          "B": "Cambium cells",
+          "C": "Palisade tissue",
+          "D": "Spongy mesophyll"
+        },
+        "correct_option": "A",
+        "explanation": "Note the UNIPORT typo 'vains' in the original exam. Leaf veins are made of vascular bundles (xylem and phloem) that transport water, minerals, and manufactured food."
+      },
+      {
+        "id": "obj_2014_014",
+        "year": "2014",
+        "topic": "Form and Function in Plants: Plant Tissues",
+        "question": "The two types of biogenetic tissues are:",
+        "options": {
+          "A": "Phloem and parenchyma",
+          "B": "Meristematic and non-meristematic",
+          "C": "Meristematic and fruit",
+          "D": "Flower and fruit"
+        },
+        "correct_option": "B",
+        "explanation": "Plant tissues are broadly categorized into actively dividing tissues (meristematic) and permanent/fully differentiated tissues (non-meristematic)."
+      },
+      {
+        "id": "obj_2014_015",
+        "year": "2014",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "The surface of an alveolus in a mammal is well supplied with tiny blood vessels known as:",
+        "options": {
+          "A": "Capillaries",
+          "B": "Arteries",
+          "C": "Arterioles",
+          "D": "Venules"
+        },
+        "correct_option": "A",
+        "explanation": "The alveoli of the lungs are enveloped by a dense network of one-cell-thick capillaries, which allows for the rapid diffusion of carbon dioxide out of the blood and oxygen into the blood."
+      },
+      {
+        "id": "obj_2014_016",
+        "year": "2014",
+        "topic": "Agricultural Biology: Soil Science",
+        "question": "The stunted growth of a leguminous plant suffering from nitrogen deficiency may be corrected by inoculating the soil with:",
+        "options": {
+          "A": "Saprophytic bacteria",
+          "B": "Rhizobium",
+          "C": "Denitrifying bacteria",
+          "D": "Nitrosomonas"
+        },
+        "correct_option": "B",
+        "explanation": "Rhizobium is a genus of nitrogen-fixing bacteria that forms symbiotic relationships inside the root nodules of legumes, converting atmospheric nitrogen into nitrates."
+      },
+      {
+        "id": "obj_2014_017",
+        "year": "2014",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "The gall bladder of a mammal has a duct connected to the:",
+        "options": {
+          "A": "Duodenum",
+          "B": "Liver",
+          "C": "Pancreas",
+          "D": "Small intestine"
+        },
+        "correct_option": "A",
+        "explanation": "The bile duct carries bile from the gall bladder and drains it directly into the duodenum, which is the first section of the small intestine."
+      },
+      {
+        "id": "obj_2014_018",
+        "year": "2014",
+        "topic": "Taxonomy: Plant Classification",
+        "question": "The spores of ferns are dispersed by:",
+        "options": {
+          "A": "Wind",
+          "B": "Water",
+          "C": "Insects",
+          "D": "Explosive mechanism"
+        },
+        "correct_option": "A",
+        "explanation": "Ferns produce microscopic, lightweight spores within their sori. When dry, the sporangia snap open and release the spores to be carried away by wind currents. (Note: Question 18 in the original paper had a typo 'aspect of ferns', which was repeated as 'spores of ferns' in Question 19)."
+      },
+      {
+        "id": "obj_2014_020",
+        "year": "2014",
+        "topic": "Cell Biology: Cell Structure and Organelles",
+        "question": "The structures found only in plant cells are:",
+        "options": {
+          "A": "Cell membrane and cytoplasm",
+          "B": "Chromatin and nucleolus",
+          "C": "Cell wall and chloroplast",
+          "D": "Mitochondria and cell membrane"
+        },
+        "correct_option": "C",
+        "explanation": "While plant and animal cells share most organelles, only plant cells possess a rigid cellulose cell wall and chloroplasts for photosynthesis. (Note: The original UNIPORT exam wrote 'cell and chloroplast' due to a missing word typo)."
       }
     ]
   }
