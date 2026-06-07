@@ -984,6 +984,20 @@
         "explanation": "The Malpighian tubules in insects are responsible for absorbing metabolic wastes and salt from the surrounding hemolymph, acting as the equivalent of the vertebrate kidney."
       },
       {
+        "id": "obj_2015_001",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "In mammals, the function of the sebaceous gland is to:",
+        "options": {
+          "A": "Produce sweat",
+          "B": "Secrete sodium",
+          "C": "Secrete water",
+          "D": "Produce an oil substance"
+        },
+        "correct_option": "D",
+        "explanation": "Sebaceous glands are microscopic exocrine glands in the skin that secrete sebum, an oily/waxy substance that lubricates and waterproofs the skin and hair."
+      },
+      {
         "id": "obj_2015_002",
         "year": "2015",
         "topic": "Form and Function in Animals: Sensory Organs",
@@ -1178,6 +1192,20 @@
         },
         "correct_option": "D",
         "explanation": "Phototropism is the directional growth of plants towards a source of light, driven primarily by light-induced auxin redistribution."
+      },
+      {
+        "id": "obj_2014_011",
+        "year": "2014",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "The components of the circulatory system are the heart, blood vessels, and:",
+        "options": {
+          "A": "Veins",
+          "B": "Arteries",
+          "C": "Lymph",
+          "D": "Plasma"
+        },
+        "correct_option": "D",
+        "explanation": "The mammalian circulatory system consists of the heart, blood vessels (which already include veins and arteries), and blood. Plasma represents the fluid medium of blood that circulates these components."
       },
       {
         "id": "obj_2014_012",
