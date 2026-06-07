@@ -1,0 +1,139 @@
+/* Achievements Page Styles */
+.achievements-container {
+    max-width: 1000px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+.achievements-header {
+    text-align: center;
+    margin-bottom: 48px;
+}
+
+.achievements-badge {
+    margin-bottom: 16px;
+}
+
+.achievements-title {
+    font-size: 3rem;
+    font-weight: 800;
+    margin-bottom: 12px;
+    letter-spacing: -0.02em;
+}
+
+.achievements-subtitle {
+    font-size: 1.1rem;
+    color: var(--text-secondary);
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.stat-card {
+    text-align: center;
+    padding: 32px;
+}
+
+.stat-card__icon {
+    font-size: 2.5rem;
+    margin-bottom: 12px;
+}
+
+.stat-card__value {
+    font-size: 2.5rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+    font-family: var(--font-display);
+}
+
+.stat-card__label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+}
+
+.stat--accent .stat-card__value { color: var(--accent); }
+.stat--fail .stat-card__value { color: var(--fail); }
+.stat--neutral .stat-card__value { color: var(--neutral); }
+
+.achievements-section-title {
+    font-size: 1.5rem;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+}
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.achievement-card.is-locked {
+    opacity: 0.6;
+    filter: grayscale(1);
+    background: rgba(255,255,255,0.02);
+}
+
+.achievement-card__icon {
+    width: 64px;
+    height: 64px;
+    background: var(--bg-card-alt);
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    flex-shrink: 0;
+    border: 1px solid var(--border-subtle);
+}
+
+.achievement-card__content {
+    flex-grow: 1;
+}
+
+.achievement-card__name {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.achievement-card__desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.achievement-card__status {
+    flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+    .achievements-title {
+        font-size: 2rem;
+    }
+
+    .achievement-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .achievement-card__icon {
+        margin: 0 auto;
+    }
+}

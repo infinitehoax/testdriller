@@ -1,0 +1,47 @@
+/* Summary Page Styles */
+.summary-container {
+    padding: 60px 0 80px;
+}
+
+.summary-header {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.summary-icon {
+    font-size: 3rem;
+    margin-bottom: 12px;
+}
+
+.summary-title {
+    margin-bottom: 8px;
+}
+
+.summary-subject {
+    color: var(--text-secondary);
+}
+
+.summary-stats {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.summary-stat-secondary {
+    color: var(--text-secondary);
+}
+
+.summary-actions {
+    text-align: center;
+    display: flex;
+    gap: 12px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 640px) {
+    .summary-actions {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 0 20px;
+    }
+}

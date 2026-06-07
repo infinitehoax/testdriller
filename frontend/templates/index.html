@@ -3,30 +3,30 @@
 {% block title %}Dashboard — Testdriller{% endblock %}
 
 {% block content %}
-<div class="container animate-fade-in" style="max-width: 900px; margin-top: 40px; margin-bottom: 80px;">
+<div class="container dashboard-container animate-fade-in">
 
   <!-- Header -->
-  <header style="margin-bottom: 40px;">
-    <div class="badge badge--accent" style="margin-bottom: 16px;">📚 Testdriller 2026 Prep</div>
-    <div style="display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 20px;">
+  <header class="dashboard-header">
+    <div class="badge badge--accent dashboard-badge">📚 Testdriller 2026 Prep</div>
+    <div class="dashboard-header__top">
       <div>
-        <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em;">Welcome back, <span id="player-name-display" style="color: var(--accent);">Student</span>!</h1>
-        <p style="color: var(--text-secondary); font-size: 1.1rem;">Pick a subject and start your mastery journey.</p>
+        <h1 class="dashboard-welcome">Welcome back, <span id="player-name-display" class="text--accent">Student</span>!</h1>
+        <p class="dashboard-subtitle">Pick a subject and start your mastery journey.</p>
       </div>
-      <button class="btn btn--ghost" onclick="editPlayerName()" style="border: 1px solid var(--border-subtle);">
+      <button class="btn btn--ghost dashboard-edit-profile" onclick="editPlayerName()">
         <span>⚙️</span> Edit Profile
       </button>
     </div>
   </header>
 
   <!-- Resume Card -->
-  <div id="resume-card" class="card animate-bounce-in" style="display:none; border-left: 4px solid var(--accent); margin-bottom: 32px; background: var(--accent-glow);">
-    <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+  <div id="resume-card" class="card resume-card animate-bounce-in" style="display:none;">
+    <div class="resume-card__content">
       <div>
-        <div style="font-weight:700; font-size:1.1rem; margin-bottom:4px;">Continue your last session?</div>
-        <div id="resume-desc" style="font-size:0.9rem; color:var(--text-secondary);"></div>
+        <div class="resume-card__title">Continue your last session?</div>
+        <div id="resume-desc" class="resume-card__desc"></div>
       </div>
-      <div style="display:flex; gap:12px;">
+      <div class="resume-card__actions">
         <button class="btn btn--ghost" onclick="clearSession()">Clear Progress</button>
         <button class="btn btn--primary" onclick="resumeSession()">Resume Session &rarr;</button>
       </div>
@@ -34,46 +34,46 @@
   </div>
 
   <!-- Main Config Section -->
-  <div class="card" style="padding: 32px; margin-bottom: 32px;">
+  <div class="card dashboard-config-card">
 
     <!-- Subject Row -->
-    <div style="margin-bottom: 28px;">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px;">
-        <h3 style="margin: 0; font-size: 1.2rem;">Select Subject</h3>
-        <div style="display: flex; gap: 8px;">
-          <button class="btn btn--ghost btn--sm" onclick="selectAllSubjects()" style="font-size: 0.75rem;">All</button>
-          <button class="btn btn--ghost btn--sm" onclick="selectNoneSubjects()" style="font-size: 0.75rem;">None</button>
+    <div class="dashboard-section">
+      <div class="dashboard-section__header">
+        <h3 class="dashboard-section__title">Select Subject</h3>
+        <div class="dashboard-section__actions">
+          <button class="btn btn--ghost btn--sm" onclick="selectAllSubjects()">All</button>
+          <button class="btn btn--ghost btn--sm" onclick="selectNoneSubjects()">None</button>
         </div>
       </div>
-      <div id="dashboard-loading" style="text-align: center; padding: 40px;">
-        <div class="spinner" style="margin-bottom: 16px;">⏳</div>
+      <div id="dashboard-loading" class="dashboard-loading">
+        <div class="spinner dashboard-spinner">⏳</div>
         <p>Loading questions...</p>
       </div>
-      <div id="dashboard-error" style="display: none; text-align: center; padding: 40px; color: var(--error);">
-        <div style="font-size: 2rem; margin-bottom: 16px;">⚠️</div>
+      <div id="dashboard-error" class="dashboard-error" style="display: none;">
+        <div class="dashboard-error__icon">⚠️</div>
         <p id="error-message">Failed to load questions.</p>
-        <button class="btn btn--primary" onclick="location.reload()" style="margin-top: 16px;">Retry</button>
+        <button class="btn btn--primary" onclick="location.reload()">Retry</button>
       </div>
-      <div id="subject-list" style="display: none; gap: 16px; overflow-x: auto; padding: 10px 4px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+      <div id="subject-list" class="subject-list" style="display: none;">
         <!-- Generated via JS: Subject Cards -->
       </div>
     </div>
 
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin-bottom: 28px;">
+    <div class="dashboard-filters">
       <!-- Topic Search & Dropdown -->
-      <div>
-        <label for="topic-select" style="display: block; font-weight: 600; margin-bottom: 8px;">Topic (Optional)</label>
-        <div style="position: relative;">
-          <select id="topic-select" style="width: 100%; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+      <div class="filter-group">
+        <label for="topic-select" class="filter-label">Topic (Optional)</label>
+        <div class="filter-select-wrapper">
+          <select id="topic-select" class="filter-select">
             <option value="">All Topics</option>
           </select>
         </div>
       </div>
 
       <!-- Year Dropdown -->
-      <div>
-        <label for="year-select" style="display: block; font-weight: 600; margin-bottom: 8px;">Year (Optional)</label>
-        <select id="year-select" style="width: 100%; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+      <div class="filter-group">
+        <label for="year-select" class="filter-label">Year (Optional)</label>
+        <select id="year-select" class="filter-select">
           <option value="ALL">ALL Years</option>
           <!-- Populated via JS -->
         </select>
@@ -81,41 +81,59 @@
     </div>
 
     <!-- Mode Selection -->
-    <div style="margin-bottom: 28px;">
-      <label style="display: block; font-weight: 600; margin-bottom: 12px;">Study Mode</label>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 16px;">
-        <div class="card mode-card" data-mode="obj" onclick="selectMode('obj')" style="cursor:pointer; text-align: center; padding: 20px;">
-          <div style="font-size: 1.5rem; margin-bottom: 8px;">🔤</div>
-          <div style="font-weight: 700;">OBJ Only</div>
+    <div class="dashboard-section">
+      <label class="filter-label">Study Mode</label>
+      <div class="mode-grid">
+        <div class="card mode-card" data-mode="obj" onclick="selectMode('obj')">
+          <div class="mode-card__icon">🔤</div>
+          <div class="mode-card__name">OBJ Only</div>
         </div>
-        <div class="card mode-card" data-mode="theory" onclick="selectMode('theory')" style="cursor:pointer; text-align: center; padding: 20px;">
-          <div style="font-size: 1.5rem; margin-bottom: 8px;">✍️</div>
-          <div style="font-weight: 700;">Theory Only</div>
+        <div class="card mode-card" data-mode="theory" onclick="selectMode('theory')">
+          <div class="mode-card__icon">✍️</div>
+          <div class="mode-card__name">Theory Only</div>
         </div>
-        <div class="card mode-card selected-mode" data-mode="both" onclick="selectMode('both')" style="cursor:pointer; text-align: center; padding: 20px;">
-          <div style="font-size: 1.5rem; margin-bottom: 8px;">⚡</div>
-          <div style="font-weight: 700;">Both</div>
+        <div class="card mode-card selected-mode" data-mode="both" onclick="selectMode('both')">
+          <div class="mode-card__icon">⚡</div>
+          <div class="mode-card__name">Both</div>
         </div>
       </div>
     </div>
 
     <!-- Batch Size -->
-    <div style="margin-bottom: 32px;">
-      <label style="display: block; font-weight: 600; margin-bottom: 12px;">Batch Size</label>
-      <div style="display: flex; gap: 12px; flex-wrap: wrap;">
-        <button class="btn btn--ghost batch-size-btn" data-size="3">3</button>
-        <button class="btn btn--ghost batch-size-btn active-size" data-size="5" style="border-color: var(--accent);">5</button>
-        <button class="btn btn--ghost batch-size-btn" data-size="10">10</button>
-        <button class="btn btn--ghost batch-size-btn" data-size="999999">All</button>
-        <input type="number" id="custom-batch-size" placeholder="Custom" style="width: 80px; padding: 8px; border-radius: 4px; background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+    <div class="dashboard-section">
+      <label class="filter-label">Batch Size</label>
+      <div class="batch-size-container">
+        <div class="batch-size-options">
+            <button class="btn btn--ghost batch-size-btn" data-size="3">3</button>
+            <button class="btn btn--ghost batch-size-btn active-size" data-size="5">5</button>
+            <button class="btn btn--ghost batch-size-btn" data-size="10">10</button>
+            <button class="btn btn--ghost batch-size-btn" data-size="999999">All</button>
+        </div>
+        <input type="number" id="custom-batch-size" placeholder="Custom" class="batch-size-input">
       </div>
     </div>
 
-    <button class="btn btn--primary btn--lg" id="start-btn" onclick="startSession()" style="width: 100%; font-size: 1.2rem; padding: 16px;">
+    <button class="btn btn--primary btn--lg dashboard-start-btn" id="start-btn" onclick="startSession()">
       Start Learning &rarr;
     </button>
   </div>
 
+  <!-- Quick Actions / Stats -->
+  <div class="dashboard-stats-grid">
+    <div class="card dashboard-stat-card">
+      <div class="dashboard-stat-card__icon">🔥</div>
+      <div id="stat-streak" class="dashboard-stat-card__value">0</div>
+      <div class="dashboard-stat-card__label">Day Streak</div>
+    </div>
+    <div class="card dashboard-stat-card">
+      <div class="dashboard-stat-card__icon">🏆</div>
+      <div id="stat-mastered" class="dashboard-stat-card__value">0</div>
+      <div class="dashboard-stat-card__label">Mastered</div>
+    </div>
+    <div class="card dashboard-stat-card clickable" onclick="window.location.href='/multiplayer'">
+      <div class="dashboard-stat-card__icon">👥</div>
+      <div class="dashboard-stat-card__name">Multiplayer</div>
+      <div class="dashboard-stat-card__sublabel">Compete with friends</div>
     <!-- Quick Actions / Stats / Leaderboard -->
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px;">
     <!-- Stats Column -->
@@ -144,81 +162,6 @@
   </div>
 
 </div>
-
-<style>
-    .spinner {
-    font-size: 2rem;
-    animation: spin 2s linear infinite;
-    display: inline-block;
-  }
-  @keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-  }
-    .mode-card {
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid var(--border-subtle);
-  }
-  .mode-card:hover {
-    border-color: var(--accent-subtle);
-    transform: translateY(-4px);
-    box-shadow: var(--shadow-md);
-  }
-  .mode-card.selected-mode {
-    border-color: var(--accent) !important;
-    background: var(--accent-glow) !important;
-    box-shadow: 0 0 20px var(--accent-glow);
-    transform: scale(1.02);
-  }
-  .subject-card {
-    min-width: 160px;
-    flex-shrink: 0;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    border: 2px solid var(--border-subtle);
-    padding: 16px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 12px;
-    user-select: none;
-  }
-  .subject-card:hover {
-    border-color: var(--accent);
-    transform: translateY(-2px);
-  }
-  .subject-card.is-selected {
-    border-color: var(--accent);
-    background: var(--accent-glow);
-    box-shadow: 0 0 15px var(--accent-glow);
-  }
-  .subject-card__icon {
-    font-size: 2rem;
-  }
-  .subject-card__name {
-    font-weight: 700;
-    text-align: center;
-    font-size: 0.95rem;
-  }
-  .active-size {
-    background: var(--accent-glow);
-    color: var(--accent);
-  }
-  #subject-list::-webkit-scrollbar {
-    height: 8px;
-  }
-  #subject-list::-webkit-scrollbar-track {
-    background: var(--bg-input);
-    border-radius: 4px;
-  }
-  #subject-list::-webkit-scrollbar-thumb {
-    background: var(--border-strong);
-    border-radius: 4px;
-  }
-  #subject-list::-webkit-scrollbar-thumb:hover {
-    background: var(--accent);
-  }
-</style>
 {% endblock %}
 
 {% block scripts %}
@@ -362,8 +305,6 @@
     selectedMode = mode;
     document.querySelectorAll(".mode-card").forEach(c => {
       c.classList.remove("selected-mode");
-      c.style.borderColor = "";
-      c.style.background = "";
     });
     const active = document.querySelector(`.mode-card[data-mode="${mode}"]`);
     if (active) active.classList.add("selected-mode");
@@ -436,11 +377,8 @@
     btn.onclick = () => {
       document.querySelectorAll('.batch-size-btn').forEach(b => {
         b.classList.remove('active-size');
-        b.style.borderColor = 'var(--border-subtle)';
-        b.style.background = '';
       });
       btn.classList.add('active-size');
-      btn.style.borderColor = 'var(--accent)';
       selectedBatchSize = parseInt(btn.dataset.size);
       document.getElementById('custom-batch-size').value = '';
     };
@@ -452,8 +390,6 @@
       selectedBatchSize = val;
       document.querySelectorAll('.batch-size-btn').forEach(b => {
         b.classList.remove('active-size');
-        b.style.borderColor = 'var(--border-subtle)';
-        b.style.background = '';
       });
     }
   };

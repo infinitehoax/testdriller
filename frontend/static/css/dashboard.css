@@ -1,0 +1,321 @@
+/* Dashboard Page Styles */
+.dashboard-container {
+    max-width: 900px;
+    margin-top: 40px;
+    margin-bottom: 80px;
+}
+
+.dashboard-header {
+    margin-bottom: 40px;
+}
+
+.dashboard-badge {
+    margin-bottom: 16px;
+}
+
+.dashboard-header__top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.dashboard-welcome {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    letter-spacing: -0.02em;
+}
+
+.dashboard-subtitle {
+    color: var(--text-secondary);
+    font-size: 1.1rem;
+}
+
+.dashboard-edit-profile {
+    border: 1px solid var(--border-subtle);
+}
+
+.resume-card {
+    border-left: 4px solid var(--accent);
+    margin-bottom: 32px;
+    background: var(--accent-glow);
+}
+
+.resume-card__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.resume-card__title {
+    font-weight: 700;
+    font-size: 1.1rem;
+    margin-bottom: 4px;
+}
+
+.resume-card__desc {
+    font-size: 0.9rem;
+    color: var(--text-secondary);
+}
+
+.resume-card__actions {
+    display: flex;
+    gap: 12px;
+}
+
+.dashboard-config-card {
+    padding: 32px;
+    margin-bottom: 32px;
+}
+
+.dashboard-section {
+    margin-bottom: 28px;
+}
+
+.dashboard-section__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}
+
+.dashboard-section__title {
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.dashboard-section__actions {
+    display: flex;
+    gap: 8px;
+}
+
+.dashboard-loading, .dashboard-error {
+    text-align: center;
+    padding: 40px;
+}
+
+.dashboard-spinner {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.dashboard-error__icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.subject-list {
+    display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    padding: 10px 4px;
+    scroll-behavior: smooth;
+    -webkit-overflow-scrolling: touch;
+}
+
+.subject-list::-webkit-scrollbar {
+    height: 8px;
+}
+.subject-list::-webkit-scrollbar-track {
+    background: var(--bg-input);
+    border-radius: 4px;
+}
+.subject-list::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 4px;
+}
+.subject-list::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+.subject-card {
+    min-width: 160px;
+    flex-shrink: 0;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid var(--border-subtle);
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    user-select: none;
+}
+.subject-card:hover {
+    border-color: var(--accent);
+    transform: translateY(-2px);
+}
+.subject-card.is-selected {
+    border-color: var(--accent);
+    background: var(--accent-glow);
+    box-shadow: 0 0 15px var(--accent-glow);
+}
+.subject-card__icon {
+    font-size: 2rem;
+}
+.subject-card__name {
+    font-weight: 700;
+    text-align: center;
+    font-size: 0.95rem;
+}
+
+.dashboard-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 24px;
+    margin-bottom: 28px;
+}
+
+.filter-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.filter-label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.filter-select {
+    width: 100%;
+    padding: 12px;
+    border-radius: var(--radius-md);
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.filter-select-wrapper {
+    position: relative;
+}
+
+.mode-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 16px;
+}
+
+.mode-card {
+    cursor: pointer;
+    text-align: center;
+    padding: 20px;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid var(--border-subtle);
+}
+.mode-card:hover {
+    border-color: var(--accent-subtle);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+}
+.mode-card.selected-mode {
+    border-color: var(--accent) !important;
+    background: var(--accent-glow) !important;
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: scale(1.02);
+}
+.mode-card__icon {
+    font-size: 1.5rem;
+    margin-bottom: 8px;
+}
+.mode-card__name {
+    font-weight: 700;
+}
+
+.batch-size-container {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+.batch-size-options {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.batch-size-btn.active-size {
+    background: var(--accent-glow);
+    color: var(--accent);
+    border-color: var(--accent);
+}
+
+.batch-size-input {
+    width: 80px;
+    padding: 8px;
+    border-radius: 4px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    color: var(--text-primary);
+}
+
+.dashboard-start-btn {
+    width: 100%;
+    font-size: 1.2rem;
+    padding: 16px;
+}
+
+.dashboard-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+}
+
+.dashboard-stat-card {
+    text-align: center;
+}
+.dashboard-stat-card.clickable {
+    cursor: pointer;
+}
+.dashboard-stat-card__icon {
+    font-size: 2rem;
+    margin-bottom: 8px;
+}
+.dashboard-stat-card__value {
+    font-size: 1.5rem;
+    font-weight: 800;
+}
+.dashboard-stat-card__label {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+    text-transform: uppercase;
+}
+.dashboard-stat-card__name {
+    font-weight: 700;
+}
+.dashboard-stat-card__sublabel {
+    color: var(--text-secondary);
+    font-size: 0.8rem;
+}
+
+@media (max-width: 640px) {
+    .dashboard-welcome {
+        font-size: 1.8rem;
+    }
+
+    .dashboard-header__top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .dashboard-edit-profile {
+        width: 100%;
+    }
+
+    .resume-card__actions {
+        width: 100%;
+    }
+
+    .resume-card__actions button {
+        flex: 1;
+    }
+
+    .mode-grid {
+        grid-template-columns: 1fr;
+    }
+}
