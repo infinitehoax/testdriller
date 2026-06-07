@@ -79,6 +79,9 @@ async def verify_report_card():
                 })
 
             await page.route("**/api/grade", handle_grade)
+            # Also mock track-mastery to avoid 404/500 if server isn't fully ready
+            await page.route("**/api/track-mastery", lambda route: route.fulfill(json={"status": "ok"}))
+
             await page.fill("#answer-sq1", "My answer")
             await page.click("#submit-theory-btn")
             await page.wait_for_selector("#next-btn", state="visible")
@@ -108,6 +111,7 @@ async def verify_report_card():
             failed_q_text = await failed_items[0].inner_text()
             assert "Failed OBJ Question" in failed_q_text
             assert "Explanation for failed OBJ" in failed_q_text
+            assert "Your Answer: B" in failed_q_text, f"Missing user answer in review. Got: {failed_q_text}"
 
             print("✅ Report card verification passed!")
 
