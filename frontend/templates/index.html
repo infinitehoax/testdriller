@@ -45,7 +45,16 @@
           <button class="btn btn--ghost btn--sm" onclick="selectNoneSubjects()" style="font-size: 0.75rem;">None</button>
         </div>
       </div>
-      <div id="subject-list" style="display: flex; gap: 16px; overflow-x: auto; padding: 10px 4px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
+      <div id="dashboard-loading" style="text-align: center; padding: 40px;">
+        <div class="spinner" style="margin-bottom: 16px;">⏳</div>
+        <p>Loading questions...</p>
+      </div>
+      <div id="dashboard-error" style="display: none; text-align: center; padding: 40px; color: var(--error);">
+        <div style="font-size: 2rem; margin-bottom: 16px;">⚠️</div>
+        <p id="error-message">Failed to load questions.</p>
+        <button class="btn btn--primary" onclick="location.reload()" style="margin-top: 16px;">Retry</button>
+      </div>
+      <div id="subject-list" style="display: none; gap: 16px; overflow-x: auto; padding: 10px 4px; scroll-behavior: smooth; -webkit-overflow-scrolling: touch;">
         <!-- Generated via JS: Subject Cards -->
       </div>
     </div>
@@ -55,10 +64,9 @@
       <div>
         <label for="topic-select" style="display: block; font-weight: 600; margin-bottom: 8px;">Topic (Optional)</label>
         <div style="position: relative;">
-          <input type="text" id="topic-search" list="topics-datalist" placeholder="Search topics..." style="width: 100%; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
-          <datalist id="topics-datalist">
-            <!-- Populated via JS -->
-          </datalist>
+          <select id="topic-select" style="width: 100%; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+            <option value="">All Topics</option>
+          </select>
         </div>
       </div>
 
@@ -84,7 +92,7 @@
           <div style="font-size: 1.5rem; margin-bottom: 8px;">✍️</div>
           <div style="font-weight: 700;">Theory Only</div>
         </div>
-        <div class="card mode-card selected-mode" data-mode="both" onclick="selectMode('both')" style="cursor:pointer; text-align: center; padding: 20px; border-color: var(--accent); background: var(--accent-glow);">
+        <div class="card mode-card selected-mode" data-mode="both" onclick="selectMode('both')" style="cursor:pointer; text-align: center; padding: 20px;">
           <div style="font-size: 1.5rem; margin-bottom: 8px;">⚡</div>
           <div style="font-weight: 700;">Both</div>
         </div>
@@ -129,11 +137,35 @@
 </div>
 
 <style>
+    .spinner {
+    font-size: 2rem;
+    animation: spin 2s linear infinite;
+    display: inline-block;
+  }
+  @keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
+    .mode-card {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border: 2px solid var(--border-subtle);
+  }
+  .mode-card:hover {
+    border-color: var(--accent-subtle);
+    transform: translateY(-4px);
+    box-shadow: var(--shadow-md);
+  }
+  .mode-card.selected-mode {
+    border-color: var(--accent) !important;
+    background: var(--accent-glow) !important;
+    box-shadow: 0 0 20px var(--accent-glow);
+    transform: scale(1.02);
+  }
   .subject-card {
     min-width: 160px;
     flex-shrink: 0;
     cursor: pointer;
-    transition: all 0.2s ease;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     border: 2px solid var(--border-subtle);
     padding: 16px;
     display: flex;
@@ -191,18 +223,30 @@
   let selectedBatchSize = 5;
 
   async function init() {
+    const loadingEl = document.getElementById("dashboard-loading");
+    const errorEl = document.getElementById("dashboard-error");
+    const subjectListEl = document.getElementById("subject-list");
+
     try {
-      const response = await fetch('/api/questions');
+      const response = await fetch("/api/questions");
+      if (!response.ok) throw new Error("Server returned " + response.status);
       allQuestions = await response.json();
 
       const playerName = Storage.getPlayerName();
-      document.getElementById('player-name-display').textContent = playerName;
+      document.getElementById("player-name-display").textContent = playerName;
+
+      if (loadingEl) loadingEl.style.display = "none";
+      if (subjectListEl) subjectListEl.style.display = "flex";
 
       populateSubjects();
       updateGlobalStats();
       refreshResumeCard();
     } catch (err) {
       console.error("Failed to load questions:", err);
+      if (loadingEl) loadingEl.style.display = "none";
+      if (errorEl) errorEl.style.display = "block";
+      const errMsg = document.getElementById("error-message");
+      if (errMsg) errMsg.textContent = "Error: " + err.message;
     }
   }
 
@@ -243,17 +287,17 @@
     updateSubjectSelection();
   }
 
-  function toggleSubject(card, idx) {
+  window.toggleSubject = function(card, idx) {
     card.classList.toggle('is-selected');
     updateSubjectSelection();
   }
 
-  function selectAllSubjects() {
+  window.selectAllSubjects = function() {
     document.querySelectorAll('.subject-card').forEach(c => c.classList.add('is-selected'));
     updateSubjectSelection();
   }
 
-  function selectNoneSubjects() {
+  window.selectNoneSubjects = function() {
     document.querySelectorAll('.subject-card').forEach(c => c.classList.remove('is-selected'));
     updateSubjectSelection();
   }
@@ -267,8 +311,8 @@
   }
 
   function updateFilters() {
-    const topicDatalist = document.getElementById('topics-datalist');
-    const yearSelect = document.getElementById('year-select');
+    const topicSelect = document.getElementById("topic-select");
+    const yearSelect = document.getElementById("year-select");
 
     const topics = new Set();
     const years = new Set();
@@ -281,12 +325,15 @@
       });
     });
 
-    topicDatalist.innerHTML = '';
-    topics.forEach(t => {
-      const opt = document.createElement('option');
+    const currentTopic = topicSelect.value;
+    topicSelect.innerHTML = "<option value=\"\">All Topics</option>";
+    Array.from(topics).sort().forEach(t => {
+      const opt = document.createElement("option");
       opt.value = t;
-      topicDatalist.appendChild(opt);
+      opt.textContent = t;
+      topicSelect.appendChild(opt);
     });
+    if (topics.has(currentTopic)) topicSelect.value = currentTopic;
 
     const currentYear = yearSelect.value;
     yearSelect.innerHTML = '<option value="ALL">ALL Years</option>';
@@ -299,17 +346,15 @@
     if (years.has(currentYear)) yearSelect.value = currentYear;
   }
 
-  function selectMode(mode) {
+  window.selectMode = function(mode) {
     selectedMode = mode;
-    document.querySelectorAll('.mode-card').forEach(c => {
-      c.classList.remove('selected-mode');
-      c.style.borderColor = 'var(--border-subtle)';
-      c.style.background = '';
+    document.querySelectorAll(".mode-card").forEach(c => {
+      c.classList.remove("selected-mode");
+      c.style.borderColor = "";
+      c.style.background = "";
     });
     const active = document.querySelector(`.mode-card[data-mode="${mode}"]`);
-    active.classList.add('selected-mode');
-    active.style.borderColor = 'var(--accent)';
-    active.style.background = 'var(--accent-glow)';
+    if (active) active.classList.add("selected-mode");
     updateStartBtnText();
   }
 
@@ -333,7 +378,7 @@
   }
 
   window.startSession = function() {
-    const topic = document.getElementById('topic-search').value;
+    const topic = document.getElementById('topic-select').value;
     const year = document.getElementById('year-select').value;
 
     Storage.clearBatch();
