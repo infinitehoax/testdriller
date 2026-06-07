@@ -281,6 +281,7 @@
       card.innerHTML = `
         <div class="subject-card__icon">${icon}</div>
         <div class="subject-card__name">${s.subject}</div>
+        <button class="btn btn--ghost btn--sm analysis-btn" onclick="event.stopPropagation(); window.location.href='/analysis?subject=' + encodeURIComponent('${s.subject}')" style="font-size: 0.65rem; margin-top: 4px; padding: 4px 8px;">📊 Analysis</button>
       `;
       list.appendChild(card);
     });

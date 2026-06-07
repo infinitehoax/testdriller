@@ -1,0 +1,147 @@
+{% extends "base.html" %}
+
+{% block title %}Analysis — Testdriller{% endblock %}
+
+{% block content %}
+<div class="container animate-fade-in" style="max-width: 1000px; margin-top: 40px; margin-bottom: 80px;">
+
+  <header style="margin-bottom: 40px; display: flex; justify-content: space-between; align-items: flex-end; flex-wrap: wrap; gap: 20px;">
+    <div>
+      <div class="badge badge--accent" style="margin-bottom: 16px;">📊 Performance Analysis</div>
+      <h1 style="font-size: 2.5rem; font-weight: 800; margin-bottom: 8px; letter-spacing: -0.02em;">Subject Deep Dive</h1>
+      <p style="color: var(--text-secondary); font-size: 1.1rem;">Understand your strengths and weaknesses by topic.</p>
+    </div>
+    <div style="min-width: 250px;">
+      <label for="analysis-subject-select" style="display: block; font-weight: 600; margin-bottom: 8px;">Switch Subject</label>
+      <select id="analysis-subject-select" style="width: 100%; padding: 12px; border-radius: var(--radius-md); background: var(--bg-input); border: 1px solid var(--border-subtle); color: var(--text-primary);">
+        <!-- Populated via JS -->
+      </select>
+    </div>
+  </header>
+
+  <!-- Overview Stats -->
+  <div class="stats-grid" style="margin-bottom: 40px;">
+    <div class="stat-card">
+      <div class="stat-card__value" id="total-questions">0</div>
+      <div class="stat-card__label">Total Questions</div>
+    </div>
+    <div class="stat-card stat--accent">
+      <div class="stat-card__value" id="mastered-count">0</div>
+      <div class="stat-card__label">Mastered</div>
+    </div>
+    <div class="stat-card stat--fail">
+      <div class="stat-card__value" id="failed-count">0</div>
+      <div class="stat-card__label">Needs Work</div>
+    </div>
+    <div class="stat-card stat--neutral">
+      <div class="stat-card__value" id="mastery-pct">0%</div>
+      <div class="stat-card__label">Completion</div>
+    </div>
+  </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 32px;">
+    <!-- Topic Breakdown -->
+    <div class="card" style="padding: 32px;">
+      <h3 style="margin-bottom: 24px; display: flex; align-items: center; gap: 10px;">
+        <span>📂</span> Topic Breakdown
+      </h3>
+      <div id="topic-list" style="display: flex; flex-direction: column; gap: 20px;">
+        <!-- Generated via JS -->
+      </div>
+    </div>
+
+    <!-- Recommendations & Insights -->
+    <div style="display: flex; flex-direction: column; gap: 32px;">
+      <div class="card" style="padding: 32px; border-left: 4px solid var(--accent);">
+        <h3 style="margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+          <span>🎯</span> What to do next
+        </h3>
+        <div id="recommendations" style="color: var(--text-secondary); line-height: 1.6;">
+          <!-- Generated via JS -->
+        </div>
+      </div>
+
+      <div class="card" style="padding: 32px; border-left: 4px solid var(--fail);">
+        <h3 style="margin-bottom: 16px; display: flex; align-items: center; gap: 10px;">
+          <span>⚠️</span> Priority Topics
+        </h3>
+        <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
+          Topics with the most unmastered questions.
+        </p>
+        <div id="priority-topics" style="display: flex; flex-direction: column; gap: 12px;">
+          <!-- Generated via JS -->
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<style>
+  .topic-item {
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+  .topic-item:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+  .topic-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+  }
+  .topic-name {
+    font-weight: 700;
+    font-size: 1rem;
+  }
+  .topic-count {
+    font-size: 0.85rem;
+    color: var(--text-secondary);
+  }
+  .topic-progress-bar {
+    height: 8px;
+    background: var(--bg-input);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 4px;
+  }
+  .topic-progress-fill {
+    height: 100%;
+    background: var(--accent);
+    transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .topic-stats {
+    display: flex;
+    gap: 12px;
+    font-size: 0.75rem;
+    color: var(--text-secondary);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .priority-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: var(--bg-input);
+    border-radius: var(--radius-md);
+  }
+  .priority-name {
+    font-weight: 600;
+  }
+  .priority-badge {
+    background: var(--fail-glow);
+    color: var(--fail);
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script type="module" src="{{ url_for('static', filename='js/analysis.js') }}"></script>
+{% endblock %}
