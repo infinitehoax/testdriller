@@ -1,5 +1,5 @@
 // ============================================
-// WAEC GRINDER — Storage Module
+// Testdriller GRINDER — Storage Module
 // Handles ALL localStorage interactions
 // ============================================
 
@@ -19,6 +19,7 @@ const KEYS = {
   TIMER_REMAINING: 'wg_timer_remaining', // remaining ms
   BATCH_SIZE:      'wg_batch_size',
   FOCUS_TOPIC:     'wg_focus_topic',
+  FOCUS_YEAR:      'wg_focus_year',
   RANDOMIZE_QUESTIONS: 'wg_randomize_questions',
   RANDOMIZE_OPTIONS: 'wg_randomize_options',
   BATCH_START_TIME: 'wg_batch_start_time',
@@ -261,6 +262,12 @@ const Storage = {
   },
 
   // ---- Force reset (re-study all questions for a subject) ----
+  clearCurrentSession() {
+    Storage._remove(KEYS.STUDY_MODE);
+    Storage._remove(KEYS.CURRENT_SUBJECT);
+    Storage._remove(KEYS.CURRENT_BATCH);
+    Storage._remove(KEYS.CURRENT_IDX);
+  },
   clearSubjectProgress(subject) {
     Storage._remove(`wg_sub_${subject}`);
     const current = Storage.getSubject();
@@ -526,6 +533,7 @@ const Storage = {
   getFocusTopic() {
     return Storage._get(KEYS.FOCUS_TOPIC) || null;
   },
+setFocusYear(year) {    Storage._set(KEYS.FOCUS_YEAR, year);  },  getFocusYear() {    return Storage._get(KEYS.FOCUS_YEAR) || null;  },
 
   // ---- Batch state ----
   saveBatch(batch) {

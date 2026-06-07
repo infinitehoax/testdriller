@@ -1,5 +1,5 @@
 /**
- * WAEC GRINDER — Socket Client
+ * Testdriller GRINDER — Socket Client
  * Encapsulates all Socket.IO communication
  */
 

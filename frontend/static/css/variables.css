@@ -1,5 +1,5 @@
 /* ============================================
-   WAEC GRINDER — CSS Variables
+   TESTDRILLER — CSS Variables
    Aesthetic: Academic Dark — like a premium
    textbook came alive at midnight.
    ============================================ */
@@ -17,10 +17,10 @@
   --border-subtle:  #252a38;
   --border-strong:  #353d55;
 
-  /* --- Brand Accent: Amber/Gold (WAEC exam hall energy) --- */
-  --accent:         #f0a500;
-  --accent-glow:    rgba(240, 165, 0, 0.15);
-  --accent-dim:     #a37200;
+  /* --- Brand Accent: Amber/Gold (Testdriller Cyan Energy) --- */
+  --accent:         #00e5ff;
+  --accent-glow:    rgba(0, 229, 255, 0.15);
+  --accent-dim:     #00acc1;
 
   /* --- Status Colors --- */
   --pass:           #22c55e;
@@ -39,7 +39,7 @@
   --text-primary:   #e8eaf0;
   --text-secondary: #8b91a8;
   --text-muted:     #757b98;
-  --text-accent:    #f0a500;
+  --text-accent:    #00e5ff;
 
   --font-display:   'Sora', sans-serif;
   --font-body:      'Sora', sans-serif;
@@ -56,7 +56,7 @@
   --shadow-sm:  0 1px 3px rgba(0,0,0,0.4);
   --shadow-md:  0 4px 20px rgba(0,0,0,0.5);
   --shadow-lg:  0 8px 40px rgba(0,0,0,0.6);
-  --shadow-accent: 0 0 30px rgba(240, 165, 0, 0.12);
+  --shadow-accent: 0 0 30px rgba(0, 229, 255, 0.12);
 
   /* --- Transitions --- */
   --transition-fast: 0.15s ease;

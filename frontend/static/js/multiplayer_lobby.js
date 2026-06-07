@@ -1,5 +1,5 @@
 /**
- * WAEC GRINDER — Multiplayer Lobby Logic
+ * Testdriller GRINDER — Multiplayer Lobby Logic
  */
 
 import API from './api.js';

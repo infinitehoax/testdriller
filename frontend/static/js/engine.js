@@ -1,5 +1,5 @@
 // ============================================
-// WAEC GRINDER — Engine Module
+// Testdriller GRINDER — Engine Module
 // Core logic: Batching, grading, queues, repetition
 // ============================================
 
@@ -67,6 +67,7 @@ const Engine = {
     // customBatchSize takes precedence if set, otherwise fallback to TIMED_BATCH_SIZE (if timed) or default BATCH_SIZE
     const limit = customBatchSize || (isTimed ? APP_CONFIG.TIMED_BATCH_SIZE : APP_CONFIG.BATCH_SIZE);
     const focusTopic = Storage.getFocusTopic();
+    const focusYear = Storage.getFocusYear();
     const subjects = Storage.getSubjects();
 
     // Review Mode: Pull exclusively from mastered queues
@@ -106,6 +107,7 @@ const Engine = {
           // Pass clone=false as items are mapped individually by mapFn only when picked
           let qs = Storage.getFailedObj(sub, false);
           if (focusTopic) qs = qs.filter(q => q.topic === focusTopic);
+          if (focusYear && focusYear !== 'ALL') qs = qs.filter(q => q.year === focusYear);
           return qs;
         },
         (item, sub) => ({ ...item, _type: 'obj', _from_failed: true, _subject: sub })
@@ -120,6 +122,7 @@ const Engine = {
         (sub) => {
           let qs = Storage.getFailedTheory(sub, false);
           if (focusTopic) qs = qs.filter(q => q.topic === focusTopic);
+          if (focusYear && focusYear !== 'ALL') qs = qs.filter(q => q.year === focusYear);
           return qs;
         },
         (item, sub) => ({ ...item, _type: 'theory', _from_failed: true, _subject: sub })
@@ -134,6 +137,7 @@ const Engine = {
         (sub) => {
           let qs = Storage.getUnseenObj(sub, false);
           if (focusTopic) qs = qs.filter(q => q.topic === focusTopic);
+          if (focusYear && focusYear !== 'ALL') qs = qs.filter(q => q.year === focusYear);
           return qs;
         },
         (item, sub) => ({ ...item, _type: 'obj', _from_failed: false, _subject: sub })
@@ -148,6 +152,7 @@ const Engine = {
         (sub) => {
           let qs = Storage.getUnseenTheory(sub, false);
           if (focusTopic) qs = qs.filter(q => q.topic === focusTopic);
+          if (focusYear && focusYear !== 'ALL') qs = qs.filter(q => q.year === focusYear);
           return qs;
         },
         (item, sub) => ({ ...item, _type: 'theory', _from_failed: false, _subject: sub })

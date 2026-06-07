@@ -1,6 +1,6 @@
-# 📚 WAEC Grinder
+# 📚 Testdriller
 
-A personal spaced-repetition study tool for WAEC preparation. Combines auto-graded OBJ questions with AI-powered theory grading (per sub-question) to force mastery through grinding.
+A personal spaced-repetition study tool for Testdriller preparation. Combines auto-graded OBJ questions with AI-powered theory grading (per sub-question) to force mastery through grinding.
 
 ---
 
@@ -9,7 +9,7 @@ A personal spaced-repetition study tool for WAEC preparation. Combines auto-grad
 ### 1. Install Python dependencies
 
 ```bash
-cd waec-grinder
+cd testdriller
 pip install -r backend/requirements.txt
 ```
 
@@ -38,7 +38,7 @@ Then open your browser to: **http://localhost:5000**
 ## 📁 Project Structure
 
 ```
-waec-grinder/
+testdriller/
 ├── backend/
 │   ├── app.py               # Flask app factory
 │   ├── config.py            # Environment config
@@ -49,7 +49,7 @@ waec-grinder/
 │   │   ├── llm_service.py   # OpenRouter AI grading
 │   │   └── data_service.py  # JSON question loader
 │   └── data/
-│       └── waec_questions.json   # ← Your questions go here
+│       └── testdriller_questions.json   # ← Your questions go here
 ├── frontend/
 │   ├── static/
 │   │   ├── css/             # variables, main, study styles
@@ -64,7 +64,7 @@ waec-grinder/
 
 ## 👩‍🏫 For Teachers: How to Add Questions
 
-Edit `backend/data/waec_questions.json`. The file is a **list of subjects**, where each subject contains its own `obj` and `theory` questions.
+Edit `backend/data/testdriller_questions.json`. The file is a **list of subjects**, where each subject contains its own `obj` and `theory` questions.
 
 ### Multi-Subject Structure
 
@@ -111,7 +111,7 @@ Edit `backend/data/waec_questions.json`. The file is a **list of subjects**, whe
 
 ---
 
-## ⚙️ How the Grinder Works
+## ⚙️ How the Testdriller Works
 
 ### Queue System
 All questions start in the **unseen queue**. There is also an empty **failed queue**.
@@ -155,7 +155,7 @@ Change the model in `backend/config.py`.
 
 ## ✨ Rich Formatting Standards
 
-The Grinder supports advanced formatting in all `question`, `options`, and `explanation` fields:
+The Testdriller supports advanced formatting in all `question`, `options`, and `explanation` fields:
 
 - **Markdown**: Use `**bold**`, `*italics*`, and `<u>underline</u>`.
 - **LaTeX Math**: Use `$E = mc^2$` for inline or `$$ \frac{-b \pm \sqrt{b^2 - 4ac}}{2a} $$` for block math.

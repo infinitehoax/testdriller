@@ -1,5 +1,5 @@
 """
-WAEC Grinder - Startup Script
+Testdriller - Startup Script
 Double-click this file or run: python run_app.py
 Then open your browser to: http://localhost:5000
 """
@@ -17,7 +17,7 @@ app = create_app()
 
 if __name__ == '__main__':
     print("=" * 55)
-    print("  📚 WAEC Grinder is starting up...")
+    print("  📚 Testdriller is starting up...")
     print("=" * 55)
     if not Config.OPENROUTER_API_KEY:
         print("  ⚠️  WARNING: No OPENROUTER_API_KEY found in .env")
