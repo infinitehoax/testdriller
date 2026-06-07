@@ -28,6 +28,11 @@ def multiplayer_study():
     return render_template('multiplayer_study.html')
 
 
+@view_bp.route('/analysis')
+def analysis():
+    return render_template('analysis.html')
+
+
 @view_bp.route('/achievements')
 def achievements():
     return render_template('achievements.html')
