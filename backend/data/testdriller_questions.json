@@ -982,22 +982,6 @@
         },
         "correct_option": "C",
         "explanation": "The Malpighian tubules in insects are responsible for absorbing metabolic wastes and salt from the surrounding hemolymph, acting as the equivalent of the vertebrate kidney."
-      }
-    ]
-  }
-]
-        "id": "obj_2015_001",
-        "year": "2015",
-        "topic": "Form and Function in Animals: Sensory Organs",
-        "question": "In mammals, the function of the sebaceous gland is to:",
-        "options": {
-          "A": "Produce sweat",
-          "B": "Secrete sodium",
-          "C": "Secrete water",
-          "D": "Produce an oil substance"
-        },
-        "correct_option": "D",
-        "explanation": "Sebaceous glands are microscopic exocrine glands in the skin that secrete sebum, an oily/waxy substance that lubricates and waterproofs the skin and hair."
       },
       {
         "id": "obj_2015_002",
@@ -1194,22 +1178,6 @@
         },
         "correct_option": "D",
         "explanation": "Phototropism is the directional growth of plants towards a source of light, driven primarily by light-induced auxin redistribution."
-      }
-    ]
-  }
-]
-        "id": "obj_2014_011",
-        "year": "2014",
-        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
-        "question": "The components of the circulatory system are the heart, blood vessels, and:",
-        "options": {
-          "A": "Veins",
-          "B": "Arteries",
-          "C": "Lymph",
-          "D": "Plasma"
-        },
-        "correct_option": "D",
-        "explanation": "The mammalian circulatory system consists of the heart, blood vessels (which already include veins and arteries), and blood. Plasma represents the fluid medium of blood that circulates these components."
       },
       {
         "id": "obj_2014_012",
@@ -1308,11 +1276,8 @@
         },
         "correct_option": "C",
         "explanation": "While plant and animal cells share most organelles, only plant cells possess a rigid cellulose cell wall and chloroplasts for photosynthesis. (Note: The original UNIPORT exam wrote 'cell and chloroplast' due to a missing word typo)."
-      }
-    ],
-    "theory": []
-  },
-   {
+      },
+      {
         "id": "obj_2013_025",
         "year": "2013",
         "topic": "Form and Function in Plants: Plant Tissues",
@@ -1451,5 +1416,148 @@
         },
         "correct_option": "B",
         "explanation": "The cardiac sphincter connects the esophagus (gullet) to the upper part of the stomach, preventing stomach acid from splashing upward. The pyloric sphincter is located at the bottom end, connecting to the duodenum."
+      },
+      {
+        "id": "obj_2024_030",
+        "year": "2024",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "The pigment in the Malpighian layer responsible for skin colouration is:",
+        "options": {
+          "A": "Haemoglobin",
+          "B": "Haemocyanin",
+          "C": "Chlorocruorin",
+          "D": "Melanin"
+        },
+        "correct_option": "D",
+        "explanation": "Melanin is a dark pigment produced by melanocytes in the Malpighian layer of the epidermis. It determines skin, hair, and eye color, and protects cells from harmful ultraviolet (UV) radiation."
+      },
+      {
+        "id": "obj_2024_031",
+        "year": "2024",
+        "topic": "Form and Function in Animals: Nervous System",
+        "question": "Coordination is achieved in the body of mammals through the action of the:",
+        "options": {
+          "A": "Endocrine and nervous systems",
+          "B": "Skeletal and nervous systems",
+          "C": "Muscular and nervous systems",
+          "D": "Circulatory and nervous systems"
+        },
+        "correct_option": "A",
+        "explanation": "Mammalian physiological coordination is dual-controlled. The nervous system manages rapid, electrochemical reactions, while the endocrine system controls slow, long-lasting chemical responses via hormones."
+      },
+      {
+        "id": "obj_2024_032",
+        "year": "2024",
+        "topic": "Form and Function in Animals: Endocrine System (Hormones)",
+        "question": "Which of the following statements is correct of hormones? Hormones are:",
+        "options": {
+          "A": "Cells discharged into the blood through ducts",
+          "B": "Secreted directly into the blood",
+          "C": "Chemical substances in the blood stream",
+          "D": "Non-specific in their mode of operation"
+        },
+        "correct_option": "C",
+        "explanation": "Hormones are organic chemical substances/messengers secreted by ductless glands directly into the bloodstream to reach specific target tissues or organs."
+      },
+      {
+        "id": "obj_2024_033",
+        "year": "2024",
+        "topic": "Form and Function in Animals: Endocrine System (Hormones)",
+        "question": "The pituitary is called the 'master gland' because:",
+        "options": {
+          "A": "It is located in the brain",
+          "B": "Its lobes are more numerous than those of any other gland",
+          "C": "Its secretions control other glands",
+          "D": "It is the only organ that produces hormones"
+        },
+        "correct_option": "C",
+        "explanation": "The pituitary gland is called the 'master gland' because many of its trophic hormones (like TSH, ACTH, and LH) stimulate and regulate the hormone production of other endocrine glands."
+      },
+      {
+        "id": "obj_2024_034",
+        "year": "2024",
+        "topic": "Form and Function in Plants: Plant Growth and Responses",
+        "question": "Auxins are produced in the:",
+        "options": {
+          "A": "Petiole of leaves",
+          "B": "Parenchyma of roots and shoots",
+          "C": "Epidermis of roots and shoots",
+          "D": "Apical regions of roots and shoots"
+        },
+        "correct_option": "D",
+        "explanation": "Auxins are plant growth regulators (phytohormones) synthesized predominantly in the rapidly dividing tissues of shoot and root apices (apical meristems)."
+      },
+      {
+        "id": "obj_2024_035",
+        "year": "2024",
+        "topic": "Form and Function in Animals: Nervous System",
+        "question": "The brain and the spinal cord make up the:",
+        "options": {
+          "A": "Peripheral nervous system",
+          "B": "Autonomic nervous system",
+          "C": "Central nervous system",
+          "D": "Somatic nervous system"
+        },
+        "correct_option": "C",
+        "explanation": "The vertebrate nervous system is split into the Central Nervous System (CNS), comprising the brain and spinal cord, and the Peripheral Nervous System (PNS), comprising the nerves branching outward."
+      },
+      {
+        "id": "obj_2024_036",
+        "year": "2024",
+        "topic": "Evolution and Genetics: Evolution and Mutation",
+        "question": "Increasing specialization of structure and function among animals of the same class or order for survival in new and different environments is called:",
+        "options": {
+          "A": "Adaptive radiation",
+          "B": "Phylogeny",
+          "C": "Homology",
+          "D": "Analogy"
+        },
+        "correct_option": "A",
+        "explanation": "Adaptive radiation is the rapid evolutionary diversification of a single ancestral line into many morphologically distinct species, each adapted to exploit a unique ecological niche."
+      },
+      {
+        "id": "obj_2024_037",
+        "year": "2024",
+        "topic": "Ecology and Environmental Biology: Ecological Concepts",
+        "question": "When large numbers of organisms share limited space and resources, the result is:",
+        "options": {
+          "A": "Immigration",
+          "B": "Commensalism",
+          "C": "Symbiosis",
+          "D": "Competition"
+        },
+        "correct_option": "D",
+        "explanation": "In an ecosystem, when populations density increases and essential biological resources (like food, space, or mates) become limited, intraspecific or interspecific competition inevitably occurs."
+      },
+      {
+        "id": "obj_2024_038",
+        "year": "2024",
+        "topic": "Evolution and Genetics: Evolution and Mutation",
+        "question": "The change in colour of the chameleon serves as a means of:",
+        "options": {
+          "A": "Attraction to the opposite sex",
+          "B": "Repulsion of the enemy",
+          "C": "Camouflage from a predator",
+          "D": "Regulation of body temperature"
+        },
+        "correct_option": "C",
+        "explanation": "While chameleons change color for communication and temperature regulation, color blending with environmental backgrounds predominantly functions as dynamic camouflage to escape visual detection by predators."
+      },
+      {
+        "id": "obj_2024_039",
+        "year": "2024",
+        "topic": "Ecology and Environmental Biology: Ecological Concepts",
+        "question": "Species can be defined as a group of organisms that:",
+        "options": {
+          "A": "Resemble each other and live in the same habitat",
+          "B": "Are of common origin and are always found together",
+          "C": "Resemble each other and can interbreed freely",
+          "D": "Resemble each other and occupy the same niche"
+        },
+        "correct_option": "C",
+        "explanation": "A biological species consists of closely resembling organisms capable of mating/interbreeding freely in nature to produce viable, fertile offspring."
       }
+    ],
+    "theory": []
+  }
 ]
