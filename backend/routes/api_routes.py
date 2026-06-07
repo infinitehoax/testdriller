@@ -93,7 +93,7 @@ def get_config():
 @api_bp.route('/leaderboard', methods=['GET'])
 def get_leaderboard():
     """Fetches leaderboard from Trophy."""
-    key = request.args.get('key', 'daily-questions-mastered')
+    key = request.args.get('key', 'top-testdrillers-daily')
     limit = request.args.get('limit', 10, type=int)
     rankings = TrophyService.get_leaderboard(key, limit)
     return jsonify(rankings), 200
@@ -109,7 +109,7 @@ def track_mastery():
     user_id = data['userId']
     user_name = data.get('userName', 'Student')
 
-    # Track the 'questions-mastered' metric in Trophy
-    result = TrophyService.track_event(user_id, user_name, 'questions-mastered', 1)
+    # Track the 'testdriller' metric in Trophy
+    result = TrophyService.track_event(user_id, user_name, 'testdriller', 1)
 
     return jsonify({"success": bool(result), "data": result}), 200
