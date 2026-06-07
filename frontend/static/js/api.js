@@ -81,7 +81,7 @@ const API = {
     return this._handleResponse(res, 'Mastery tracking failed');
   },
 
-  async getLeaderboard(key = 'daily-questions-mastered', limit = 10) {
+  async getLeaderboard(key = 'top-testdrillers-daily', limit = 10) {
     const res = await fetch(`${APP_CONFIG.API_BASE}/leaderboard?key=${key}&limit=${limit}`);
     return this._handleResponse(res, 'Failed to load leaderboard');
   },

@@ -116,22 +116,30 @@
     </button>
   </div>
 
-  <!-- Quick Actions / Stats -->
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px;">
-    <div class="card" style="text-align: center;">
-      <div style="font-size: 2rem; margin-bottom: 8px;">🔥</div>
-      <div id="stat-streak" style="font-size: 1.5rem; font-weight: 800;">0</div>
-      <div style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase;">Day Streak</div>
+    <!-- Quick Actions / Stats / Leaderboard -->
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 40px;">
+    <!-- Stats Column -->
+    <div style="display: flex; flex-direction: column; gap: 20px;">
+        <div class="card" style="text-align: center; flex: 1;">
+            <div style="font-size: 2rem; margin-bottom: 8px;">🔥</div>
+            <div id="stat-streak" style="font-size: 1.5rem; font-weight: 800;">0</div>
+            <div style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase;">Day Streak</div>
+        </div>
+        <div class="card" style="text-align: center; flex: 1;">
+            <div style="font-size: 2rem; margin-bottom: 8px;">🏆</div>
+            <div id="stat-mastered" style="font-size: 1.5rem; font-weight: 800;">0</div>
+            <div style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase;">Mastered</div>
+        </div>
+        <div class="card" style="text-align: center; cursor: pointer; flex: 1;" onclick="window.location.href='/multiplayer'">
+            <div style="font-size: 2rem; margin-bottom: 8px;">👥</div>
+            <div style="font-weight: 700;">Multiplayer</div>
+            <div style="color: var(--text-secondary); font-size: 0.8rem;">Compete with friends</div>
+        </div>
     </div>
-    <div class="card" style="text-align: center;">
-      <div style="font-size: 2rem; margin-bottom: 8px;">🏆</div>
-      <div id="stat-mastered" style="font-size: 1.5rem; font-weight: 800;">0</div>
-      <div style="color: var(--text-secondary); font-size: 0.8rem; text-transform: uppercase;">Mastered</div>
-    </div>
-    <div class="card" style="text-align: center; cursor: pointer;" onclick="window.location.href='/multiplayer'">
-      <div style="font-size: 2rem; margin-bottom: 8px;">👥</div>
-      <div style="font-weight: 700;">Multiplayer</div>
-      <div style="color: var(--text-secondary); font-size: 0.8rem;">Compete with friends</div>
+
+    <!-- Leaderboard Column -->
+    <div id="leaderboard-container">
+        <!-- Injected via leaderboard.js -->
     </div>
   </div>
 
@@ -217,6 +225,7 @@
 <script type="module">
   import Storage from '/static/js/storage.js';
   import API from '/static/js/api.js';
+  import Leaderboard from '/static/js/leaderboard.js';
 
   let allQuestions = [];
   let selectedSubjects = [];
@@ -242,6 +251,7 @@
       populateSubjects();
       updateGlobalStats();
       refreshResumeCard();
+      Leaderboard.init("leaderboard-container");
     } catch (err) {
       console.error("Failed to load questions:", err);
       if (loadingEl) loadingEl.style.display = "none";
@@ -328,7 +338,7 @@
     });
 
     const currentTopic = topicSelect.value;
-    topicSelect.innerHTML = "<option value=\"\">All Topics</option>";
+    topicSelect.innerHTML = '<option value="">All Topics</option>';
     Array.from(topics).sort().forEach(t => {
       const opt = document.createElement("option");
       opt.value = t;

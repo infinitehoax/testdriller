@@ -529,3 +529,138 @@ code, pre, .mono {
   border-radius: 2px;
   transition: width 0.4s ease;
 }
+
+/* ---- Leaderboard ---- */
+.leaderboard-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    min-height: 400px;
+}
+
+.leaderboard-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid var(--border-subtle);
+}
+
+.leaderboard-title {
+    font-size: 1.25rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.leaderboard-list {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.leaderboard-item {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 12px 16px;
+    background: var(--bg-input);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    transition: all var(--transition-fast);
+}
+
+.leaderboard-item:hover {
+    border-color: var(--accent-subtle);
+    background: var(--bg-card-hover);
+    transform: translateX(4px);
+}
+
+.leaderboard-rank {
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg-base);
+    border: 1px solid var(--border-subtle);
+    border-radius: 50%;
+    font-size: 0.875rem;
+    font-weight: 700;
+    color: var(--text-muted);
+}
+
+.top-rank .leaderboard-rank {
+    background: var(--accent-glow);
+    border-color: var(--accent);
+    color: var(--accent);
+}
+
+.leaderboard-player {
+    flex: 1;
+}
+
+.player-name {
+    font-weight: 600;
+    font-size: 0.95rem;
+}
+
+.leaderboard-score {
+    text-align: right;
+}
+
+.leaderboard-score strong {
+    display: block;
+    font-size: 1.1rem;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.leaderboard-score span {
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.leaderboard-loading, .leaderboard-empty, .leaderboard-error {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--text-muted);
+    padding: 40px 20px;
+}
+
+.leaderboard-loading .spinner {
+    margin-bottom: 12px;
+}
+
+.leaderboard-empty p, .leaderboard-error p {
+    margin: 4px 0;
+}
+
+.leaderboard-empty .small {
+    font-size: 0.8rem;
+}
+
+.leaderboard-footer {
+    margin-top: 24px;
+    padding-top: 16px;
+    border-top: 1px solid var(--border-subtle);
+    text-align: center;
+}
+
+.leaderboard-footer p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+.current-user {
+    border-color: var(--accent) !important;
+    background: var(--accent-glow) !important;
+    box-shadow: 0 0 10px var(--accent-glow);
+}
