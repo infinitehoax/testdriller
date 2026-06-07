@@ -982,10 +982,8 @@
         },
         "correct_option": "B",
         "explanation": "In mammals, ribs form a protective cage around the thorax. At the posterior, they connect to the thoracic vertebral column, while at the anterior (front), they attach to the sternum (breastbone) via costal cartilages."
-      }
-    ]
-  }
-]
+      },
+      {
         "id": "obj_2018_011",
         "year": "2018",
         "topic": "Form and Function in Animals: Sensory Organs",
@@ -1726,6 +1724,8 @@
         },
         "correct_option": "C",
         "explanation": "A biological species consists of closely resembling organisms capable of mating/interbreeding freely in nature to produce viable, fertile offspring."
+      },
+      {
         "id": "obj_2022_021",
         "year": "2022",
         "topic": "Form and Function in Plants: Transport and Water Loss",
@@ -1868,5 +1868,4 @@
     ],
     "theory": []
   }
-]
 ]
