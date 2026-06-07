@@ -464,9 +464,10 @@ const UI = {
     const explanation = grid ? grid.dataset.explanation : '';
     const q = this.batch[this.currentIdx];
 
+    q._selected_letter = letter;
+
     // Exam Mode: Record selection, no immediate feedback
     if (Storage.isCbtDelayMarking()) {
-      q._selected_letter = letter;
       q._status = 'answered';
       q._passed = (letter === correct);
 
