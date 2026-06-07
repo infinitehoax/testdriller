@@ -20,7 +20,7 @@ async def run_verification():
             await page.evaluate("() => { localStorage.setItem('wg_player_name', 'JulesVerifier'); }")
             await page.reload()
 
-            subject_selector = "text='UNIPORT Chemistry v1 actual questions'"
+            subject_selector = "text='Biology Health Science'"
             await page.wait_for_selector(subject_selector)
             await page.click(subject_selector)
 
