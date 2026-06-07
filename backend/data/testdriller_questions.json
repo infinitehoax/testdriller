@@ -957,5 +957,145 @@
       }
     ],
     "theory": []
-  }
+  },
+   {
+        "id": "obj_2013_025",
+        "year": "2013",
+        "topic": "Form and Function in Plants: Plant Tissues",
+        "question": "Which of the following is the youngest plant tissue?",
+        "options": {
+          "A": "Meristem",
+          "B": "Phloem",
+          "C": "Epidermis",
+          "D": "Xylem"
+        },
+        "correct_option": "A",
+        "explanation": "Meristematic tissues are regions of continuous active cell division. Because they are constantly producing new cells, they are considered the newest or youngest tissues in a plant."
+      },
+      {
+        "id": "obj_2013_026",
+        "year": "2013",
+        "topic": "Microorganisms and Public Health: Viruses vs. Bacteria",
+        "question": "Viruses differ from all forms of life because they:",
+        "options": {
+          "A": "Have a thick cell wall",
+          "B": "Feed on waste products of other organisms",
+          "C": "Cause infectious diseases",
+          "D": "Require other living cells to multiply"
+        },
+        "correct_option": "D",
+        "explanation": "Viruses are obligate intracellular parasites. They lack their own cellular machinery for reproduction and must hijack a living host cell's machinery to multiply."
+      },
+      {
+        "id": "obj_2013_027",
+        "year": "2013",
+        "topic": "Taxonomy: Invertebrates",
+        "question": "The endoplasm cells found in hydra are used for:",
+        "options": {
+          "A": "Reproduction",
+          "B": "Offence and defense",
+          "C": "Locomotion and nutrition",
+          "D": "Food collection"
+        },
+        "correct_option": "C",
+        "explanation": "The inner layer (endoderm or gastrodermis) of the Hydra contains specialized gland and muscle cells that aid in digestion (nutrition) and provide some movement functions (locomotion)."
+      },
+      {
+        "id": "obj_2013_028",
+        "year": "2013",
+        "topic": "Taxonomy: Invertebrates",
+        "question": "Annelids differ from nematodes in that they:",
+        "options": {
+          "A": "Exhibit bilateral symmetry",
+          "B": "Are triploblastic",
+          "C": "Are metamerically segmented",
+          "D": "Possess complete digestive system"
+        },
+        "correct_option": "C",
+        "explanation": "Annelids (such as earthworms) have bodies divided into visible, repetitive segments, a feature known as metameric segmentation. Nematodes (roundworms) do not have segmented bodies."
+      },
+      {
+        "id": "obj_2013_029",
+        "year": "2013",
+        "topic": "Taxonomy: Plant Classification",
+        "question": "Which of the following perform similar functions?",
+        "options": {
+          "A": "Ascospores and ascocarp",
+          "B": "Antherozoids and rhizoids",
+          "C": "Sorus and indusium",
+          "D": "Strobili and inflorescence"
+        },
+        "correct_option": "D",
+        "explanation": "Both are reproductive structures. Strobili (cones) are the reproductive structures found in gymnosperms, while the inflorescence (flower clusters) serves the same reproductive purpose in angiosperms."
+      },
+      {
+        "id": "obj_2013_030",
+        "year": "2013",
+        "topic": "Taxonomy: Plant Classification",
+        "question": "In ferns, the sporophyte:",
+        "options": {
+          "A": "Develops from a haploid zygote",
+          "B": "Produces spores",
+          "C": "Is haploid and dependent on the gametophyte",
+          "D": "Is haploid and independent of the gametophyte"
+        },
+        "correct_option": "B",
+        "explanation": "The sporophyte generation is diploid (making option A incorrect, as zygotes are diploid) and its primary biological function is to produce haploid spores via meiosis."
+      },
+      {
+        "id": "obj_2013_031",
+        "year": "2013",
+        "topic": "Taxonomy: Invertebrates",
+        "question": "The group of insects that undergoes complete metamorphosis is:",
+        "options": {
+          "A": "House flies, beetles and cockroaches",
+          "B": "Cockroaches, grasshoppers and bees",
+          "C": "House flies, beetles and butterflies",
+          "D": "Aphids, grasshoppers and butterflies"
+        },
+        "correct_option": "C",
+        "explanation": "Complete metamorphosis (holometabolous development) consists of four stages: egg, larva, pupa, and adult. House flies, beetles, and butterflies undergo this, whereas cockroaches and grasshoppers undergo incomplete metamorphosis."
+      },
+      {
+        "id": "obj_2013_032",
+        "year": "2013",
+        "topic": "Form and Function in Animals: Excretory System",
+        "question": "The nitrogenous substance that is excreted by birds in order to conserve water is:",
+        "options": {
+          "A": "Ammonia",
+          "B": "Urea",
+          "C": "Uric acid",
+          "D": "Nitric acid"
+        },
+        "correct_option": "C",
+        "explanation": "Birds and insects excrete uric acid. It requires very little water to be flushed out, making it an ideal adaptation for flying and egg-laying animals to conserve weight and hydration."
+      },
+      {
+        "id": "obj_2013_033",
+        "year": "2013",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "In mammals, the exchange of nutrients and metabolic products occurs in the:",
+        "options": {
+          "A": "Lymph",
+          "B": "Lungs",
+          "C": "Heart",
+          "D": "Liver"
+        },
+        "correct_option": "A",
+        "explanation": "Lymph and tissue fluids (capillary beds) bathe the cells, facilitating the direct exchange of nutrients, oxygen, and metabolic wastes between the blood and the body's cells."
+      },
+      {
+        "id": "obj_2013_034",
+        "year": "2013",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "The part of the stomach nearer the gullet is called the:",
+        "options": {
+          "A": "Epiglottis",
+          "B": "Cardiac sphincter",
+          "C": "Duodenum",
+          "D": "Pyloric sphincter"
+        },
+        "correct_option": "B",
+        "explanation": "The cardiac sphincter connects the esophagus (gullet) to the upper part of the stomach, preventing stomach acid from splashing upward. The pyloric sphincter is located at the bottom end, connecting to the duodenum."
+      }
 ]
