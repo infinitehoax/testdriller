@@ -986,3 +986,612 @@
     ]
   }
 ]
+        "id": "obj_2018_011",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "Which path does sound entering the human ear follow?",
+        "options": {
+          "A": "Oral window -> ossicles -> eardrum",
+          "B": "Eardrum -> oval window -> ossicles",
+          "C": "Ossicles -> eardrum -> oval window",
+          "D": "Eardrum -> ossicles -> oval window"
+        },
+        "correct_option": "D",
+        "explanation": "Sound hits the eardrum first, causing the three middle ear ossicles (hammer, anvil, stirrup) to vibrate. These ossicles then amplify and transmit the sound to the oval window. (Note: UNIPORT's past printed keys mistakenly listed B, but D is the biologically correct pathway)."
+      },
+      {
+        "id": "obj_2018_012",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "The activity of ptyalin is likely to decrease with an increase in the concentration of:",
+        "options": {
+          "A": "Oxygen",
+          "B": "Starch",
+          "C": "Protein",
+          "D": "Acid"
+        },
+        "correct_option": "D",
+        "explanation": "Ptyalin (salivary amylase) is active in the mouth where the pH is neutral or slightly alkaline. An increase in acid concentration (such as when it enters the stomach) denatures the enzyme and halts its activity."
+      },
+      {
+        "id": "obj_2018_013",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "An individual in the AB blood group is a universal recipient for blood donation because:",
+        "options": {
+          "A": "All the red blood cells do not carry antigen",
+          "B": "All the red blood cells carry antigen A",
+          "C": "All the red blood cells carry antigen B",
+          "D": "There are no antigen A and B anti-bodies in the serum"
+        },
+        "correct_option": "D",
+        "explanation": "Individuals with blood group AB possess both A and B antigens on their red blood cells, which means they do not produce anti-A or anti-B antibodies in their blood serum. Consequently, they can receive blood from any group without triggering an immune attack."
+      },
+      {
+        "id": "obj_2018_014",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Nervous System",
+        "question": "Neurons that receive stimuli from the body or internal organs are called:",
+        "options": {
+          "A": "Sensory neurons",
+          "B": "Efferent neurons",
+          "C": "Motor neurons",
+          "D": "Relay neurons"
+        },
+        "correct_option": "A",
+        "explanation": "Sensory (afferent) neurons are specialized cells that detect environmental changes or internal stimuli and transmit these signals towards the central nervous system."
+      },
+      {
+        "id": "obj_2018_015",
+        "year": "2018",
+        "topic": "Ecology and Environmental Biology: Ecological Concepts",
+        "question": "A population is defined as a collection of similar organisms that:",
+        "options": {
+          "A": "Behave in the same way",
+          "B": "Interbreed freely",
+          "C": "Are found in the same habitat",
+          "D": "Eat the same food"
+        },
+        "correct_option": "B",
+        "explanation": "In ecology, a population refers to a group of individuals of the same species living in a specific area who are capable of interbreeding freely to produce fertile offspring."
+      },
+      {
+        "id": "obj_2018_016",
+        "year": "2018",
+        "topic": "Ecology and Environmental Biology: Food Chains and Energy Flow",
+        "question": "In a typical predator food chain involving secondary and tertiary consumers, organisms become progressively:",
+        "options": {
+          "A": "Smaller and more numerous along the food chain",
+          "B": "Equal in number and size along the food chain",
+          "C": "Larger and fewer along the food chain",
+          "D": "Parasitized along the food chain as consumers get bigger"
+        },
+        "correct_option": "C",
+        "explanation": "Predators tend to be larger than the prey they consume. Because only about 10% of the energy is transferred up to each successive trophic level, the population size decreases, making them larger but fewer."
+      },
+      {
+        "id": "obj_2018_017",
+        "year": "2018",
+        "topic": "Form and Function in Plants: Reproduction and Germination",
+        "question": "In a bean seed, absorption of water at the beginning of germination is through the:",
+        "options": {
+          "A": "Hilum",
+          "B": "Micropyle",
+          "C": "Testa",
+          "D": "Plumule"
+        },
+        "correct_option": "B",
+        "explanation": "Water enters the dry bean seed through a tiny opening in the seed coat (testa) known as the micropyle (spelled 'Microphyle' in the original UNIPORT exam) to initiate metabolic activities for germination."
+      },
+      {
+        "id": "obj_2018_018",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Excretory System",
+        "question": "The reproductive system of a male mammal is made up of:",
+        "options": {
+          "A": "Claspers, prostate gland, sperm duct and vas deferens",
+          "B": "Testes, prostate gland, sperm duct and vas deferens",
+          "C": "Oviduct, urethra, testis and sperm duct",
+          "D": "Testis, uterus, prostate gland and sperm duct"
+        },
+        "correct_option": "B",
+        "explanation": "A male mammal's reproductive tract consists of testes, the prostate gland, sperm ducts, and the vas deferens. (Note: UNIPORT had a typo spelling it 'prostrate' in some options, and 'claspers' are found in male sharks, not mammals)."
+      },
+      {
+        "id": "obj_2018_019",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Skeletal System",
+        "question": "The axial skeleton is found in the:",
+        "options": {
+          "A": "Skull, ribs, vertebral column and breast bone",
+          "B": "Skull, humerus, vertebral column",
+          "C": "Breast bone, clavicle, ribs and vertebral column",
+          "D": "Femur, sternum, ulna and skull"
+        },
+        "correct_option": "A",
+        "explanation": "The axial skeleton comprises bones that lie along the central axis of the body: the skull, ribs, vertebral column, and sternum (breastbone)."
+      },
+      {
+        "id": "obj_2018_020",
+        "year": "2018",
+        "topic": "Form and Function in Animals: Excretory System",
+        "question": "In insects, the structure that performs the same function as the kidney in man is the:",
+        "options": {
+          "A": "Nephridium",
+          "B": "Flame cell",
+          "C": "Malpighian tubule",
+          "D": "Trachea"
+        },
+        "correct_option": "C",
+        "explanation": "The Malpighian tubules in insects are responsible for absorbing metabolic wastes and salt from the surrounding hemolymph, acting as the equivalent of the vertebrate kidney."
+      }
+    ]
+  }
+]
+        "id": "obj_2015_001",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "In mammals, the function of the sebaceous gland is to:",
+        "options": {
+          "A": "Produce sweat",
+          "B": "Secrete sodium",
+          "C": "Secrete water",
+          "D": "Produce an oil substance"
+        },
+        "correct_option": "D",
+        "explanation": "Sebaceous glands are microscopic exocrine glands in the skin that secrete sebum, an oily/waxy substance that lubricates and waterproofs the skin and hair."
+      },
+      {
+        "id": "obj_2015_002",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "Movement and positions of the head in man are detected by the:",
+        "options": {
+          "A": "Cochlea",
+          "B": "Malleus",
+          "C": "Utriculus",
+          "D": "Semicircular canals"
+        },
+        "correct_option": "D",
+        "explanation": "The semicircular canals are three fluid-filled loops in the inner ear that contain hair cells to detect rotational movements and positions of the head."
+      },
+      {
+        "id": "obj_2015_003",
+        "year": "2015",
+        "topic": "Form and Function in Plants: Reproduction and Germination",
+        "question": "The maize grain is a fruit and not a seed because it:",
+        "options": {
+          "A": "Has a large endosperm",
+          "B": "Is formed from an ovary",
+          "C": "Is a monocotyledon",
+          "D": "Has no plumule and radicle"
+        },
+        "correct_option": "B",
+        "explanation": "Maize grains are caryopses (dry, one-seeded fruits) because they develop from a fertilized ovary, and their outer wall (pericarp) is fused with the seed coat (testa)."
+      },
+      {
+        "id": "obj_2015_004",
+        "year": "2015",
+        "topic": "Evolution and Genetics: Genetics and Heredity",
+        "question": "The characters by which an organism is recognized are termed its:",
+        "options": {
+          "A": "Phenotype",
+          "B": "Genotype",
+          "C": "Morphology",
+          "D": "Anatomy"
+        },
+        "correct_option": "A",
+        "explanation": "The phenotype is the set of observable physical or structural characteristics of an organism, resulting from the interaction of its genotype with the environment."
+      },
+      {
+        "id": "obj_2015_005",
+        "year": "2015",
+        "topic": "Form and Function in Plants: Reproduction and Germination",
+        "question": "Germination which results in the cotyledons being brought above ground is called:",
+        "options": {
+          "A": "Hypocotyls",
+          "B": "Epicotyls",
+          "C": "Epigeal",
+          "D": "Hypogeal"
+        },
+        "correct_option": "C",
+        "explanation": "In epigeal germination, the hypocotyl elongates rapidly and arches, pulling the cotyledons upward out of the soil and into the light."
+      },
+      {
+        "id": "obj_2015_006",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Nervous System",
+        "question": "In a mammal, stimulus is transferred from the receptor muscle to the central nervous system through the:",
+        "options": {
+          "A": "Motor neurons",
+          "B": "Effector muscle",
+          "C": "Dendrites",
+          "D": "Sensory neurons"
+        },
+        "correct_option": "D",
+        "explanation": "Sensory (or afferent) neurons are specialized nerve cells that carry sensory information from the peripheral receptors toward the central nervous system."
+      },
+      {
+        "id": "obj_2015_007",
+        "year": "2015",
+        "topic": "Ecology and Environmental Biology: Food Chains and Energy Flow",
+        "question": "Which of the following food chains represents the correct sequence?",
+        "options": {
+          "A": "Weeds -> tadpoles -> beetles -> fish -> man",
+          "B": "Weeds -> tadpoles -> fish -> beetles -> man",
+          "C": "Tadpoles -> beetles -> weeds -> man -> fish",
+          "D": "Man -> fish -> beetles -> tadpoles -> weeds"
+        },
+        "correct_option": "A",
+        "explanation": "This food chain correctly tracks the flow of energy: Producer (Weeds) -> Primary Consumer (Tadpoles) -> Secondary Consumer (Beetles) -> Tertiary Consumer (Fish) -> Quaternary Consumer (Man)."
+      },
+      {
+        "id": "obj_2015_008",
+        "year": "2015",
+        "topic": "Microorganisms and Public Health: Pathogens and Vectors",
+        "question": "The primary and secondary hosts respectively of bilharzias are:",
+        "options": {
+          "A": "Fish and man",
+          "B": "Man and dog",
+          "C": "Snail and man",
+          "D": "Man and snail"
+        },
+        "correct_option": "D",
+        "explanation": "The human blood fluke (Schistosoma) uses humans (man) as the primary host where sexual reproduction occurs, and aquatic snails as the secondary host where asexual multiplication takes place."
+      },
+      {
+        "id": "obj_2015_009",
+        "year": "2015",
+        "topic": "Agricultural Biology: Soil Science",
+        "question": "The origin of mineral particles in the soil is:",
+        "options": {
+          "A": "Humus",
+          "B": "Water",
+          "C": "Micro-organisms",
+          "D": "Weathered rock"
+        },
+        "correct_option": "D",
+        "explanation": "Soil minerals are inorganic components that originate from the mechanical and chemical weathering of underlying parent rocks. (Note: The original UNIPORT past question printed 'seed' instead of 'soil')."
+      },
+      {
+        "id": "obj_2015_010",
+        "year": "2015",
+        "topic": "Agricultural Biology: Soil Science",
+        "question": "The initial volume of water poured into a bag of dry soil was 50ml and the amount that drained through was 35ml. The percentage water content of the fully soaked soil is therefore:",
+        "options": {
+          "A": "46.7%",
+          "B": "25.0%",
+          "C": "20.0%",
+          "D": "30.0%"
+        },
+        "correct_option": "D",
+        "explanation": "The volume of water retained is 15ml (50ml - 35ml). The percentage water content is (15 / 50) x 100 = 30%."
+      },
+      {
+        "id": "obj_2015_011",
+        "year": "2015",
+        "topic": "Evolution and Genetics: Evolution and Mutation",
+        "question": "From the following list of types of mutation, identify the one that is NOT hereditary:",
+        "options": {
+          "A": "Germinal mutation",
+          "B": "Somatic mutation",
+          "C": "Genetic mutation",
+          "D": "Chromosomal mutation"
+        },
+        "correct_option": "B",
+        "explanation": "Somatic mutations occur in non-reproductive body cells and are not passed down to future generations. Germinal mutations happen in reproductive gametes and are highly hereditary."
+      },
+      {
+        "id": "obj_2015_012",
+        "year": "2015",
+        "topic": "Cell Biology: Cell Structure and Organelles",
+        "question": "In a cell, digestive enzymes mostly occur in:",
+        "options": {
+          "A": "Ribosomes",
+          "B": "Lysosomes",
+          "C": "Mitochondria",
+          "D": "Plastids"
+        },
+        "correct_option": "B",
+        "explanation": "Lysosomes act as the digestive compartments of cells, housing specialized acidic, hydrolytic enzymes that break down macromolecules, old organelles, and waste."
+      },
+      {
+        "id": "obj_2015_013",
+        "year": "2015",
+        "topic": "Ecology and Environmental Biology: Biomes and Habitats",
+        "question": "Which of the following habitats supports the highest diversity of living species?",
+        "options": {
+          "A": "Tropical rain forests",
+          "B": "Savannah grassland",
+          "C": "Desert",
+          "D": "Tropical forests"
+        },
+        "correct_option": "A",
+        "explanation": "Tropical rainforests are terrestrial hotspots of biodiversity, supporting over 50% of the world's plant and animal species due to rich ecological stratification, warmth, and rainfall."
+      },
+      {
+        "id": "obj_2015_014",
+        "year": "2015",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "Lack of protein in the diet of children manifests easily because:",
+        "options": {
+          "A": "Children do not store up protein efficiently",
+          "B": "It is difficult for children to chew meat",
+          "C": "Protein supplies energy to the body",
+          "D": "Protein is responsible for growth and repairs"
+        },
+        "correct_option": "D",
+        "explanation": "Proteins are structurally vital for physiological growth, cellular division, and tissue repair. Because children are actively growing, protein deficiencies immediately halt growth, manifesting quickly as Kwashiorkor."
+      },
+      {
+        "id": "obj_2015_015",
+        "year": "2015",
+        "topic": "Form and Function in Plants: Plant Growth and Responses",
+        "question": "The growth response of a plant to a light gradient is known as:",
+        "options": {
+          "A": "Mastic movement",
+          "B": "Geotropism",
+          "C": "Hydrotropism",
+          "D": "Phototropism"
+        },
+        "correct_option": "D",
+        "explanation": "Phototropism is the directional growth of plants towards a source of light, driven primarily by light-induced auxin redistribution."
+      }
+    ]
+  }
+]
+        "id": "obj_2014_011",
+        "year": "2014",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "The components of the circulatory system are the heart, blood vessels, and:",
+        "options": {
+          "A": "Veins",
+          "B": "Arteries",
+          "C": "Lymph",
+          "D": "Plasma"
+        },
+        "correct_option": "D",
+        "explanation": "The mammalian circulatory system consists of the heart, blood vessels (which already include veins and arteries), and blood. Plasma represents the fluid medium of blood that circulates these components."
+      },
+      {
+        "id": "obj_2014_012",
+        "year": "2014",
+        "topic": "Form and Function in Plants: Plant Tissues",
+        "question": "The veins of the leaf are formed by the:",
+        "options": {
+          "A": "Vascular bundles",
+          "B": "Cambium cells",
+          "C": "Palisade tissue",
+          "D": "Spongy mesophyll"
+        },
+        "correct_option": "A",
+        "explanation": "Note the UNIPORT typo 'vains' in the original exam. Leaf veins are made of vascular bundles (xylem and phloem) that transport water, minerals, and manufactured food."
+      },
+      {
+        "id": "obj_2014_014",
+        "year": "2014",
+        "topic": "Form and Function in Plants: Plant Tissues",
+        "question": "The two types of biogenetic tissues are:",
+        "options": {
+          "A": "Phloem and parenchyma",
+          "B": "Meristematic and non-meristematic",
+          "C": "Meristematic and fruit",
+          "D": "Flower and fruit"
+        },
+        "correct_option": "B",
+        "explanation": "Plant tissues are broadly categorized into actively dividing tissues (meristematic) and permanent/fully differentiated tissues (non-meristematic)."
+      },
+      {
+        "id": "obj_2014_015",
+        "year": "2014",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "The surface of an alveolus in a mammal is well supplied with tiny blood vessels known as:",
+        "options": {
+          "A": "Capillaries",
+          "B": "Arteries",
+          "C": "Arterioles",
+          "D": "Venules"
+        },
+        "correct_option": "A",
+        "explanation": "The alveoli of the lungs are enveloped by a dense network of one-cell-thick capillaries, which allows for the rapid diffusion of carbon dioxide out of the blood and oxygen into the blood."
+      },
+      {
+        "id": "obj_2014_016",
+        "year": "2014",
+        "topic": "Agricultural Biology: Soil Science",
+        "question": "The stunted growth of a leguminous plant suffering from nitrogen deficiency may be corrected by inoculating the soil with:",
+        "options": {
+          "A": "Saprophytic bacteria",
+          "B": "Rhizobium",
+          "C": "Denitrifying bacteria",
+          "D": "Nitrosomonas"
+        },
+        "correct_option": "B",
+        "explanation": "Rhizobium is a genus of nitrogen-fixing bacteria that forms symbiotic relationships inside the root nodules of legumes, converting atmospheric nitrogen into nitrates."
+      },
+      {
+        "id": "obj_2014_017",
+        "year": "2014",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "The gall bladder of a mammal has a duct connected to the:",
+        "options": {
+          "A": "Duodenum",
+          "B": "Liver",
+          "C": "Pancreas",
+          "D": "Small intestine"
+        },
+        "correct_option": "A",
+        "explanation": "The bile duct carries bile from the gall bladder and drains it directly into the duodenum, which is the first section of the small intestine."
+      },
+      {
+        "id": "obj_2014_018",
+        "year": "2014",
+        "topic": "Taxonomy: Plant Classification",
+        "question": "The spores of ferns are dispersed by:",
+        "options": {
+          "A": "Wind",
+          "B": "Water",
+          "C": "Insects",
+          "D": "Explosive mechanism"
+        },
+        "correct_option": "A",
+        "explanation": "Ferns produce microscopic, lightweight spores within their sori. When dry, the sporangia snap open and release the spores to be carried away by wind currents. (Note: Question 18 in the original paper had a typo 'aspect of ferns', which was repeated as 'spores of ferns' in Question 19)."
+      },
+      {
+        "id": "obj_2014_020",
+        "year": "2014",
+        "topic": "Cell Biology: Cell Structure and Organelles",
+        "question": "The structures found only in plant cells are:",
+        "options": {
+          "A": "Cell membrane and cytoplasm",
+          "B": "Chromatin and nucleolus",
+          "C": "Cell wall and chloroplast",
+          "D": "Mitochondria and cell membrane"
+        },
+        "correct_option": "C",
+        "explanation": "While plant and animal cells share most organelles, only plant cells possess a rigid cellulose cell wall and chloroplasts for photosynthesis. (Note: The original UNIPORT exam wrote 'cell and chloroplast' due to a missing word typo)."
+      }
+    ],
+    "theory": []
+  },
+   {
+        "id": "obj_2013_025",
+        "year": "2013",
+        "topic": "Form and Function in Plants: Plant Tissues",
+        "question": "Which of the following is the youngest plant tissue?",
+        "options": {
+          "A": "Meristem",
+          "B": "Phloem",
+          "C": "Epidermis",
+          "D": "Xylem"
+        },
+        "correct_option": "A",
+        "explanation": "Meristematic tissues are regions of continuous active cell division. Because they are constantly producing new cells, they are considered the newest or youngest tissues in a plant."
+      },
+      {
+        "id": "obj_2013_026",
+        "year": "2013",
+        "topic": "Microorganisms and Public Health: Viruses vs. Bacteria",
+        "question": "Viruses differ from all forms of life because they:",
+        "options": {
+          "A": "Have a thick cell wall",
+          "B": "Feed on waste products of other organisms",
+          "C": "Cause infectious diseases",
+          "D": "Require other living cells to multiply"
+        },
+        "correct_option": "D",
+        "explanation": "Viruses are obligate intracellular parasites. They lack their own cellular machinery for reproduction and must hijack a living host cell's machinery to multiply."
+      },
+      {
+        "id": "obj_2013_027",
+        "year": "2013",
+        "topic": "Taxonomy: Invertebrates",
+        "question": "The endoplasm cells found in hydra are used for:",
+        "options": {
+          "A": "Reproduction",
+          "B": "Offence and defense",
+          "C": "Locomotion and nutrition",
+          "D": "Food collection"
+        },
+        "correct_option": "C",
+        "explanation": "The inner layer (endoderm or gastrodermis) of the Hydra contains specialized gland and muscle cells that aid in digestion (nutrition) and provide some movement functions (locomotion)."
+      },
+      {
+        "id": "obj_2013_028",
+        "year": "2013",
+        "topic": "Taxonomy: Invertebrates",
+        "question": "Annelids differ from nematodes in that they:",
+        "options": {
+          "A": "Exhibit bilateral symmetry",
+          "B": "Are triploblastic",
+          "C": "Are metamerically segmented",
+          "D": "Possess complete digestive system"
+        },
+        "correct_option": "C",
+        "explanation": "Annelids (such as earthworms) have bodies divided into visible, repetitive segments, a feature known as metameric segmentation. Nematodes (roundworms) do not have segmented bodies."
+      },
+      {
+        "id": "obj_2013_029",
+        "year": "2013",
+        "topic": "Taxonomy: Plant Classification",
+        "question": "Which of the following perform similar functions?",
+        "options": {
+          "A": "Ascospores and ascocarp",
+          "B": "Antherozoids and rhizoids",
+          "C": "Sorus and indusium",
+          "D": "Strobili and inflorescence"
+        },
+        "correct_option": "D",
+        "explanation": "Both are reproductive structures. Strobili (cones) are the reproductive structures found in gymnosperms, while the inflorescence (flower clusters) serves the same reproductive purpose in angiosperms."
+      },
+      {
+        "id": "obj_2013_030",
+        "year": "2013",
+        "topic": "Taxonomy: Plant Classification",
+        "question": "In ferns, the sporophyte:",
+        "options": {
+          "A": "Develops from a haploid zygote",
+          "B": "Produces spores",
+          "C": "Is haploid and dependent on the gametophyte",
+          "D": "Is haploid and independent of the gametophyte"
+        },
+        "correct_option": "B",
+        "explanation": "The sporophyte generation is diploid (making option A incorrect, as zygotes are diploid) and its primary biological function is to produce haploid spores via meiosis."
+      },
+      {
+        "id": "obj_2013_031",
+        "year": "2013",
+        "topic": "Taxonomy: Invertebrates",
+        "question": "The group of insects that undergoes complete metamorphosis is:",
+        "options": {
+          "A": "House flies, beetles and cockroaches",
+          "B": "Cockroaches, grasshoppers and bees",
+          "C": "House flies, beetles and butterflies",
+          "D": "Aphids, grasshoppers and butterflies"
+        },
+        "correct_option": "C",
+        "explanation": "Complete metamorphosis (holometabolous development) consists of four stages: egg, larva, pupa, and adult. House flies, beetles, and butterflies undergo this, whereas cockroaches and grasshoppers undergo incomplete metamorphosis."
+      },
+      {
+        "id": "obj_2013_032",
+        "year": "2013",
+        "topic": "Form and Function in Animals: Excretory System",
+        "question": "The nitrogenous substance that is excreted by birds in order to conserve water is:",
+        "options": {
+          "A": "Ammonia",
+          "B": "Urea",
+          "C": "Uric acid",
+          "D": "Nitric acid"
+        },
+        "correct_option": "C",
+        "explanation": "Birds and insects excrete uric acid. It requires very little water to be flushed out, making it an ideal adaptation for flying and egg-laying animals to conserve weight and hydration."
+      },
+      {
+        "id": "obj_2013_033",
+        "year": "2013",
+        "topic": "Form and Function in Animals: Circulatory and Respiratory Systems",
+        "question": "In mammals, the exchange of nutrients and metabolic products occurs in the:",
+        "options": {
+          "A": "Lymph",
+          "B": "Lungs",
+          "C": "Heart",
+          "D": "Liver"
+        },
+        "correct_option": "A",
+        "explanation": "Lymph and tissue fluids (capillary beds) bathe the cells, facilitating the direct exchange of nutrients, oxygen, and metabolic wastes between the blood and the body's cells."
+      },
+      {
+        "id": "obj_2013_034",
+        "year": "2013",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "The part of the stomach nearer the gullet is called the:",
+        "options": {
+          "A": "Epiglottis",
+          "B": "Cardiac sphincter",
+          "C": "Duodenum",
+          "D": "Pyloric sphincter"
+        },
+        "correct_option": "B",
+        "explanation": "The cardiac sphincter connects the esophagus (gullet) to the upper part of the stomach, preventing stomach acid from splashing upward. The pyloric sphincter is located at the bottom end, connecting to the duodenum."
+      }
+]
