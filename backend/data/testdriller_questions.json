@@ -844,6 +844,148 @@
         "explanation": "Earthworms, crayfish, and centipedes are segmented. Tapeworms have 'proglottids' (pseudo-segmentation). In past UNIPORT marking schemes, Shark (which lacks metameric segmentation entirely) is often the accepted odd-one-out for vertebrates."
       },
       {
+        "id": "obj_2017_021",
+        "year": "2017",
+        "topic": "Form and Function in Animals: Excretory System",
+        "question": "The more the hydrogen peroxide ($H_2O_2$) in urine, the:",
+        "options": {
+          "A": "Lighter the color of the test strip",
+          "B": "More acidic the urine becomes",
+          "C": "Darker the color of the test strip",
+          "D": "More healthy a person is"
+        },
+        "correct_option": "C",
+        "explanation": "This refers to clinical urinalysis testing strips. Highly active oxidation reactions triggered by high levels of hydrogen peroxide ($H_2O_2$) turn the chemical indicator pad on the strip darker."
+      },
+      {
+        "id": "obj_2017_022",
+        "year": "2017",
+        "topic": "Form and Function in Animals: Excretory System",
+        "question": "Hydrogen peroxide ($H_2O_2$):",
+        "options": {
+          "A": "Helps line up cell proteins",
+          "B": "Is poisonous to tissues",
+          "C": "Is often needed as a catalyst",
+          "D": "Aids in the oxidation of glucose"
+        },
+        "correct_option": "B",
+        "explanation": "Hydrogen peroxide is a toxic metabolic byproduct of cellular respiration. Cells must use the enzyme catalase to rapidly break it down into harmless water and oxygen before it poisons tissues."
+      },
+      {
+        "id": "obj_2017_023",
+        "year": "2017",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "The nature of rennin is slightly:",
+        "options": {
+          "A": "Acidic",
+          "B": "Alkaline",
+          "C": "Water-based",
+          "D": "Mineral-based"
+        },
+        "correct_option": "A",
+        "explanation": "Rennin (chymosin) is a gastric digestive enzyme secreted in the stomach of young mammals to coagulate milk. It operates best in the highly acidic gastric juice environment of the stomach."
+      },
+      {
+        "id": "obj_2017_024",
+        "year": "2017",
+        "topic": "Agricultural Biology: Crop Science",
+        "question": "The application of biotechnology procedures in the agricultural field is classified as:",
+        "options": {
+          "A": "White biotechnology",
+          "B": "Red biotechnology",
+          "C": "Blue biotechnology",
+          "D": "Green biotechnology"
+        },
+        "correct_option": "D",
+        "explanation": "Biotechnology is color-coded by industry: Green is agricultural, Red is medical/pharmaceutical, White is industrial/chemical, and Blue is aquatic/marine."
+      },
+      {
+        "id": "obj_2017_025",
+        "year": "2017",
+        "topic": "Ecology and Environmental Biology: Nutrient Cycling and Environment",
+        "question": "Consequences of water pollution include:",
+        "options": {
+          "A": "Discharge of untreated sewage",
+          "B": "Burning of fossil fuels",
+          "C": "Loss of habitat",
+          "D": "Climate changes"
+        },
+        "correct_option": "C",
+        "explanation": "Untreated sewage is a cause of pollution. The actual ecological consequence of introducing pollutants into bodies of water is the degradation of the environment and the loss of aquatic habitats."
+      },
+      {
+        "id": "obj_2017_026",
+        "year": "2017",
+        "topic": "Ecology and Environmental Biology: Nutrient Cycling and Environment",
+        "question": "Deforestation is caused by:",
+        "options": {
+          "A": "Grazing",
+          "B": "Logging for timber",
+          "C": "Cultivation",
+          "D": "All of these"
+        },
+        "correct_option": "D",
+        "explanation": "Clearing forested lands for livestock grazing, commercial logging for timber, and expanding agricultural cultivation are all major primary drivers of deforestation."
+      },
+      {
+        "id": "obj_2017_027",
+        "year": "2017",
+        "topic": "Microorganisms and Public Health: Pathogens and Vectors",
+        "question": "Endemic diseases include:",
+        "options": {
+          "A": "Malaria",
+          "B": "Plague",
+          "C": "Cholera",
+          "D": "Typhoid"
+        },
+        "correct_option": "A",
+        "explanation": "An endemic disease is one that is constantly present and established in a specific geographic population. Malaria is endemic to Sub-Saharan Africa, whereas cholera and typhoid occur more in unpredictable epidemic outbreaks."
+      },
+      {
+        "id": "obj_2017_028",
+        "year": "2017",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "In the outer corner of the upper eyelid is the:",
+        "options": {
+          "A": "Lachrymal tear gland",
+          "B": "Naso-lachrymal duct",
+          "C": "Liberal palpebral ligament",
+          "D": "Orbital part"
+        },
+        "correct_option": "A",
+        "explanation": "The lachrymal (tear) gland is located in the upper outer corner of each orbit/eyelid, constantly secreting tears to clean and lubricate the eyeball."
+      },
+      {
+        "id": "obj_2017_029",
+        "year": "2017",
+        "topic": "Form and Function in Animals: Sensory Organs",
+        "question": "The innermost layer of the eyeball is the:",
+        "options": {
+          "A": "Iris",
+          "B": "Retina",
+          "C": "Ciliary body",
+          "D": "Pupil"
+        },
+        "correct_option": "B",
+        "explanation": "The eyeball is composed of three primary layers: the outermost protective sclera, the middle choroid, and the innermost light-sensitive layer containing photoreceptors, known as the retina."
+      },
+      {
+        "id": "obj_2017_030",
+        "year": "2017",
+        "topic": "Form and Function in Animals: Skeletal System",
+        "question": "The front parts of the ribs are attached to the:",
+        "options": {
+          "A": "Diaphragm",
+          "B": "Sternum",
+          "C": "External intercostal muscles",
+          "D": "Internal intercostal muscles"
+        },
+        "correct_option": "B",
+        "explanation": "In mammals, ribs form a protective cage around the thorax. At the posterior, they connect to the thoracic vertebral column, while at the anterior (front), they attach to the sternum (breastbone) via costal cartilages."
+      }
+    ]
+  }
+]
         "id": "obj_2018_011",
         "year": "2018",
         "topic": "Form and Function in Animals: Sensory Organs",
@@ -1556,8 +1698,147 @@
         },
         "correct_option": "C",
         "explanation": "A biological species consists of closely resembling organisms capable of mating/interbreeding freely in nature to produce viable, fertile offspring."
+        "id": "obj_2022_021",
+        "year": "2022",
+        "topic": "Form and Function in Plants: Transport and Water Loss",
+        "question": "The lenticels:",
+        "options": {
+          "A": "Remove excess water in plants",
+          "B": "Absorb water from the atmosphere",
+          "C": "Are for gaseous exchange",
+          "D": "Absorb light"
+        },
+        "correct_option": "C",
+        "explanation": "Lenticels are small, raised pores found on the woody stems, bark, and roots of mature plants. They permit the exchange of gases (oxygen and carbon dioxide) between the internal tissues and the atmosphere."
+      },
+      {
+        "id": "obj_2022_022",
+        "year": "2022",
+        "topic": "Form and Function in Plants: Transport and Water Loss",
+        "question": "A photometer is used to determine the rate at which a shoot:",
+        "options": {
+          "A": "Respires",
+          "B": "Sucks air bubbles",
+          "C": "Loses weight",
+          "D": "Transpires"
+        },
+        "correct_option": "D",
+        "explanation": "This is a classic UNIPORT exam typo. The correct instrument is a *potometer*, which measures water uptake/transpiration. A true *photometer* measures light intensity. Always pick 'transpires' when you encounter this question."
+      },
+      {
+        "id": "obj_2022_023",
+        "year": "2022",
+        "topic": "Form and Function in Animals: Digestive System and Nutrition",
+        "question": "One of these is NOT a digestive enzyme:",
+        "options": {
+          "A": "Bile",
+          "B": "Lipase",
+          "C": "Maltase",
+          "D": "Pepsin"
+        },
+        "correct_option": "A",
+        "explanation": "Bile is a fluid produced by the liver that physically emulsifies fats (breaks them down into tiny droplets). It does not chemically digest them, as it contains no enzymes."
+      },
+      {
+        "id": "obj_2022_024",
+        "year": "2022",
+        "topic": "Taxonomy: Vertebrates",
+        "question": "Which of these is NOT metamerically segmented?",
+        "options": {
+          "A": "Earthworm",
+          "B": "Centipede",
+          "C": "Crayfish",
+          "D": "Shark"
+        },
+        "correct_option": "D",
+        "explanation": "Earthworms, centipedes, and crayfish are clearly segmented. In biological science, sharks (vertebrates) completely lack metameric segmentation. (Note: Tapeworms, which also appeared in some variations of this question, exhibit pseudo-segmentation)."
+      },
+      {
+        "id": "obj_2022_025",
+        "year": "2022",
+        "topic": "Microorganisms and Public Health: Pathogens and Vectors",
+        "question": "Which of these diseases could be exclusively associated with a river basin?",
+        "options": {
+          "A": "Malaria",
+          "B": "Syphilis",
+          "C": "Anchocerciasis",
+          "D": "Cholera"
+        },
+        "correct_option": "C",
+        "explanation": "Anchocerciasis (River Blindness) is transmitted to humans by the bite of infected black flies (*Simulium*), which breed exclusively in fast-flowing river basins."
+      },
+      {
+        "id": "obj_2022_026",
+        "year": "2022",
+        "topic": "Cell Biology: Cell Structure and Organelles",
+        "question": "Which of these statements is true about enzymes?",
+        "options": {
+          "A": "They are carbohydrates",
+          "B": "They are not sensitive to hydrogen ion concentration",
+          "C": "They are non-specific in their actions",
+          "D": "They cannot withstand high temperature"
+        },
+        "correct_option": "D",
+        "explanation": "Enzymes are proteins. High temperatures destroy their precise three-dimensional tertiary structure, a process known as denaturation, which permanently inactivates them."
+      },
+      {
+        "id": "obj_2022_027",
+        "year": "2022",
+        "topic": "Agricultural Biology: Soil Science",
+        "question": "Soil erosion can be controlled by all of these EXCEPT:",
+        "options": {
+          "A": "Planting cover crops",
+          "B": "Contouring of sloping ground",
+          "C": "Terracing",
+          "D": "Laying of mulch"
+        },
+        "correct_option": "D",
+        "explanation": "While mulching is a valid erosion control method, this is a tricky UNIPORT misprint question where the option was printed as 'laying of much'. In past keys, D is selected as the outlier."
+      },
+      {
+        "id": "obj_2022_028",
+        "year": "2022",
+        "topic": "Form and Function in Animals: Dentition",
+        "question": "Evidence that the tooth is a living part of the body can be found in the:",
+        "options": {
+          "A": "Gum",
+          "B": "Pulp cavity",
+          "C": "Cement",
+          "D": "Enamel"
+        },
+        "correct_option": "B",
+        "explanation": "The pulp cavity (written as 'pump cavity' in the original exam) contains live blood vessels and nerves that supply nutrients and sensation to the tooth."
+      },
+      {
+        "id": "obj_2022_029",
+        "year": "2022",
+        "topic": "Cell Biology: Cell Structure and Organelles",
+        "question": "In higher animals, most cells retain the power of division EXCEPT:",
+        "options": {
+          "A": "Lymphocytes",
+          "B": "Nerve cells",
+          "C": "Malpighian cells",
+          "D": "Liver cells"
+        },
+        "correct_option": "B",
+        "explanation": "Fully differentiated neurons (nerve cells) lack centrioles and exit the active cell cycle, making them unable to divide."
+      },
+      {
+        "id": "obj_2022_030",
+        "year": "2022",
+        "topic": "Form and Function in Plants: Plant Growth and Responses",
+        "question": "Taxism is different from tropism in that in taxism:",
+        "options": {
+          "A": "The whole organism is affected",
+          "B": "One-directional movement is involved",
+          "C": "It is a response to multi-directional movement",
+          "D": "Part of the organism is affected"
+        },
+        "correct_option": "A",
+        "explanation": "Taxis (taxism) is a behavioral response where an entire mobile organism moves toward or away from a stimulus. Tropism is a growth response of a stationary plant part."
       }
     ],
     "theory": []
   }
+]
 ]
