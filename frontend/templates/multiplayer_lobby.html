@@ -2,171 +2,171 @@
 {% block title %}Multiplayer Lobby — Testdriller{% endblock %}
 
 {% block content %}
-<div class="container" style="padding-top: 60px; padding-bottom: 80px; max-width: 800px;">
+<div class="container lobby-container">
 
-  <div style="margin-bottom: 40px; text-align: center;">
-    <h1 style="font-size: 2.5rem; margin-bottom: 12px;">Multiplayer Lobby</h1>
-    <p style="color: var(--text-secondary);">Grind together, master faster.</p>
+  <div class="lobby-header">
+    <h1 class="lobby-title">Multiplayer Lobby</h1>
+    <p class="lobby-subtitle">Grind together, master faster.</p>
   </div>
 
-  <div id="lobby-setup" style="display: grid; grid-template-columns: 1fr 1fr; gap: 24px;">
+  <div id="lobby-setup" class="lobby-setup-grid">
     <!-- Create Room -->
     <div class="card">
-      <h3 style="margin-bottom: 20px;">Create a Room</h3>
-      <div style="margin-bottom: 16px;">
-        <label for="create-name" style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Your Name</label>
-        <input type="text" id="create-name" placeholder="Enter your name" class="form-input" style="width:100%; padding:10px; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-primary); border-radius:8px;">
+      <h3 class="lobby-section-title">Create a Room</h3>
+      <div class="lobby-form-group">
+        <label for="create-name" class="lobby-form-label">Your Name</label>
+        <input type="text" id="create-name" placeholder="Enter your name" class="lobby-form-input">
       </div>
-      <div style="margin-bottom: 16px;">
-        <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 8px;">
-          <label style="display:block; font-size:0.85rem; color:var(--text-muted);">Select Subjects</label>
-          <div style="display: flex; gap: 8px;">
-            <button class="btn btn--ghost btn--sm" onclick="lobby.selectAllSubjects()" type="button" style="padding: 2px 8px; font-size: 0.65rem;">All</button>
-            <button class="btn btn--ghost btn--sm" onclick="lobby.selectNoneSubjects()" type="button" style="padding: 2px 8px; font-size: 0.65rem;">None</button>
+      <div class="lobby-form-group">
+        <div class="lobby-subject-header">
+          <label class="lobby-form-label">Select Subjects</label>
+          <div class="lobby-subject-actions">
+            <button class="btn btn--ghost btn--sm" onclick="lobby.selectAllSubjects()" type="button">All</button>
+            <button class="btn btn--ghost btn--sm" onclick="lobby.selectNoneSubjects()" type="button">None</button>
           </div>
         </div>
-        <div id="subject-list" style="display: grid; grid-template-columns: 1fr; gap: 10px; max-height: 240px; overflow-y: auto; padding: 4px; border: 1px solid var(--border-subtle); border-radius: var(--radius-md); background: var(--bg-input);">
+        <div id="subject-list" class="lobby-subject-list">
             <!-- Subjects rendered here by JS -->
         </div>
       </div>
-      <div style="margin-bottom: 20px;">
-        <label style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Study Mode</label>
-        <div style="display:grid; grid-template-columns: 1fr; gap:12px;" role="radiogroup" aria-label="Study Mode Selection">
-          <div class="card mode-card" data-mode="obj" onclick="lobby.selectMode('obj')" style="cursor:pointer; border-color: var(--border-subtle); transition: all 0.2s; padding: 12px;" role="radio" aria-checked="false" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.selectMode('obj');}">
-            <div style="display:flex; align-items:center; gap:12px;">
-              <div style="font-size:1.5rem;">🔤</div>
+      <div class="lobby-form-group">
+        <label class="lobby-form-label">Study Mode</label>
+        <div class="lobby-mode-grid" role="radiogroup" aria-label="Study Mode Selection">
+          <div class="card mode-card" data-mode="obj" onclick="lobby.selectMode('obj')" role="radio" aria-checked="false" tabindex="0">
+            <div class="mode-card-content">
+              <div class="mode-card-icon">🔤</div>
               <div>
-                <div style="font-weight:700; font-size:0.9rem;">OBJ Only</div>
-                <div style="font-size:0.75rem; color:var(--text-secondary);">Multiple choice questions.</div>
+                <div class="mode-card-name">OBJ Only</div>
+                <div class="mode-card-desc">Multiple choice questions.</div>
               </div>
             </div>
           </div>
-          <div class="card mode-card" data-mode="theory" onclick="lobby.selectMode('theory')" style="cursor:pointer; border-color: var(--border-subtle); transition: all 0.2s; padding: 12px;" role="radio" aria-checked="false" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.selectMode('theory');}">
-            <div style="display:flex; align-items:center; gap:12px;">
-              <div style="font-size:1.5rem;">✍️</div>
+          <div class="card mode-card" data-mode="theory" onclick="lobby.selectMode('theory')" role="radio" aria-checked="false" tabindex="0">
+            <div class="mode-card-content">
+              <div class="mode-card-icon">✍️</div>
               <div>
-                <div style="font-weight:700; font-size:0.9rem;">Theory Only</div>
-                <div style="font-size:0.75rem; color:var(--text-secondary);">Essay questions.</div>
+                <div class="mode-card-name">Theory Only</div>
+                <div class="mode-card-desc">Essay questions.</div>
               </div>
             </div>
           </div>
-          <div class="card mode-card selected-mode" data-mode="both" onclick="lobby.selectMode('both')" style="cursor:pointer; border-color: var(--accent); background: var(--accent-glow); transition: all 0.2s; padding: 12px;" role="radio" aria-checked="true" tabindex="0" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.selectMode('both');}">
-            <div style="display:flex; align-items:center; gap:12px;">
-              <div style="font-size:1.5rem;">⚡</div>
+          <div class="card mode-card selected-mode" data-mode="both" onclick="lobby.selectMode('both')" role="radio" aria-checked="true" tabindex="0">
+            <div class="mode-card-content">
+              <div class="mode-card-icon">⚡</div>
               <div>
-                <div style="font-weight:700; font-size:0.9rem;">Both (Recommended)</div>
-                <div style="font-size:0.75rem; color:var(--text-secondary);">Mixed session.</div>
+                <div class="mode-card-name">Both (Recommended)</div>
+                <div class="mode-card-desc">Mixed session.</div>
               </div>
             </div>
           </div>
         </div>
       </div>
-      <button class="btn btn--primary" style="width:100%;" onclick="lobby.createRoom()">Create Room</button>
+      <button class="btn btn--primary lobby-full-btn" onclick="lobby.createRoom()">Create Room</button>
     </div>
 
     <!-- Join Room -->
     <div class="card">
-      <h3 style="margin-bottom: 20px;">Join a Room</h3>
-      <div style="margin-bottom: 16px;">
-        <label for="join-name" style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Your Name</label>
-        <input type="text" id="join-name" placeholder="Enter your name" class="form-input" style="width:100%; padding:10px; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-primary); border-radius:8px;">
+      <h3 class="lobby-section-title">Join a Room</h3>
+      <div class="lobby-form-group">
+        <label for="join-name" class="lobby-form-label">Your Name</label>
+        <input type="text" id="join-name" placeholder="Enter your name" class="lobby-form-input">
       </div>
-      <div style="margin-bottom: 20px;">
-        <label for="join-room-id" style="display:block; font-size:0.85rem; color:var(--text-muted); margin-bottom:8px;">Room ID</label>
-        <input type="text" id="join-room-id" placeholder="Enter 6-char Room ID" class="form-input" style="width:100%; padding:10px; background:var(--bg-card); border:1px solid var(--border-subtle); color:var(--text-primary); border-radius:8px; text-transform: uppercase;">
+      <div class="lobby-form-group">
+        <label for="join-room-id" class="lobby-form-label">Room ID</label>
+        <input type="text" id="join-room-id" placeholder="Enter 6-char Room ID" class="lobby-form-input text-uppercase">
       </div>
-      <button class="btn btn--secondary" style="width:100%;" onclick="lobby.joinRoom()">Join Room</button>
+      <button class="btn btn--secondary lobby-full-btn" onclick="lobby.joinRoom()">Join Room</button>
     </div>
   </div>
 
   <!-- Waiting Room (Hidden by default) -->
-  <div id="waiting-room" class="card hidden" style="text-align: center; padding: 40px;">
-    <div style="margin-bottom: 24px;">
-      <span class="badge badge--accent" style="font-size: 1.2rem; padding: 8px 16px; cursor: pointer;" id="display-room-id" role="button" tabindex="0" aria-label="Copy Room ID" onclick="lobby.copyRoomId()" onkeydown="if(event.key==='Enter'||event.key===' ') { lobby.copyRoomId(); event.preventDefault(); }">ROOM ID: ------ 📋</span>
-      <p style="margin-top: 12px; color: var(--text-secondary);">Share this ID with your friends to join (Max 5 players)</p>
+  <div id="waiting-room" class="card waiting-room hidden">
+    <div class="waiting-room-header">
+      <span class="badge badge--accent room-id-badge" id="display-room-id" role="button" tabindex="0" aria-label="Copy Room ID" onclick="lobby.copyRoomId()">ROOM ID: ------ 📋</span>
+      <p class="waiting-room-hint">Share this ID with your friends to join (Max 5 players)</p>
     </div>
 
-    <div style="margin-bottom: 32px;">
-      <h4 style="margin-bottom: 16px; color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.1em;">Players in Room</h4>
-      <div id="player-list" style="display: flex; flex-direction: column; gap: 10px; max-width: 300px; margin: 0 auto;">
+    <div class="waiting-players-section">
+      <h4 class="waiting-section-label">Players in Room</h4>
+      <div id="player-list" class="player-list-container">
         <!-- Players will be listed here -->
       </div>
     </div>
 
     <div id="host-controls" class="hidden">
-      <div style="display: grid; grid-template-columns: 1fr; gap: 16px; margin-bottom: 20px; text-align: left;">
-        <div class="card" id="batch-config-card">
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+      <div class="host-controls-grid">
+        <div class="card host-config-card">
+          <div class="host-config-content">
             <div>
-              <div style="font-weight:600; margin-bottom:4px;">Total Questions</div>
-              <div style="font-size:0.85rem; color:var(--text-secondary);">Questions for the match.</div>
+              <div class="host-config-title">Total Questions</div>
+              <div class="host-config-desc">Questions for the match.</div>
             </div>
-            <div style="display:flex; gap:8px; align-items: center; flex-wrap: wrap;">
-              <div style="display:flex; gap:8px;">
+            <div class="host-config-actions">
+              <div class="host-config-btns">
                 <button class="btn btn--ghost btn--sm batch-size-btn active-size" data-size="10" aria-pressed="true">10</button>
                 <button class="btn btn--ghost btn--sm batch-size-btn" data-size="20" aria-pressed="false">20</button>
                 <button class="btn btn--ghost btn--sm batch-size-btn" data-size="all" aria-pressed="false">All</button>
               </div>
-              <span style="color: var(--text-muted); font-size: 0.8rem; margin: 0 4px;">or</span>
-              <input type="number" id="custom-batch-size" placeholder="Custom" class="input-custom" style="width: 80px;">
+              <span class="host-config-separator">or</span>
+              <input type="number" id="custom-batch-size" placeholder="Custom" class="input-custom host-config-input">
             </div>
           </div>
         </div>
 
-        <div class="card" id="timed-config-card" style="border-color: var(--border-subtle); opacity: 0.7;">
-          <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+        <div class="card host-config-card disabled-card">
+          <div class="host-config-content">
             <div>
-              <div style="font-weight:600; margin-bottom:4px;">Time Limit</div>
-              <div style="font-size:0.85rem; color:var(--text-secondary);">Set a duration in minutes.</div>
+              <div class="host-config-title">Time Limit</div>
+              <div class="host-config-desc">Set a duration in minutes.</div>
             </div>
-            <div style="display:flex; gap:8px; align-items: center; flex-wrap: wrap;">
-              <div style="display:flex; gap:8px;">
+            <div class="host-config-actions">
+              <div class="host-config-btns">
                 <button class="btn btn--ghost btn--sm timed-btn" data-time="5" aria-pressed="false">5m</button>
                 <button class="btn btn--ghost btn--sm timed-btn" data-time="10" aria-pressed="false">10m</button>
                 <button class="btn btn--ghost btn--sm timed-btn" data-time="20" aria-pressed="false">20m</button>
               </div>
-              <span style="color: var(--text-muted); font-size: 0.8rem; margin: 0 4px;">or</span>
-              <input type="number" id="custom-time-limit" placeholder="Mins" class="input-custom" style="width: 80px;">
+              <span class="host-config-separator">or</span>
+              <input type="number" id="custom-time-limit" placeholder="Mins" class="input-custom host-config-input">
             </div>
           </div>
         </div>
 
-        <div class="host-settings-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px;">
-          <div class="card" id="random-questions-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="lobby.toggleSetting('randomize_questions', 'random-q-badge')" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.toggleSetting('randomize_questions', 'random-q-badge');}">
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+        <div class="host-settings-grid">
+          <div class="card host-config-card clickable-config" onclick="lobby.toggleSetting('randomize_questions', 'random-q-badge')" role="button" tabindex="0">
+            <div class="host-config-content">
               <div>
-                <div style="font-weight:600; margin-bottom:4px;">Randomize Questions</div>
-                <div style="font-size:0.85rem; color:var(--text-secondary);">Shuffle question order.</div>
+                <div class="host-config-title">Randomize Questions</div>
+                <div class="host-config-desc">Shuffle question order.</div>
               </div>
               <div id="random-q-badge" class="badge badge--neutral">OFF</div>
             </div>
           </div>
 
-          <div class="card" id="random-options-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="lobby.toggleSetting('randomize_options', 'random-o-badge')" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.toggleSetting('randomize_options', 'random-o-badge');}">
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div class="card host-config-card clickable-config" onclick="lobby.toggleSetting('randomize_options', 'random-o-badge')" role="button" tabindex="0">
+            <div class="host-config-content">
               <div>
-                <div style="font-weight:600; margin-bottom:4px;">Randomize Options</div>
-                <div style="font-size:0.85rem; color:var(--text-secondary);">Shuffle A, B, C, D order.</div>
+                <div class="host-config-title">Randomize Options</div>
+                <div class="host-config-desc">Shuffle A, B, C, D order.</div>
               </div>
               <div id="random-o-badge" class="badge badge--neutral">OFF</div>
             </div>
           </div>
 
-          <div class="card" id="filter-mastered-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="lobby.toggleSetting('filter_mastered', 'filter-m-badge')" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.toggleSetting('filter_mastered', 'filter-m-badge');}">
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div class="card host-config-card clickable-config" onclick="lobby.toggleSetting('filter_mastered', 'filter-m-badge')" role="button" tabindex="0">
+            <div class="host-config-content">
               <div>
-                <div style="font-weight:600; margin-bottom:4px;">Filter Mastered</div>
-                <div style="font-size:0.85rem; color:var(--text-secondary);">Skip questions anyone in the room has mastered.</div>
+                <div class="host-config-title">Filter Mastered</div>
+                <div class="host-config-desc">Skip questions anyone in the room has mastered.</div>
               </div>
               <div id="filter-m-badge" class="badge badge--neutral">OFF</div>
             </div>
           </div>
 
-          <div class="card" id="anti-cheat-config-card" style="border-color: var(--border-subtle); opacity: 0.7; cursor: pointer;" onclick="lobby.toggleSetting('anti_cheat', 'anti-cheat-badge')" role="button" tabindex="0" aria-pressed="false" onkeydown="if(event.key==='Enter'||event.key===' '){event.preventDefault();lobby.toggleSetting('anti_cheat', 'anti-cheat-badge');}">
-            <div style="display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:16px;">
+          <div class="card host-config-card clickable-config" onclick="lobby.toggleSetting('anti_cheat', 'anti-cheat-badge')" role="button" tabindex="0">
+            <div class="host-config-content">
               <div>
-                <div style="font-weight:600; margin-bottom:4px;">Strict Anti-Cheat</div>
-                <div style="font-size:0.85rem; color:var(--text-secondary);">Force Fullscreen & tab monitoring for all.</div>
+                <div class="host-config-title">Strict Anti-Cheat</div>
+                <div class="host-config-desc">Force Fullscreen & tab monitoring for all.</div>
               </div>
               <div id="anti-cheat-badge" class="badge badge--neutral">OFF</div>
             </div>
@@ -174,63 +174,30 @@
         </div>
       </div>
 
-      <button class="btn btn--primary btn--lg" onclick="lobby.startGame()">Start Competition</button>
+      <button class="btn btn--primary btn--lg lobby-start-btn" onclick="lobby.startGame()">Start Competition</button>
     </div>
     <div id="guest-waiting">
-      <p style="color: var(--accent); font-weight: 500;">Waiting for host to start...</p>
+      <p class="guest-waiting-msg">Waiting for host to start...</p>
     </div>
 
-    <div style="margin-top: 24px;">
+    <div class="waiting-room-actions">
         <button id="exit-waiting" class="btn btn--ghost">← Leave Room</button>
     </div>
 
     <!-- Lobby Chat -->
-    <div class="card chat-card" style="margin-top: 32px; text-align: left; display: flex; flex-direction: column; min-height: 300px;">
-        <h4 style="margin-bottom: 16px; color: var(--text-muted); text-transform: uppercase; font-size: 0.8rem;">Room Chat</h4>
-        <div id="lobby-chat-messages" style="flex: 1; overflow-y: auto; margin-bottom: 16px; font-size: 0.9rem; display: flex; flex-direction: column; gap: 8px; max-height: 200px;">
+    <div class="card chat-card lobby-chat-card">
+        <h4 class="chat-section-label">Room Chat</h4>
+        <div id="lobby-chat-messages" class="chat-messages-container">
             <!-- Messages -->
         </div>
-        <div style="display: flex; gap: 8px;">
-            <input type="text" id="lobby-chat-input" placeholder="Say hello..." style="flex: 1; padding: 10px; border-radius: 8px; border: 1px solid var(--border-subtle); background: var(--bg-card-alt); color: var(--text-primary);">
+        <div class="chat-input-container">
+            <input type="text" id="lobby-chat-input" placeholder="Say hello..." class="chat-input">
             <button id="lobby-chat-send" class="btn btn--primary">Send</button>
         </div>
     </div>
   </div>
 
 </div>
-
-<style>
-.mode-card:hover { transform: translateY(-2px); box-shadow: var(--shadow-md); }
-.subject-item { display: flex; align-items: center; gap: 10px; padding: 8px 12px; cursor: pointer; transition: all var(--transition-fast); border-radius: var(--radius-sm); border: 1px solid transparent; }
-.subject-item:hover { background: var(--bg-card-hover); transform: translateX(2px); }
-.subject-item.is-selected { background: var(--accent-glow); border-color: var(--accent); }
-.subject-item:focus-within { outline: 2px solid var(--accent); outline-offset: -2px; }
-.form-input:focus {
-    outline: none;
-    border-color: var(--accent) !important;
-}
-.player-tag {
-    background: var(--bg-card-alt);
-    padding: 10px 16px;
-    border-radius: 8px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    border: 1px solid var(--border-subtle);
-}
-.player-tag.is-you {
-    border-color: var(--accent);
-}
-.player-tag.is-host::after {
-    content: 'HOST';
-    font-size: 0.65rem;
-    background: var(--accent);
-    color: #000;
-    padding: 2px 6px;
-    border-radius: 4px;
-    font-weight: 700;
-}
-</style>
 {% endblock %}
 
 {% block scripts %}

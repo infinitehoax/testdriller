@@ -2,7 +2,7 @@
 {% block title %}Summary — Testdriller{% endblock %}
 
 {% block content %}
-<div class="container" style="padding: 60px 0 80px;">
+<div class="container summary-container">
   <div id="summary-content">
     <div class="loading-state">
       <div class="spinner"></div>
@@ -19,12 +19,12 @@
   const el = document.getElementById('summary-content');
 
   el.innerHTML = `
-    <div style="text-align:center; margin-bottom:40px;">
-      <div style="font-size:3rem; margin-bottom:12px;">📊</div>
-      <h1 style="margin-bottom:8px;">Session Summary</h1>
-      <p>${summary.subject}</p>
+    <div class="summary-header">
+      <div class="summary-icon">📊</div>
+      <h1 class="summary-title">Session Summary</h1>
+      <p class="summary-subject">${summary.subject}</p>
     </div>
-    <div class="stats-grid" style="max-width:600px; margin:0 auto 40px;">
+    <div class="stats-grid summary-stats">
       <div class="stat-card stat--accent">
         <div class="stat-card__value">${summary.stats.mastered}</div>
         <div class="stat-card__label">Mastered</div>
@@ -38,11 +38,11 @@
         <div class="stat-card__label">Unseen Left</div>
       </div>
       <div class="stat-card">
-        <div class="stat-card__value" style="color:var(--text-secondary)">${summary.stats.sessions}</div>
+        <div class="stat-card__value summary-stat-secondary">${summary.stats.sessions}</div>
         <div class="stat-card__label">Sessions</div>
       </div>
     </div>
-    <div style="text-align:center; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;">
+    <div class="summary-actions">
       <a href="/study" class="btn btn--primary btn--lg">Continue Grinding &rarr;</a>
       <a href="/" class="btn btn--ghost btn--lg">← Dashboard</a>
     </div>
