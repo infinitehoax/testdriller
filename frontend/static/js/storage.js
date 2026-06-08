@@ -105,7 +105,7 @@ const Storage = {
   },
 
   getPlayerName() {
-    return Storage._get('wg_player_name') || 'Student';
+    return Storage._get('wg_player_name') || null;
   },
 
   setPlayerName(name) {
