@@ -46,12 +46,12 @@ const Leaderboard = {
             }
 
             listContainer.innerHTML = rankings.map((player, index) => {
-                const isCurrentUser = player.user.id === currentUserUuid;
+                const isCurrentUser = currentUserUuid && player.user?.id === currentUserUuid;
                 return `
                     <div class="leaderboard-item ${index < 3 ? 'top-rank' : ''} ${isCurrentUser ? 'current-user' : ''} animate-fade-in" style="animation-delay: ${index * 0.05}s">
                         <div class="leaderboard-rank">${index + 1}</div>
                         <div class="leaderboard-player">
-                            <div class="player-name">${player.user.name || 'Anonymous'} ${isCurrentUser ? '(You)' : ''}</div>
+                            <div class="player-name">${player.user?.name || 'Anonymous'} ${isCurrentUser ? '(You)' : ''}</div>
                         </div>
                         <div class="leaderboard-score">
                             <strong>${player.value}</strong>
