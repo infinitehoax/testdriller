@@ -170,7 +170,7 @@
       if (!response.ok) throw new Error("Server returned " + response.status);
       allQuestions = await response.json();
 
-      const playerName = Storage.getPlayerName();
+      const playerName = Storage.getPlayerName() || 'Student';
       document.getElementById("player-name-display").textContent = playerName;
 
       if (loadingEl) loadingEl.style.display = "none";
@@ -316,6 +316,18 @@
   }
 
   window.startSession = function() {
+    let playerName = Storage.getPlayerName();
+    if (!playerName || playerName.toLowerCase() === 'student') {
+      const name = prompt("Please enter your display name before starting:");
+      if (!name || name.trim().length === 0) return;
+      if (name.trim().toLowerCase() === 'student') {
+        alert("Please choose a name other than 'Student'");
+        return;
+      }
+      Storage.setPlayerName(name.trim());
+      document.getElementById("player-name-display").textContent = name.trim();
+    }
+
     const topic = document.getElementById('topic-select').value;
     const year = document.getElementById('year-select').value;
 

@@ -107,7 +107,9 @@ def track_mastery():
         return jsonify({"error": "Missing userId"}), 400
 
     user_id = data['userId']
-    user_name = data.get('userName', 'Student')
+    user_name = data.get('userName')
+    if not user_name or user_name.strip().lower() == 'student':
+        user_name = 'Anonymous Testdriller'
 
     # Track the 'testdriller' metric in Trophy
     result = TrophyService.track_event(user_id, user_name, 'testdriller', 1)

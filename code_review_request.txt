@@ -1,0 +1,17 @@
+I have implemented the following changes to address the issue of "Anonymous" names on the leaderboard and to force users to set a display name before starting a quiz:
+
+1.  **Frontend Storage (`frontend/static/js/storage.js`):**
+    *   Updated `getPlayerName()` to return `null` instead of "Student" by default. This allows for better detection of whether a user has explicitly set their name.
+
+2.  **Dashboard UI (`frontend/templates/index.html`):**
+    *   Updated the `init()` function to use "Student" as a display fallback if `getPlayerName()` returns `null`, preserving the existing greeting style while knowing the underlying name is unset.
+    *   Enhanced `startSession()` to check if the player name is `null` or "Student". If so, it now forces the user to enter a name via `prompt()` before proceeding. It also prevents using "Student" or an empty name.
+
+3.  **Backend API (`backend/routes/api_routes.py`):**
+    *   Improved the `track_mastery` endpoint to provide a more descriptive fallback name ("Anonymous Testdriller") if no name is provided or if it's "Student", ensuring the leaderboard remains professional.
+
+4.  **Tests:**
+    *   Added a new unit test in `tests/test_api_routes.py` to verify the name fallback logic in the `track_mastery` endpoint.
+    *   Verified that all existing unit tests pass.
+
+Please review these changes for any potential issues or improvements.

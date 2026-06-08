@@ -56,5 +56,21 @@ class TestAPIRoutes(unittest.TestCase):
         self.assertIn("pass_threshold", data)
         self.assertIn("has_api_key", data)
 
+    @patch('backend.routes.api_routes.TrophyService.track_event')
+    def test_track_mastery_name_handling(self, mock_track):
+        mock_track.return_value = {"status": "ok"}
+
+        # Case 1: Valid name
+        self.client.post('/api/track-mastery', json={"userId": "u1", "userName": "Jules"})
+        mock_track.assert_called_with("u1", "Jules", "testdriller", 1)
+
+        # Case 2: Missing name
+        self.client.post('/api/track-mastery', json={"userId": "u1"})
+        mock_track.assert_called_with("u1", "Anonymous Testdriller", "testdriller", 1)
+
+        # Case 3: Name is 'Student'
+        self.client.post('/api/track-mastery', json={"userId": "u1", "userName": "Student"})
+        mock_track.assert_called_with("u1", "Anonymous Testdriller", "testdriller", 1)
+
 if __name__ == '__main__':
     unittest.main()
