@@ -18,6 +18,8 @@ const lobby = {
     anti_cheat: false,
     totalQuestions: 10,
     timeLimit: 0,
+    selectedTopic: '',
+    selectedYear: 'ALL',
 
     async init() {
         socket.connect();
@@ -57,6 +59,7 @@ const lobby = {
 
         // Initialize mode UI
         this.selectMode(this.selectedMode);
+        this.updateFilters();
     },
 
     setupControlListeners() {
@@ -90,6 +93,22 @@ const lobby = {
                     const defaultBtn = document.querySelector('.batch-size-btn[data-size="10"]');
                     if (defaultBtn) defaultBtn.classList.add('active-size');
                 }
+            };
+        }
+
+        const yearSelect = document.getElementById('year-select');
+        if (yearSelect) {
+            yearSelect.onchange = (e) => {
+                this.selectedYear = e.target.value;
+                this.updateHostControlUI('year-config-card', this.selectedYear !== 'ALL');
+            };
+        }
+
+        const topicSelect = document.getElementById('topic-select');
+        if (topicSelect) {
+            topicSelect.onchange = (e) => {
+                this.selectedTopic = e.target.value;
+                this.updateHostControlUI('topic-config-card', !!this.selectedTopic);
             };
         }
 
@@ -131,6 +150,76 @@ const lobby = {
                 }
             };
         }
+
+        const topicSearch = document.getElementById('topic-search');
+        if (topicSearch) {
+            topicSearch.oninput = (e) => {
+                const term = e.target.value.toLowerCase();
+                const options = topicSelect.options;
+                for (let i = 0; i < options.length; i++) {
+                    const opt = options[i];
+                    if (opt.value === "") continue;
+                    const match = opt.text.toLowerCase().includes(term);
+                    opt.style.display = match ? '' : 'none';
+                }
+            };
+        }
+    },
+
+    updateFilters() {
+        const topicSelect = document.getElementById('topic-select');
+        const yearSelect = document.getElementById('year-select');
+        if (!topicSelect || !yearSelect) return;
+
+        const selectedSubjectNames = Array.from(document.querySelectorAll('.subject-checkbox:checked')).map(cb => cb.value);
+        const selectedSubjects = this.allQuestions.filter(s => selectedSubjectNames.includes(s.subject));
+
+        const topics = new Set();
+        const years = new Set();
+
+        selectedSubjects.forEach(s => {
+            const pool = [...(s.obj || []), ...(s.theory || [])];
+            pool.forEach(q => {
+                if (q.topic) topics.add(q.topic);
+                if (q.year) years.add(q.year);
+            });
+        });
+
+        const currentTopic = topicSelect.value;
+        topicSelect.innerHTML = '<option value="">All Topics</option>';
+        Array.from(topics).sort().forEach(t => {
+            const opt = document.createElement("option");
+            opt.value = t;
+            opt.textContent = t;
+            topicSelect.appendChild(opt);
+        });
+        if (topics.has(currentTopic)) topicSelect.value = currentTopic;
+        else {
+            this.selectedTopic = '';
+            topicSelect.value = '';
+        }
+        this.updateHostControlUI('topic-config-card', !!this.selectedTopic);
+
+        const currentYear = yearSelect.value;
+        yearSelect.innerHTML = '<option value="ALL">ALL Years</option>';
+        Array.from(years).sort().reverse().forEach(y => {
+            const opt = document.createElement('option');
+            opt.value = y;
+            opt.textContent = y;
+            yearSelect.appendChild(opt);
+        });
+        if (years.has(currentYear)) yearSelect.value = currentYear;
+        else {
+            this.selectedYear = 'ALL';
+            yearSelect.value = 'ALL';
+        }
+        this.updateHostControlUI('year-config-card', this.selectedYear !== 'ALL');
+
+        // Re-apply search filter if present
+        const topicSearch = document.getElementById('topic-search');
+        if (topicSearch && topicSearch.value) {
+            topicSearch.dispatchEvent(new Event('input'));
+        }
     },
 
     updateHostControlUI(cardId, active) {
@@ -168,6 +257,7 @@ const lobby = {
             if (checkbox.checked) item.classList.add('is-selected');
             else item.classList.remove('is-selected');
         }
+        this.updateFilters();
     },
 
     selectAllSubjects() {
@@ -175,6 +265,7 @@ const lobby = {
             cb.checked = true;
             this.updateSubjectUI(cb);
         });
+        this.updateFilters();
     },
 
     selectNoneSubjects() {
@@ -182,6 +273,7 @@ const lobby = {
             cb.checked = false;
             this.updateSubjectUI(cb);
         });
+        this.updateFilters();
     },
 
     setupSocketHandlers() {
@@ -381,7 +473,9 @@ const lobby = {
             this.randomize_questions,
             this.randomize_options,
             this.filter_mastered,
-            this.anti_cheat
+            this.anti_cheat,
+            this.selectedTopic,
+            this.selectedYear
         );
     },
 

@@ -153,7 +153,7 @@ def check_room_finished(room_id):
         return True
     return False
 
-def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_questions=False, randomize_options=False, filter_mastered=False, anti_cheat=False):
+def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_questions=False, randomize_options=False, filter_mastered=False, anti_cheat=False, topic='', year='ALL'):
     if room_id not in rooms:
         return False, "Room not found"
 
@@ -198,6 +198,10 @@ def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_q
         if mode == "obj" or mode == "both":
             # Always copy the list to prevent random.shuffle from mutating the in-memory cache in data_service
             obj_qs = list(data.get("obj", []))
+            if topic:
+                obj_qs = [q for q in obj_qs if q.get("topic") == topic]
+            if year and year != 'ALL':
+                obj_qs = [q for q in obj_qs if str(q.get("year")) == str(year)]
             if filter_mastered:
                 # Optimized filtering using O(1) set lookups for composite IDs.
                 obj_qs = [q for q in obj_qs if q.get("_composite_id") not in mastered_pool]
@@ -208,6 +212,10 @@ def start_game(room_id, host_id, total_questions=None, time_limit=0, randomize_q
         if mode == "theory" or mode == "both":
             # Always copy the list to prevent random.shuffle from mutating the in-memory cache in data_service
             theory_qs = list(data.get("theory", []))
+            if topic:
+                theory_qs = [q for q in theory_qs if q.get("topic") == topic]
+            if year and year != 'ALL':
+                theory_qs = [q for q in theory_qs if str(q.get("year")) == str(year)]
             if filter_mastered:
                 # Optimized filtering using O(1) set lookups for composite IDs.
                 theory_qs = [q for q in theory_qs if q.get("_composite_id") not in mastered_pool]

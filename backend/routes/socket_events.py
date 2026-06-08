@@ -61,6 +61,8 @@ def handle_start_game(data):
     randomize_options = data.get('randomize_options', False)
     filter_mastered = data.get('filter_mastered', False)
     anti_cheat = data.get('anti_cheat', False)
+    topic = data.get('topic', '')
+    year = data.get('year', 'ALL')
 
     success, result = room_service.start_game(
         room_id,
@@ -70,7 +72,9 @@ def handle_start_game(data):
         randomize_questions,
         randomize_options,
         filter_mastered,
-        anti_cheat
+        anti_cheat,
+        topic,
+        year
     )
 
     if success:

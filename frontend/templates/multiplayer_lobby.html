@@ -95,7 +95,7 @@
 
     <div id="host-controls" class="hidden">
       <div class="host-controls-grid">
-        <div class="card host-config-card">
+        <div id="batch-config-card" class="card host-config-card">
           <div class="host-config-content">
             <div>
               <div class="host-config-title">Total Questions</div>
@@ -113,7 +113,36 @@
           </div>
         </div>
 
-        <div class="card host-config-card disabled-card">
+        <div id="topic-config-card" class="card host-config-card">
+          <div class="host-config-content">
+            <div>
+              <div class="host-config-title">Topic Selection</div>
+              <div class="host-config-desc">Filter questions by topic.</div>
+            </div>
+            <div class="host-config-actions" style="flex-direction: column; align-items: stretch; gap: 8px;">
+              <input type="text" id="topic-search" placeholder="Search topic..." class="lobby-form-input" style="padding: 6px 12px; font-size: 0.85rem;">
+              <select id="topic-select" class="lobby-form-input" style="padding: 6px 12px; font-size: 0.85rem; height: auto;">
+                <option value="">All Topics</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="year-config-card" class="card host-config-card">
+          <div class="host-config-content">
+            <div>
+              <div class="host-config-title">Year Selection</div>
+              <div class="host-config-desc">Filter questions by year.</div>
+            </div>
+            <div class="host-config-actions">
+              <select id="year-select" class="lobby-form-input" style="padding: 6px 12px; font-size: 0.85rem; height: auto;">
+                <option value="ALL">ALL Years</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div id="timed-config-card" class="card host-config-card">
           <div class="host-config-content">
             <div>
               <div class="host-config-title">Time Limit</div>

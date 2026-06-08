@@ -90,7 +90,7 @@ class SocketClient {
         this.socket.emit('join_room', { room_id: roomId, name, player_uuid, mastered_ids });
     }
 
-    startGame(roomId, total_questions, time_limit, randomize_questions = false, randomize_options = false, filter_mastered = false, anti_cheat = false) {
+    startGame(roomId, total_questions, time_limit, randomize_questions = false, randomize_options = false, filter_mastered = false, anti_cheat = false, topic = '', year = 'ALL') {
         const player_uuid = Storage.getPlayerUuid();
         this.socket.emit('start_game', {
             room_id: roomId,
@@ -100,7 +100,9 @@ class SocketClient {
             randomize_questions,
             randomize_options,
             filter_mastered,
-            anti_cheat
+            anti_cheat,
+            topic,
+            year
         });
     }
 

@@ -63,7 +63,8 @@
       <!-- Topic Search & Dropdown -->
       <div class="filter-group">
         <label for="topic-select" class="filter-label">Topic (Optional)</label>
-        <div class="filter-select-wrapper">
+        <div class="filter-select-wrapper" style="display: flex; flex-direction: column; gap: 8px;">
+          <input type="text" id="topic-search" placeholder="Search topic..." class="filter-select" style="font-size: 0.85rem; padding: 6px 12px;">
           <select id="topic-select" class="filter-select">
             <option value="">All Topics</option>
           </select>
@@ -375,6 +376,19 @@
       document.querySelectorAll('.batch-size-btn').forEach(b => {
         b.classList.remove('active-size');
       });
+    }
+  };
+
+  // Topic search logic
+  document.getElementById('topic-search').oninput = (e) => {
+    const term = e.target.value.toLowerCase();
+    const select = document.getElementById('topic-select');
+    const options = select.options;
+    for (let i = 0; i < options.length; i++) {
+      const opt = options[i];
+      if (opt.value === "") continue;
+      const match = opt.text.toLowerCase().includes(term);
+      opt.style.display = match ? '' : 'none';
     }
   };
 
